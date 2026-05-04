@@ -349,12 +349,12 @@ body::before {
 
 <script>
 const STARS_DATA = [
-  {num:1,name:'sirius',    code:'77'},
-  {num:2,name:'capella',   code:'87'},
-  {num:3,name:'procyon',   code:'02'},
-  {num:4,name:'jupiter',   code:'10'},
-  {num:5,name:'venus',     code:'88'},
-  {num:6,name:'betelgeuse',code:'48'},
+  { num:1, name:'jupiter',  code:'10' },
+  { num:2, name:'alphard',  code:'48' },
+  { num:3, name:'venus',    code:'88' },
+  { num:4, name:'regulus',  code:'77' },
+  { num:5, name:'procyon',  code:'02' },
+  { num:6, name:'capella',  code:'87' },
 ];
 // ABC order: Betelgeuse(48) Capella(87) Jupiter(10) Procyon(02) Sirius(77) Venus(88)
 // → 48.8710 02.7788
@@ -364,6 +364,12 @@ const COORD_IDS = ['c0','c1','c2','c3','c4','c5','c6','c7','c8','c9','c10','c11'
 const DEST_PATTERNS = [
   /disneyland\s*paris/i,
   /parc\s*disneyland/i,
+  /park\s*disneyland/i,
+  /disneyland\s*park/i,
+  /^disneyland$/i,
+  /^disney\s*paris$/i,
+  /^disney$/i,
+  /euro\s*disney/i,
   /דיסנילנד\s*פריז/,
   /דיסנילנד/,
 ];
@@ -497,7 +503,7 @@ function goToStage(n) {
 }
 
 function launchFinale() {
-  const diff=Math.ceil((new Date('2026-07-07')-new Date())/86400000);
+  const diff=Math.ceil((new Date('2026-07-03')-new Date())/86400000);
   document.getElementById('daysLeft').textContent=diff>0?diff:'0';
   const emojis=['✦','★','✧','⭐','🌟','✨','💫'];
   for(let i=0;i<50;i++){
