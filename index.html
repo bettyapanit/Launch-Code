@@ -252,7 +252,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     <div class="t-sys">✓ תחנת VENUS מאשרת קליטה!</div>
     <div class="t-body">
       מצאתם את מיקום תחנת החלל המקומית בכוכב Venus. כעת העצירה שם מתואמת ומאושרת והחללית תעצור לתחזוקה לפני המשך מסעה.<br><br>
-      <span class="t-stage-header" style="display:inline;font-size:12px;">הודעה מתחנת החלל המקומית ב-Venus:</span><br>
+      <span class="t-stage-header" style="display:inline;font-size:12px;">הודעה מתחנת החלל המקומית בכוכב Venus:</span><br>
       התבנית ל<strong>קוד השיגור</strong> האבוד נמצאת אצלנו. יש להשתמש בה בדיוק לצורך בניית רצף השיגור.
     </div>
     <div class="code-template-wrap">
@@ -265,7 +265,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <div class="code-box"></div><div class="code-box"></div><div class="code-box"></div><div class="code-box"></div>
     </div>
     <div class="t-body" style="margin-top:14px;">
-      כדי לבנות את <strong>רצף השיגור</strong> בסדר הנכון, סדרו את גרמי השמיים שזיהיתם לפי מרחקם מכדור הארץ — מהקרוב אל הרחוק, והזינו את הקוד התואם לכל אחד לפי אותו הסדר.
+      כדי לבנות את <strong>רצף השיגור</strong> בסדר הנכון, סדרו את גרמי השמיים שזיהיתם לפי מרחקם מכדור הארץ — מהקרוב אל הרחוק, והזינו את קוד הזיהוי של כל אחד לפי אותו הסדר.
     </div>
     <div class="t-note">
       <span class="t-note-label">הערה:</span><br>
@@ -485,7 +485,7 @@ function launchFinale(){
   resize();
   window.addEventListener('resize', resize);
   const SPEED=8;
-  const NUM=450;
+  const NUM=900;
   let W=cv.width, H=cv.height;
   const stars=Array.from({length:NUM},()=>({
     x:(Math.random()-0.5)*W*4,
