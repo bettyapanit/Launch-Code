@@ -47,7 +47,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .data-modal-overlay.open{display:flex;}
 .data-modal{background:#050d20;border:1px solid rgba(77,217,240,0.5);border-radius:16px;padding:24px;max-width:500px;width:100%;position:relative;overflow:hidden;}
 .data-modal::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple-dark),var(--teal-deep),var(--lilac));}
-.data-modal-title{font-family:'Orbitron',monospace;color:#4dd9f0;font-size:18px;letter-spacing:3px;margin-bottom:20px;text-align:center;text-shadow:0 0 8px rgba(77,217,240,0.4);}
+.data-modal-title{font-family:'Orbitron',monospace;color:#4dd9f0;font-size:14px;letter-spacing:3px;margin-bottom:20px;text-align:center;text-shadow:0 0 8px rgba(77,217,240,0.4);}
 .data-table{width:100%;border-collapse:collapse;}
 .data-table th{color:#4dd9f0;font-family:'Orbitron',monospace;font-size:14px;letter-spacing:2px;padding:7px 10px;border-bottom:1px solid rgba(77,217,240,0.3);text-align:right;}
 .data-table td{padding:10px 10px;border-bottom:1px solid rgba(255,255,255,0.05);color:#eafbff;font-family:'Share Tech Mono',monospace;font-size:16px;}
@@ -208,7 +208,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       מפקדת הכוח יובל וסגנה, ברוכים הבאים למערכת השליטה.<br><br>
       המשימה שלכם היא לאסוף נתונים מהחלל ולשחזר את <strong>קוד השיגור האבוד</strong> ואת נתוני הניווט של המשימה.<br>
       קוד השיגור מורכב מקודי הזיהוי של יעדי המשימה.<br><br>
-      כדי למצוא את יעדי משינת השיגור ואת קודי הזיהוי שלהם, עליכם לסנכרן בין מפת הכוכבים האילמת שקיבלתם לבין גרמי השמיים במציאות. בעזרת אפליקציית התצפית, זהו את ששת גרמי השמיים המסומנים במפה ואיספו את הנתונים.
+      כדי למצוא את יעדי משימת השיגור ואת קודי הזיהוי שלהם, עליכם לסנכרן בין מפת הכוכבים האילמת שקיבלתם לבין גרמי השמיים במציאות. בעזרת אפליקציית התצפית, זהו את ששת גרמי השמיים המסומנים במפה ואיספו את הנתונים.
     </div>
     <div class="t-note">
       <span class="t-note-label">שימו לב:</span><br>
@@ -294,7 +294,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <span class="t-note-label">שימו לב:</span> ניתן להיעזר בגוגל.
     </div>
   </div>
-  <div class="section-title">פענוח יעד</div>
+  <div class="t-field-label" style="margin-bottom:10px;">פענוח יעד</div>
   <input type="text" class="dest-input" id="destInput"
     placeholder="הזינו את שם היעד..."
     onkeydown="if(event.key==='Enter'){event.preventDefault();checkDestination();}"
