@@ -3,331 +3,327 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>קוד שיגור - סודות החלל</title>
+<title>קוד שיגור</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rubik:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --purple-dark:#580670;--teal-deep:#036880;--light-blue:#eafbff;
-  --lilac:#864f9b;--bg:#03020a;--success:#00ff88;--error:#ff4466;--code-color:#00e5ff;
+  --pd:#580670;--td:#036880;--lb:#eafbff;--li:#864f9b;
+  --bg:#03020a;--ok:#00ff88;--er:#ff4466;--cc:#00e5ff;
+  --f-body:'Rubik',sans-serif;
+  --f-mono:'Share Tech Mono',monospace;
+  --f-orb:'Orbitron',monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{overflow-x:hidden;}
-body{background:var(--bg);color:var(--light-blue);font-family:'Rubik',sans-serif;min-height:100vh;overflow-x:hidden;direction:rtl;font-size:17px;}
-body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(88,6,112,0.15) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(3,104,128,0.12) 0%,transparent 50%);pointer-events:none;z-index:0;}
+body{background:var(--bg);color:var(--lb);font-family:var(--f-body);min-height:100vh;overflow-x:hidden;direction:rtl;}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(88,6,112,.15),transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(3,104,128,.12),transparent 50%);pointer-events:none;z-index:0;}
+
+/* STARS */
 .stars-bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
-.star-dot{position:absolute;background:white;border-radius:50%;animation:twinkle var(--d) ease-in-out infinite;}
-@keyframes twinkle{0%,100%{opacity:0.15}50%{opacity:0.9}}
+.star-dot{position:absolute;background:#fff;border-radius:50%;animation:twinkle var(--d) ease-in-out infinite;}
+@keyframes twinkle{0%,100%{opacity:.15}50%{opacity:.9}}
 
 /* HEADER */
-.header-title{background:linear-gradient(135deg,#1a0025 0%,#03404d 60%,#580670 100%);padding:28px 20px 22px;text-align:center;border-bottom:2px solid rgba(77,217,240,0.3);position:relative;overflow:hidden;z-index:10;}
-.header-title::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(0,229,255,0.08) 0%,transparent 70%);}
-.mission-label{font-family:'Orbitron',monospace;font-size:13px;letter-spacing:5px;color:#4dd9f0;text-transform:uppercase;margin-bottom:8px;text-shadow:0 0 10px rgba(77,217,240,0.4);}
-.mission-name{font-family:'Rubik',sans-serif;font-size:30px;font-weight:700;color:#eafbff;text-shadow:0 0 24px rgba(0,229,255,0.6);}
+.hdr{background:linear-gradient(135deg,#1a0025,#03404d 60%,#580670);padding:26px 20px 20px;text-align:center;border-bottom:2px solid rgba(77,217,240,.3);position:relative;overflow:hidden;z-index:10;}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(0,229,255,.08),transparent 70%);}
+.hdr-label{font-family:var(--f-orb);font-size:13px;letter-spacing:5px;color:#4dd9f0;text-transform:uppercase;margin-bottom:8px;}
+.hdr-name{font-family:var(--f-orb);font-size:28px;font-weight:700;color:var(--lb);text-shadow:0 0 24px rgba(0,229,255,.5);}
 
-/* CONTAINER */
+.progress-bar{background:rgba(234,251,255,.05);height:3px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--pd),var(--td));transition:width .5s;}
+
 .container{position:relative;z-index:10;max-width:680px;margin:0 auto;padding:0 16px 60px;}
 
-/* PROGRESS */
-.progress-bar{background:rgba(234,251,255,0.05);height:3px;border-radius:2px;margin-bottom:0;overflow:hidden;}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--purple-dark),var(--teal-deep));border-radius:2px;transition:width 0.5s ease;}
-
-/* DATA BUTTON - wide, top of stage 2+3 */
-.data-btn-wide{
-  display:block;width:100%;padding:13px 20px;
-  background:rgba(3,104,128,0.35);border:1.5px solid rgba(77,217,240,0.55);
-  border-radius:11px;color:#4dd9f0;font-family:'Orbitron',monospace;
-  font-size:13px;font-weight:700;letter-spacing:2px;cursor:pointer;
-  text-align:center;margin:18px 0 16px;
-  box-shadow:0 0 14px rgba(77,217,240,0.15);transition:all 0.2s;
-}
-.data-btn-wide:hover{background:rgba(3,104,128,0.6);}
-
-/* DATA MODAL */
-.data-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.82);z-index:500;display:none;align-items:center;justify-content:center;padding:16px;}
-.data-modal-overlay.open{display:flex;}
-.data-modal{background:#050d20;border:1px solid rgba(77,217,240,0.5);border-radius:16px;padding:24px;max-width:500px;width:100%;position:relative;overflow:hidden;}
-.data-modal::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple-dark),var(--teal-deep),var(--lilac));}
-.data-modal-title{font-family:'Orbitron',monospace;color:#4dd9f0;font-size:14px;letter-spacing:3px;margin-bottom:20px;text-align:center;text-shadow:0 0 8px rgba(77,217,240,0.4);}
-.data-table{width:100%;border-collapse:collapse;}
-.data-table th{color:#4dd9f0;font-family:'Orbitron',monospace;font-size:14px;letter-spacing:2px;padding:7px 10px;border-bottom:1px solid rgba(77,217,240,0.3);text-align:right;}
-.data-table td{padding:10px 10px;border-bottom:1px solid rgba(255,255,255,0.05);color:#eafbff;font-family:'Share Tech Mono',monospace;font-size:16px;}
-.data-table td.code-cell{color:var(--code-color);font-family:'Orbitron',monospace;font-size:18px;letter-spacing:2px;text-shadow:0 0 6px rgba(0,229,255,0.4);}
-.data-table tr:last-child td{border-bottom:none;}
-.data-close-btn{margin-top:20px;width:100%;padding:11px;background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;border-radius:10px;color:white;font-family:'Rubik',sans-serif;font-size:15px;font-weight:700;cursor:pointer;}
-
 /* STAGES */
-.stage{display:none;animation:fadeIn 0.6s ease forwards;}
+.stage{display:none;animation:fadeIn .5s ease forwards;}
 .stage.active{display:block;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
 /* BRIEFING */
-.briefing{background:rgba(3,10,30,0.82);backdrop-filter:blur(6px);border:1px solid rgba(3,104,128,0.45);border-radius:14px;padding:18px;margin-bottom:14px;position:relative;overflow:hidden;}
-.briefing::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple-dark),var(--teal-deep),var(--lilac));}
+.brf{background:rgba(3,10,30,.85);border:1px solid rgba(3,104,128,.45);border-radius:14px;padding:20px;margin:18px 0 16px;position:relative;overflow:hidden;}
+.brf::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pd),var(--td),var(--li));}
 
-/* Typography hierarchy */
-/* L1: Stage header - Orbitron, teal, 13px, spaced */
-.t-stage-header{font-family:'Orbitron',monospace;font-size:16px;letter-spacing:3px;color:#4dd9f0;margin-bottom:14px;text-shadow:0 0 8px rgba(77,217,240,0.4);}
-/* L2: Body text */
-.t-body{font-family:'Rubik',sans-serif;font-size:17px;line-height:1.35;color:#eafbff;margin:0;padding:0;text-indent:0;text-align:right;}
-.t-body strong{color:#00e5ff;font-weight:700;}
-/* L3: System confirm (green monospace) */
-.t-sys{font-family:'Share Tech Mono',monospace;font-size:18px;color:var(--success);margin-bottom:8px;text-shadow:0 0 8px rgba(0,255,136,0.35);line-height:1.5;}
-/* L4: Note/hint (italic, smaller) */
-.t-note{font-family:'Rubik',sans-serif;font-style:italic;color:rgba(234,251,255,0.8);margin:8px 0 0 0;padding:8px 0 0 0;font-size:15px;line-height:1.3;border-top:1px solid rgba(77,217,240,0.15);text-align:right;text-indent:0;}
-.t-note strong,.t-note-label{color:#4dd9f0;font-style:normal;font-family:'Share Tech Mono',monospace;font-size:15px;letter-spacing:1px;}
-/* L5: Section title (Orbitron, uppercase) */
-.section-title{font-family:'Orbitron',monospace;font-size:17px;font-weight:700;letter-spacing:2px;color:#4dd9f0;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;text-shadow:0 0 8px rgba(77,217,240,0.3);}
-.section-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(77,217,240,0.4),transparent);}
-/* L6: Field label (Orbitron, teal, centered) */
-.t-field-label{font-family:'Orbitron',monospace;font-size:16px;color:#00e5ff;letter-spacing:3px;margin-bottom:8px;text-align:center;text-shadow:0 0 8px rgba(0,229,255,0.4);}
+/* TYPOGRAPHY — all unified */
+.t-hdr{font-family:var(--f-orb);font-size:14px;letter-spacing:3px;color:#4dd9f0;margin-bottom:12px;text-shadow:0 0 8px rgba(77,217,240,.4);}
+.t-ok {font-family:var(--f-mono);font-size:16px;color:var(--ok);margin-bottom:10px;text-shadow:0 0 8px rgba(0,255,136,.35);line-height:1.35;}
+.t-body{font-family:var(--f-body);font-size:16px;line-height:1.4;color:var(--lb);text-align:right;}
+.t-body strong{color:var(--cc);font-weight:700;}
+.t-note{font-family:var(--f-body);font-style:italic;color:rgba(234,251,255,.82);font-size:14px;line-height:1.35;margin-top:10px;padding-top:10px;border-top:1px solid rgba(77,217,240,.18);text-align:right;}
+.t-note .lbl{font-family:var(--f-mono);font-size:13px;color:#4dd9f0;font-style:normal;}
+.t-venue{font-family:var(--f-orb);font-size:13px;letter-spacing:2px;color:#4dd9f0;margin:10px 0 6px;display:block;}
+
+/* SECTION TITLE */
+.sec-title{font-family:var(--f-orb);font-size:16px;font-weight:700;letter-spacing:2px;color:#4dd9f0;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(77,217,240,.4),transparent);}
+
+/* FIELD LABEL */
+.f-lbl{font-family:var(--f-orb);font-size:14px;color:var(--cc);letter-spacing:3px;margin-bottom:8px;text-align:center;display:block;}
+
 /* ERROR */
-.t-error{display:none;color:var(--error);font-size:13px;font-style:italic;margin-top:6px;margin-bottom:4px;text-align:center;}
+.t-err{display:none;color:var(--er);font-size:13px;font-style:italic;margin-top:6px;text-align:center;}
 
-/* STARS INPUT */
-.stars-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:16px;}
-.star-number{font-size:15px;font-weight:700;color:#4dd9f0;margin-bottom:5px;display:flex;align-items:center;gap:8px;}
-.star-number .num{background:var(--teal-deep);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
-.star-input-wrap{display:flex;gap:8px;align-items:center;}
-.star-input{flex:1;background:rgba(3,10,30,0.80);border:1px solid rgba(3,104,128,0.5);border-radius:8px;padding:13px 12px;color:#eafbff;font-family:'Share Tech Mono',monospace;direction:ltr;font-size:16px;outline:none;transition:all 0.3s;direction:ltr;text-align:left;}
-.star-input:focus{border-color:#4dd9f0;box-shadow:0 0 14px rgba(77,217,240,0.25);}
-.star-input.success{border-color:var(--success);color:var(--success);font-weight:700;}
-.star-input.error{border-color:var(--error);}
-.confirm-btn{background:rgba(3,104,128,0.35);border:1px solid rgba(77,217,240,0.45);border-radius:8px;color:#4dd9f0;font-family:'Rubik',sans-serif;font-size:14px;font-weight:700;padding:0 14px;height:46px;cursor:pointer;white-space:nowrap;}
-.star-feedback{font-size:13px;margin-top:4px;min-height:16px;font-weight:600;direction:rtl;line-height:1.4;}
-.star-feedback.success{color:var(--success);}
-.star-feedback.error{color:var(--error);}
-.star-code-inline{font-size:18px;font-weight:700;color:var(--code-color);letter-spacing:3px;}
+/* DATA BUTTON */
+.data-btn{display:block;width:100%;padding:12px 16px;background:rgba(3,104,128,.35);border:1.5px solid rgba(77,217,240,.55);border-radius:11px;color:#4dd9f0;font-family:var(--f-orb);font-size:13px;font-weight:700;letter-spacing:1.5px;cursor:pointer;text-align:center;margin:16px 0 14px;transition:all .2s;}
+.data-btn:hover{background:rgba(3,104,128,.6);}
+
+/* DATA MODAL */
+.modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:500;display:none;align-items:center;justify-content:center;padding:16px;}
+.modal-ov.open{display:flex;}
+.modal-box{background:#050d20;border:1px solid rgba(77,217,240,.5);border-radius:16px;padding:20px;max-width:520px;width:100%;position:relative;overflow:hidden;}
+.modal-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pd),var(--td),var(--li));}
+.modal-title{font-family:var(--f-orb);color:#4dd9f0;font-size:14px;letter-spacing:2px;margin-bottom:16px;text-align:center;}
+.dtbl{width:100%;border-collapse:collapse;font-size:14px;}
+.dtbl th{font-family:var(--f-orb);font-size:11px;letter-spacing:1px;color:#4dd9f0;padding:6px 8px;border-bottom:1px solid rgba(77,217,240,.3);text-align:right;}
+.dtbl td{font-family:var(--f-mono);font-size:13px;padding:9px 8px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--lb);}
+.dtbl td.cc{font-family:var(--f-orb);font-size:15px;color:var(--cc);letter-spacing:2px;text-shadow:0 0 6px rgba(0,229,255,.4);}
+.dtbl tr:last-child td{border-bottom:none;}
+.modal-close{margin-top:16px;width:100%;padding:11px;background:linear-gradient(135deg,var(--pd),var(--td));border:none;border-radius:10px;color:#fff;font-family:var(--f-orb);font-size:13px;font-weight:700;cursor:pointer;}
 
 /* POPUP */
-.popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:400;display:none;align-items:center;justify-content:center;padding:16px;}
-.popup-overlay.open{display:flex;}
-.popup-box{background:linear-gradient(160deg,#050d20 0%,#030a18 100%);border:1px solid rgba(77,217,240,0.45);border-radius:18px;padding:26px;max-width:360px;width:100%;text-align:center;position:relative;overflow:hidden;}
-.popup-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--success),var(--code-color));}
-.popup-confirmed{font-family:'Share Tech Mono',monospace;font-size:16px;color:var(--success);margin-bottom:14px;letter-spacing:1px;}
-.popup-name{font-family:'Orbitron',monospace;font-size:26px;font-weight:900;color:#eafbff;letter-spacing:3px;margin-bottom:14px;}
-.popup-data-title{font-family:'Orbitron',monospace;font-size:13px;color:#4dd9f0;letter-spacing:2px;margin-bottom:10px;text-align:right;text-shadow:0 0 6px rgba(77,217,240,0.4);}
-.popup-data-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:7px;text-align:right;}
-.popup-data-label{font-family:'Share Tech Mono',monospace;font-size:15px;color:rgba(77,217,240,0.65);letter-spacing:1px;white-space:nowrap;padding-top:1px;}
-.popup-data-val{font-family:'Rubik',sans-serif;font-size:15px;color:#eafbff;line-height:1.4;flex:1;}
-.popup-code-sep{border:none;border-top:1px solid rgba(77,217,240,0.2);margin:14px 0;}
-.popup-code-label{font-family:'Share Tech Mono',monospace;font-size:15px;color:rgba(77,217,240,0.7);letter-spacing:2px;margin-bottom:6px;}
-.popup-code{font-family:'Orbitron',monospace;font-size:34px;color:#00e5ff;letter-spacing:6px;text-shadow:0 0 20px rgba(0,229,255,0.8);margin-bottom:18px;}
-.popup-close-btn{background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;color:white;border-radius:10px;padding:12px 28px;font-family:'Rubik',sans-serif;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:1px;}
+.pop-ov{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:400;display:none;align-items:center;justify-content:center;padding:16px;}
+.pop-ov.open{display:flex;}
+.pop-box{background:linear-gradient(160deg,#050d20,#030a18);border:1px solid rgba(77,217,240,.45);border-radius:18px;padding:24px;max-width:370px;width:100%;text-align:center;position:relative;overflow:hidden;}
+.pop-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ok),var(--cc));}
+.pop-ok{font-family:var(--f-mono);font-size:15px;color:var(--ok);margin-bottom:12px;letter-spacing:1px;}
+.pop-name{font-family:var(--f-orb);font-size:24px;font-weight:900;color:var(--lb);letter-spacing:3px;margin-bottom:14px;}
+.pop-data-ttl{font-family:var(--f-orb);font-size:13px;color:#4dd9f0;letter-spacing:2px;margin-bottom:10px;text-align:right;}
+.pop-row{display:flex;gap:8px;margin-bottom:7px;text-align:right;}
+.pop-lbl{font-family:var(--f-mono);font-size:13px;color:rgba(77,217,240,.7);white-space:nowrap;padding-top:1px;}
+.pop-val{font-family:var(--f-body);font-size:15px;color:var(--lb);line-height:1.4;flex:1;}
+.pop-sep{border:none;border-top:1px solid rgba(77,217,240,.2);margin:12px 0;}
+.pop-code-lbl{font-family:var(--f-mono);font-size:13px;color:rgba(77,217,240,.7);letter-spacing:2px;margin-bottom:6px;}
+.pop-code{font-family:var(--f-orb);font-size:32px;color:var(--cc);letter-spacing:6px;text-shadow:0 0 20px rgba(0,229,255,.8);margin-bottom:18px;}
+.pop-btn{background:linear-gradient(135deg,var(--pd),var(--td));border:none;color:#fff;border-radius:10px;padding:12px 28px;font-family:var(--f-orb);font-size:14px;font-weight:700;cursor:pointer;}
 
-/* MAIN BTN */
-.btn{width:100%;padding:17px;background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;border-radius:12px;color:white;font-family:'Rubik',sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 20px rgba(88,6,112,0.4);margin-top:10px;}
-.btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(3,104,128,0.5);}
+/* INPUTS */
+.btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--pd),var(--td));border:none;border-radius:12px;color:#fff;font-family:var(--f-orb);font-size:16px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all .3s;margin-top:10px;}
+.confirm-btn{background:rgba(3,104,128,.35);border:1px solid rgba(77,217,240,.45);border-radius:8px;color:#4dd9f0;font-family:var(--f-orb);font-size:13px;font-weight:700;padding:0 14px;height:46px;cursor:pointer;white-space:nowrap;}
+.star-input{flex:1;background:rgba(3,10,30,.85);border:1px solid rgba(3,104,128,.5);border-radius:8px;padding:12px;color:var(--lb);font-family:var(--f-mono);font-size:15px;outline:none;direction:ltr;text-align:left;transition:all .3s;}
+.star-input:focus{border-color:#4dd9f0;box-shadow:0 0 14px rgba(77,217,240,.25);}
+.star-input.ok{border-color:var(--ok);color:var(--ok);}
+.star-input.er{border-color:var(--er);}
+.star-fb{font-size:13px;margin-top:4px;min-height:15px;font-family:var(--f-mono);}
+.star-fb.ok{color:var(--ok);}
+.star-fb.er{color:var(--er);}
+.star-code-il{font-family:var(--f-orb);font-size:16px;color:var(--cc);letter-spacing:3px;}
+.star-row{display:flex;gap:8px;align-items:center;}
+.star-num{font-family:var(--f-orb);color:#4dd9f0;margin-bottom:4px;display:flex;align-items:center;gap:8px;}
+.star-num .n{background:var(--td);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
+.big-input{width:100%;background:rgba(3,10,30,.85);border:2px solid rgba(3,104,128,.5);border-radius:12px;padding:15px;color:var(--cc);font-family:var(--f-mono);font-size:22px;font-weight:700;outline:none;text-align:center;direction:ltr;letter-spacing:3px;display:block;margin-bottom:8px;transition:all .3s;}
+.big-input:focus{border-color:#4dd9f0;box-shadow:0 0 20px rgba(77,217,240,.25);}
+.big-input.ok{border-color:var(--ok);color:var(--ok);}
+.venus-inp{width:100%;background:rgba(255,255,255,.05);border:1.5px solid rgba(77,217,240,.4);border-radius:10px;padding:14px 16px;color:var(--lb);font-family:var(--f-mono);font-size:15px;outline:none;margin-bottom:10px;direction:ltr;text-align:left;}
+.venus-inp.ok{border-color:var(--ok);}
+.venus-inp.er{border-color:var(--er);}
+.dest-inp{width:100%;background:rgba(3,10,30,.85);border:2px solid rgba(3,104,128,.5);border-radius:12px;padding:15px;color:var(--lb);font-family:var(--f-body);font-size:16px;outline:none;text-align:right;direction:rtl;display:block;transition:all .3s;}
+.dest-inp:focus{border-color:#4dd9f0;}
+.dest-inp.ok{border-color:var(--ok);}
+.dest-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--pd),var(--td));border:none;border-radius:12px;color:#fff;font-family:var(--f-orb);font-size:16px;font-weight:700;letter-spacing:2px;cursor:pointer;margin-top:10px;}
+.seq-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--pd),var(--td));border:none;border-radius:12px;color:#fff;font-family:var(--f-orb);font-size:16px;font-weight:700;letter-spacing:2px;cursor:pointer;margin-top:4px;}
+
+/* STARS GRID */
+.stars-grid{display:grid;gap:10px;margin-bottom:14px;}
 
 /* CODE TEMPLATE */
-.code-template-wrap{display:flex;align-items:center;justify-content:center;gap:3px;margin:18px 0 6px;direction:ltr;}
-.code-box{display:inline-flex;align-items:center;justify-content:center;width:34px;height:44px;border:2px solid rgba(0,229,255,0.6);border-radius:6px;background:rgba(0,229,255,0.07);font-family:'Orbitron',monospace;font-size:16px;font-weight:700;color:#00e5ff;text-shadow:0 0 10px rgba(0,229,255,0.5);}
-.code-dot{font-family:'Orbitron',monospace;font-size:26px;font-weight:900;color:#fff;margin:0 1px;align-self:flex-end;padding-bottom:4px;}
-.code-space{width:18px;}
+.code-tmpl{display:flex;align-items:center;justify-content:center;gap:3px;margin:16px 0 6px;direction:ltr;}
+.cb{display:inline-flex;align-items:center;justify-content:center;width:34px;height:44px;border:2px solid rgba(0,229,255,.6);border-radius:6px;background:rgba(0,229,255,.07);font-family:var(--f-orb);font-size:16px;color:var(--cc);text-shadow:0 0 10px rgba(0,229,255,.5);}
+.cdot{font-family:var(--f-orb);font-size:26px;font-weight:900;color:#fff;margin:0 1px;align-self:flex-end;padding-bottom:4px;}
+.csp{width:18px;}
 
-/* CONTROL PANEL removed - replaced by data modal */
+/* CONTROL PANEL TABLE */
+.cp-tbl{width:100%;border-collapse:collapse;font-size:14px;}
+.cp-tbl th{font-family:var(--f-orb);font-size:12px;letter-spacing:1px;color:#4dd9f0;padding:7px 6px;border-bottom:1px solid rgba(77,217,240,.3);text-align:right;}
+.cp-tbl td{font-family:var(--f-mono);font-size:13px;padding:9px 6px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--lb);vertical-align:middle;}
+.cp-tbl td.code-c{font-family:var(--f-orb);font-size:16px;color:var(--cc);letter-spacing:2px;text-shadow:0 0 6px rgba(0,229,255,.4);}
+.cp-tbl tr:last-child td{border-bottom:none;}
 
-/* SEQ INPUT */
-.big-input{width:100%;background:rgba(3,10,30,0.80);border:2px solid rgba(3,104,128,0.5);border-radius:12px;padding:16px;color:#00e5ff;font-family:'Share Tech Mono',monospace;font-size:22px;font-weight:700;outline:none;text-align:center;direction:ltr;transition:all 0.3s;letter-spacing:3px;display:block;margin-bottom:8px;}
-.big-input:focus{border-color:#4dd9f0;box-shadow:0 0 20px rgba(77,217,240,0.25);}
-.big-input.success{border-color:var(--success);color:var(--success);box-shadow:0 0 20px rgba(0,255,136,0.3);}
-.seq-confirm-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;border-radius:12px;color:white;font-family:'Rubik',sans-serif;font-size:17px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all 0.3s;margin-top:4px;}
+/* HIDDEN UNTIL TYPED */
+.hidden-init{visibility:hidden;}
+.inputs-wrap{opacity:0;transition:opacity .6s;pointer-events:none;}
+.inputs-wrap.show{opacity:1;pointer-events:all;}
 
-/* VENUS INPUT */
-.venus-input{width:100%;background:rgba(255,255,255,0.05);border:1.5px solid rgba(77,217,240,0.4);border-radius:10px;padding:14px 16px;color:#eafbff;font-family:'Share Tech Mono',monospace;font-size:16px;outline:none;margin-bottom:10px;direction:ltr;text-align:left;}
-.venus-input.success{border-color:var(--success);}
-.venus-input.error{border-color:var(--error);}
-
-/* DEST INPUT */
-.dest-input{width:100%;background:rgba(3,10,30,0.80);border:2px solid rgba(3,104,128,0.5);border-radius:12px;padding:16px;color:#eafbff;font-family:'Share Tech Mono',monospace;font-size:17px;font-weight:600;outline:none;text-align:right;direction:rtl;transition:all 0.3s;display:block;}
-.dest-input:focus{border-color:#4dd9f0;box-shadow:0 0 20px rgba(77,217,240,0.25);}
-.dest-input.success{border-color:var(--success);box-shadow:0 0 20px rgba(0,255,136,0.3);}
-.dest-confirm-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;border-radius:12px;color:white;font-family:'Rubik',sans-serif;font-size:17px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all 0.3s;margin-top:10px;}
+/* STAGE 4 SEQ DISPLAY */
+.seq-display{font-family:var(--f-mono);font-size:17px;color:var(--ok);margin-bottom:10px;line-height:1.4;}
+.seq-coord{font-family:var(--f-mono);font-size:22px;color:var(--ok);letter-spacing:3px;direction:ltr;unicode-bidi:bidi-override;display:block;text-align:center;margin-top:4px;}
 
 /* FINALE */
 .finale{text-align:center;padding:20px 0;}
-.finale-congrats{font-family:'Rubik',sans-serif;font-size:24px;line-height:1.7;color:#eafbff;margin-bottom:28px;}
+.finale-congrats{font-family:var(--f-body);font-size:22px;line-height:1.75;color:var(--lb);margin-bottom:26px;}
 .finale-congrats strong{color:#4dd9f0;}
-.launch-text{font-family:'Orbitron',monospace;font-size:20px;letter-spacing:4px;color:#4dd9f0;margin-bottom:28px;text-shadow:0 0 12px rgba(77,217,240,0.5);animation:pulseGlow 2s ease-in-out infinite;}
-.countdown-box{background:linear-gradient(135deg,rgba(88,6,112,0.3),rgba(3,104,128,0.3));border:1px solid var(--lilac);border-radius:18px;padding:28px 20px;margin:0 auto;max-width:320px;box-shadow:0 0 40px rgba(134,79,155,0.3);}
-.countdown-label{font-family:'Orbitron',monospace;font-size:18px;letter-spacing:3px;color:#4dd9f0;margin-bottom:4px;}
-.countdown-label-en{font-family:'Orbitron',monospace;font-size:12px;letter-spacing:4px;color:rgba(77,217,240,0.5);margin-bottom:16px;}
-.countdown-number{font-family:'Orbitron',monospace;font-size:72px;color:var(--code-color);text-shadow:0 0 30px rgba(0,229,255,0.7);letter-spacing:4px;line-height:1;animation:pulseGlow 2s ease-in-out infinite;}
-@keyframes pulseGlow{0%,100%{text-shadow:0 0 20px rgba(0,229,255,0.5)}50%{text-shadow:0 0 50px rgba(0,229,255,1),0 0 100px rgba(0,229,255,0.3)}}
+.launch-txt{font-family:var(--f-orb);font-size:19px;letter-spacing:3px;color:#4dd9f0;margin-bottom:26px;animation:glow 2s ease-in-out infinite;}
+.cd-box{background:linear-gradient(135deg,rgba(88,6,112,.3),rgba(3,104,128,.3));border:1px solid var(--li);border-radius:18px;padding:28px 20px;max-width:320px;margin:0 auto;box-shadow:0 0 40px rgba(134,79,155,.3);}
+.cd-lbl{font-family:var(--f-orb);font-size:17px;letter-spacing:3px;color:#4dd9f0;margin-bottom:4px;}
+.cd-lbl-en{font-family:var(--f-orb);font-size:11px;letter-spacing:4px;color:rgba(77,217,240,.5);margin-bottom:14px;}
+.cd-num{font-family:var(--f-orb);font-size:70px;color:var(--cc);text-shadow:0 0 30px rgba(0,229,255,.7);letter-spacing:4px;line-height:1;animation:glow 2s ease-in-out infinite;}
+@keyframes glow{0%,100%{text-shadow:0 0 20px rgba(0,229,255,.5)}50%{text-shadow:0 0 50px rgba(0,229,255,1),0 0 100px rgba(0,229,255,.3)}}
 .confetti-star{position:fixed;pointer-events:none;z-index:100;animation:fall linear forwards;}
 @keyframes fall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
-#stage5{position:relative;}
 
-.stage-inputs{opacity:0;transition:opacity 0.6s ease;pointer-events:none;}
-#codeTemplate{opacity:0;transition:opacity 0.6s ease;}
-#codeTemplate.visible{opacity:1;}
-.briefing .t-stage-header,.briefing .t-sys,.briefing .t-body,.briefing .t-note{visibility:hidden;}
-.stage-inputs.visible{opacity:1;pointer-events:all;}
-
-/* Typewriter effect */
-.typewriter-text{overflow:hidden;white-space:pre-wrap;word-break:break-word;}
-.typewriter-text.typing::after{
-  content:'▋';
-  animation:blink 0.7s step-end infinite;
-  color:#4dd9f0;
-  font-weight:300;
-}
+/* TYPEWRITER */
+.tw::after{content:'▋';animation:blink .7s step-end infinite;color:#4dd9f0;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 </style>
 </head>
 <body>
 <div class="stars-bg" id="starfield"></div>
 
-<!-- DATA MODAL (combined: info + codes) -->
-<div class="data-modal-overlay" id="dataModalOverlay" onclick="if(event.target===this)closeDataModal()">
-  <div class="data-modal">
-    <div class="data-modal-title">📡 לוח בקרה: איסוף נתוני משימה</div>
-    <table class="data-table" id="dataTable">
+<!-- DATA MODAL -->
+<div class="modal-ov" id="dataModal" onclick="if(event.target===this)closeData()">
+  <div class="modal-box">
+    <div class="modal-title">📡 לוח בקרה: איסוף נתוני משימה</div>
+    <table class="dtbl" id="dtbl">
       <tr>
-        <th>מס'</th><th>שם</th><th>סוג</th><th>מרחק מכדור הארץ</th><th>קוד</th>
+        <th style="width:7%">מס'</th>
+        <th style="width:20%">שם</th>
+        <th style="width:16%">סוג</th>
+        <th style="width:40%">מרחק מכדוה"א</th>
+        <th style="width:17%">קוד</th>
       </tr>
     </table>
-    <button class="data-close-btn" onclick="closeDataModal()">סגור</button>
+    <button class="modal-close" onclick="closeData()">סגור</button>
   </div>
 </div>
 
-<!-- STAR INFO POPUP -->
-<div class="popup-overlay" id="starPopup">
-  <div class="popup-box">
-    <div class="popup-confirmed" id="pConfirmed">✔ &nbsp;הזיהוי אושר!</div>
-    <div class="popup-name" id="pName"></div>
-    <div class="popup-data-title">נתונים:</div>
-    <div class="popup-data-row"><span class="popup-data-label">סוג:</span><span class="popup-data-val" id="pType"></span></div>
-    <div class="popup-data-row" id="pHebRow"><span class="popup-data-label">שם בעברית:</span><span class="popup-data-val" id="pHeb"></span></div>
-    <div class="popup-data-row"><span class="popup-data-label">מידע:</span><span class="popup-data-val" id="pInfo"></span></div>
-    <div class="popup-data-row" id="pAgeRow"><span class="popup-data-label">גיל משוער:</span><span class="popup-data-val" id="pAge"></span></div>
-    <div class="popup-data-row"><span class="popup-data-label">מרחק מכדוה"א:</span><span class="popup-data-val" id="pDist"></span></div>
-    <hr class="popup-code-sep">
-    <div class="popup-code-label">התקבל קוד:</div>
-    <div class="popup-code" id="pCode"></div>
-    <button class="popup-close-btn" onclick="closePopup()">▸ המשך משימה</button>
+<!-- POPUP -->
+<div class="pop-ov" id="popup">
+  <div class="pop-box">
+    <div class="pop-ok">✔ &nbsp;הזיהוי אושר!</div>
+    <div class="pop-name" id="pName"></div>
+    <div class="pop-data-ttl">נתונים:</div>
+    <div class="pop-row" id="pHebRow"><span class="pop-lbl">שם בעברית:</span><span class="pop-val" id="pHeb"></span></div>
+    <div class="pop-row"><span class="pop-lbl">סוג:</span><span class="pop-val" id="pType"></span></div>
+    <div class="pop-row"><span class="pop-lbl">מידע:</span><span class="pop-val" id="pInfo"></span></div>
+    <div class="pop-row" id="pAgeRow"><span class="pop-lbl">גיל משוער:</span><span class="pop-val" id="pAge"></span></div>
+    <div class="pop-row"><span class="pop-lbl">מרחק מכדוה"א:</span><span class="pop-val" id="pDist"></span></div>
+    <hr class="pop-sep">
+    <div class="pop-code-lbl">התקבל קוד:</div>
+    <div class="pop-code" id="pCode"></div>
+    <button class="pop-btn" onclick="closePopup()">▸ המשך משימה</button>
   </div>
 </div>
 
-<div class="header-title">
-  <div class="mission-label">שבוע 4 // סודות החלל</div>
-  <div class="mission-name">המשימה: קוד שיגור 🚀</div>
+<div class="hdr">
+  <div class="hdr-label">שבוע 4 // סודות החלל</div>
+  <div class="hdr-name">המשימה: קוד שיגור 🚀</div>
 </div>
-<div class="progress-bar"><div class="progress-fill" id="progress" style="width:20%"></div></div>
+<div class="progress-bar"><div class="progress-fill" id="prog" style="width:20%"></div></div>
 
 <div class="container">
 
-<!-- ══ STAGE 1 ══ -->
+<!-- STAGE 1 -->
 <div class="stage active" id="stage1">
-  <div class="briefing" style="margin-top:20px;">
-    <div class="t-stage-header">▸ הודעת מערכת // שלב 01</div>
-    <div class="t-body">
-      מפקדת הכוח יובל וסגנה, ברוכים הבאים למערכת השליטה.<br>
-      המשימה שלכם היא לאסוף נתונים מהחלל ולשחזר את <strong>קוד השיגור האבוד</strong> ואת נתוני הניווט של המשימה. קוד השיגור מורכב מקודי הזיהוי של יעדי המשימה.<br>
+  <div class="brf">
+    <div class="t-hdr hidden-init">▸ הודעת מערכת // שלב 01</div>
+    <div class="t-body hidden-init">
+      מפקדת הכוח יובל וסגנה, ברוכים הבאים למערכת השליטה.
+      המשימה שלכם היא לאסוף נתונים מהחלל ולשחזר את <strong>קוד השיגור האבוד</strong> ואת נתוני הניווט של המשימה. קוד השיגור מורכב מקודי הזיהוי של יעדי המשימה.
       כדי למצוא את יעדי משימת השיגור ואת קודי הזיהוי שלהם, עליכם לסנכרן בין מפת הכוכבים האילמת שקיבלתם לבין גרמי השמיים במציאות. בעזרת אפליקציית התצפית, זהו את ששת גרמי השמיים המסומנים במפה ואיספו את הנתונים.
     </div>
-    <div class="t-note">
-      <span class="t-note-label">שימו לב:</span><br>
-      מספר הכוכב כאן במערכת תואם למספרו על המפה.<br>
+    <div class="t-note hidden-init">
+      <span class="lbl">שימו לב:</span>
+      מספר הכוכב כאן במערכת תואם למספרו על המפה.
       יש להזין את שמות הכוכבים באנגלית כפי שהם מופיעים באפליקציה.
     </div>
   </div>
-  <div class="stage-inputs" id="inputs1">
-  <div class="section-title">זיהוי גרמי שמיים</div>
-  <div class="stars-grid" id="starsGrid"></div>
-  <div class="t-error" id="err1">יש לאשר את כל שדות הכוכבים לפני המשך</div>
-  <button class="btn" onclick="submitStars()">▸ שדר נתונים למערכת</button>
+  <div class="inputs-wrap" id="in1">
+    <div class="sec-title">זיהוי גרמי שמיים</div>
+    <div class="stars-grid" id="starsGrid"></div>
+    <div class="t-err" id="err1">יש לאשר את כל שדות הכוכבים לפני המשך</div>
+    <button class="btn" onclick="submitStars()">▸ שדר נתונים למערכת</button>
   </div>
 </div>
 
-<!-- ══ STAGE 2 ══ -->
+<!-- STAGE 2 -->
 <div class="stage" id="stage2">
-  <button class="data-btn-wide" onclick="openDataModal()">📡 לוח בקרה: איסוף נתוני משימה</button>
-  <div class="briefing">
-    <div class="t-stage-header">▸ הודעת מערכת // שלב 02</div>
-    <div class="t-sys">✓ כל שישה גרמי השמיים זוהו בהצלחה! קודי המשימה נקלטו.</div>
-    <div class="t-body">
-      אחרי השיגור, החללית תזדקק לעצירת ביניים לתחזוקה, לפני הכניסה למסלול והמשך משימתה. במסלול הקרוב לכדור הארץ פועלת תחנת חלל מקומית שתפקידה טיפול ותחזוקה של חלליות. <br>כדי להמשיך לשחזר את נתוני המשימה עליכם <strong>לאתר את תחנת העצירה</strong> לתחזוקת החללית, הנמצאת במיקום הקרוב ביותר לכדור הארץ מבין גרמי השמיים שביעדי המשימה.
+  <button class="data-btn" onclick="openData()">📡 לוח בקרה: איסוף נתוני משימה</button>
+  <div class="brf">
+    <div class="t-hdr hidden-init">▸ הודעת מערכת // שלב 02</div>
+    <div class="t-ok hidden-init">✓ כל שישה גרמי השמיים זוהו בהצלחה! קודי המשימה נקלטו.</div>
+    <div class="t-body hidden-init">
+      אחרי השיגור, החללית תזדקק לעצירת ביניים לתחזוקה, לפני הכניסה למסלול והמשך משימתה.
+      במסלול הקרוב לכדור הארץ פועלת תחנת חלל מקומית שתפקידה טיפול ותחזוקה של חלליות.
+      כדי להמשיך לשחזר את נתוני המשימה עליכם <strong>לאתר את תחנת העצירה</strong> לתחזוקת החללית, הנמצאת במיקום הקרוב ביותר לכדור הארץ מבין גרמי השמיים שביעדי המשימה.
     </div>
-    <div class="t-note">
-      <span class="t-note-label">שימו לב:</span> לוח הבקרה עם נתוני המשימה שנאספו זמין לכם בכפתור למעלה.
+    <div class="t-note hidden-init">
+      <span class="lbl">שימו לב:</span> לוח הבקרה עם נתוני המשימה שנאספו זמין לכם בכפתור למעלה.
     </div>
   </div>
-  <div class="stage-inputs" id="inputs2">
-  <div class="t-field-label" style="margin-bottom:10px;">מיקום תחנת החלל</div>
-  <input type="text" class="venus-input" id="venusInput"
-    placeholder="הזינו שם גרם השמיים באנגלית..."
-    onkeydown="if(event.key==='Enter'){event.preventDefault();checkVenus();}"
-    autocomplete="off" autocorrect="off" spellcheck="false">
-  <div class="t-error" id="errVenus">שגיאה! בדקו את תשובתכם שוב.</div>
-  <button class="btn" onclick="checkVenus()">▸ שדר תשובה</button>
+  <div class="inputs-wrap" id="in2">
+    <span class="f-lbl">מיקום תחנת החלל</span>
+    <input type="text" class="venus-inp" id="venusInp"
+      placeholder="הזינו שם גרם השמיים באנגלית..."
+      onkeydown="if(event.key==='Enter'){event.preventDefault();checkVenus();}"
+      autocomplete="off" autocorrect="off" spellcheck="false">
+    <div class="t-err" id="errV">שגיאה! בדקו את תשובתכם שוב.</div>
+    <button class="btn" onclick="checkVenus()">▸ שדר תשובה</button>
   </div>
 </div>
 
-<!-- ══ STAGE 3 ══ -->
+<!-- STAGE 3 -->
 <div class="stage" id="stage3">
-  <button class="data-btn-wide" onclick="openDataModal()">📡 לוח בקרה: איסוף נתוני משימה</button>
-  <div class="briefing">
-    <div class="t-stage-header">▸ הודעת מערכת // שלב 03</div>
-    <div class="t-sys">✓ תחנת VENUS מאשרת קליטה!</div>
-    <div class="t-body">
-      מצאתם את מיקום תחנת החלל המקומית בכוכב Venus. כעת העצירה שם מתואמת ומאושרת והחללית תעצור לתחזוקה לפני המשך מסעה.<br>
-      <span class="t-stage-header" style="font-size:13px;display:block;margin:10px 0 6px;">הודעה מתחנת החלל המקומית בכוכב Venus:</span><br>
+  <button class="data-btn" onclick="openData()">📡 לוח בקרה: איסוף נתוני משימה</button>
+  <div class="brf">
+    <div class="t-hdr hidden-init">▸ הודעת מערכת // שלב 03</div>
+    <div class="t-ok hidden-init">✓ תחנת VENUS מאשרת קליטה!</div>
+    <div class="t-body hidden-init">
+      מצאתם את מיקום תחנת החלל המקומית בכוכב Venus. כעת העצירה שם מתואמת ומאושרת והחללית תעצור לתחזוקה לפני המשך מסעה.
+    </div>
+    <div class="t-hdr hidden-init" style="margin-top:12px;">הודעה מתחנת החלל המקומית בכוכב Venus:</div>
+    <div class="t-body hidden-init">
       התבנית ל<strong>קוד השיגור</strong> האבוד נמצאת אצלנו. יש להשתמש בה בדיוק לצורך בניית רצף השיגור.
     </div>
-    <div class="stage-inputs" id="codeTemplate" style="margin-top:0;">
-    <div class="code-template-wrap">
-      <div class="code-box"></div><div class="code-box"></div>
-      <div class="code-dot">.</div>
-      <div class="code-box"></div><div class="code-box"></div><div class="code-box"></div><div class="code-box"></div>
-      <div class="code-space"></div>
-      <div class="code-box"></div><div class="code-box"></div>
-      <div class="code-dot">.</div>
-      <div class="code-box"></div><div class="code-box"></div><div class="code-box"></div><div class="code-box"></div>
+  </div>
+  <div class="inputs-wrap" id="codeTemplate">
+    <div class="code-tmpl">
+      <div class="cb"></div><div class="cb"></div>
+      <div class="cdot">.</div>
+      <div class="cb"></div><div class="cb"></div><div class="cb"></div><div class="cb"></div>
+      <div class="csp"></div>
+      <div class="cb"></div><div class="cb"></div>
+      <div class="cdot">.</div>
+      <div class="cb"></div><div class="cb"></div><div class="cb"></div><div class="cb"></div>
     </div>
-    <div class="t-body" style="margin-top:14px;">
+  </div>
+  <div class="brf" id="seqInstrBrf" style="display:none;">
+    <div class="t-body">
       כדי לבנות את <strong>רצף השיגור</strong> בסדר הנכון, סדרו את יעדי המשימה שזיהיתם לפי מרחקם מכדור הארץ — מהקרוב אל הרחוק, והזינו את קוד הזיהוי של כל אחד לפי אותו הסדר.
     </div>
-    <div class="t-note">
-      <span class="t-note-label">הערה:</span><br>
-      יש להתייחס לנקודות ולרווחים.
-    </div>
+    <div class="t-note"><span class="lbl">הערה:</span> יש להתייחס לנקודות ולרווחים.</div>
   </div>
-  <div class="stage-inputs" id="inputs3">
-  <div class="t-field-label">הזן רצף שיגור</div>
-  <input type="text" class="big-input" id="seqInput"
-    placeholder="XX.XXXX XX.XXXX"
-    onkeydown="if(event.key==='Enter'){event.preventDefault();checkSequence();}"
-    autocomplete="off" autocorrect="off" spellcheck="false" dir="ltr">
-  <div class="t-error" id="err2">רצף לא תקין. בדקו את סדר גרמי השמיים לפי מרחק מכדור הארץ — מהקרוב אל הרחוק.</div>
-  <button class="seq-confirm-btn" onclick="checkSequence()">▸ שדר רצף שיגור</button>
+  <div class="inputs-wrap" id="in3" style="margin-top:12px;">
+    <span class="f-lbl">הזן רצף שיגור</span>
+    <input type="text" class="big-input" id="seqInp"
+      placeholder="XX.XXXX XX.XXXX"
+      onkeydown="if(event.key==='Enter'){event.preventDefault();checkSeq();}"
+      autocomplete="off" autocorrect="off" spellcheck="false" dir="ltr">
+    <div class="t-err" id="err2">רצף לא תקין. בדקו את סדר גרמי השמיים לפי מרחק מכדור הארץ — מהקרוב אל הרחוק.</div>
+    <button class="seq-btn" onclick="checkSeq()">▸ שדר רצף שיגור</button>
   </div>
 </div>
 
-<!-- ══ STAGE 4 ══ -->
+<!-- STAGE 4 -->
 <div class="stage" id="stage4">
-  <div class="briefing" style="margin-top:20px;">
-    <div class="t-stage-header">▸ הודעת מערכת // שלב 04</div>
-    <div class="t-sys" id="seqDisplay" style="direction:rtl;text-align:center;font-size:18px;letter-spacing:2px;display:block;"></div>
-    <div class="t-body">
-      יש לכם כמעט את כל נתוני המשימה. כעת נותר לכם רק לפענח את הקוד ולהבין את <strong>יעד המשימה הסופי</strong>.<br>
+  <div class="brf">
+    <div class="t-hdr hidden-init">▸ הודעת מערכת // שלב 04</div>
+    <div class="seq-display hidden-init" id="seqDisp"></div>
+    <div class="t-body hidden-init">
+      יש לכם כמעט את כל נתוני המשימה. כעת נותר לכם רק לפענח את הקוד ולהבין את <strong>יעד המשימה הסופי</strong>.
       רצף השיגור שגיליתם הוא לא סתם קוד אקראי. יש לו משמעות שמובילה ליעד השיגור. עליכם להבין אותה, למצוא את היעד ולהזין אותו.
     </div>
-    <div class="t-note">
-      <span class="t-note-label">שימו לב:</span> ניתן להיעזר בגוגל.
-    </div>
+    <div class="t-note hidden-init"><span class="lbl">שימו לב:</span> ניתן להיעזר בגוגל.</div>
   </div>
-  <div class="stage-inputs" id="inputs4">
-  <div class="t-field-label" style="margin-bottom:10px;">פענוח יעד</div>
-  <input type="text" class="dest-input" id="destInput"
-    placeholder="הזינו את שם היעד..."
-    onkeydown="if(event.key==='Enter'){event.preventDefault();checkDestination();}"
-    autocomplete="off" dir="rtl">
-  <div class="t-error" id="err3">שם היעד לא זוהה. נסו שוב...</div>
-  <button class="dest-confirm-btn" onclick="checkDestination()">▸ אמת יעד</button>
+  <div class="inputs-wrap" id="in4">
+    <span class="f-lbl" style="margin-bottom:10px;">פענוח יעד</span>
+    <input type="text" class="dest-inp" id="destInp"
+      placeholder="הזינו את שם היעד..."
+      onkeydown="if(event.key==='Enter'){event.preventDefault();checkDest();}"
+      autocomplete="off" dir="rtl">
+    <div class="t-err" id="err3">שם היעד לא זוהה. נסו שוב...</div>
+    <button class="dest-btn" onclick="checkDest()">▸ אמת יעד</button>
   </div>
 </div>
 
-<!-- ══ STAGE 5 ══ -->
+<!-- STAGE 5 -->
 <div class="stage" id="stage5" style="position:relative;z-index:10;">
   <div class="finale" style="position:relative;z-index:10;">
     <div class="finale-congrats">
@@ -335,309 +331,272 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       בשיתוף פעולה מושלם שחזרתם את כל נתוני המשימה ואת <strong>קוד השיגור</strong> האבוד,<br>
       ופיצחתם את <strong>היעד המדויק של המשימה</strong> אליה את תשוגרי!
     </div>
-    <div class="launch-text">✦ &nbsp;הספירה לאחור החלה... &nbsp;✦</div>
-    <div class="countdown-box">
-      <div class="countdown-label">ימים לשיגור</div>
-      <div class="countdown-label-en">DAYS TO LAUNCH</div>
-      <div class="countdown-number" id="daysLeft">—</div>
+    <div class="launch-txt">✦ &nbsp;הספירה לאחור החלה... &nbsp;✦</div>
+    <div class="cd-box">
+      <div class="cd-lbl">ימים לשיגור</div>
+      <div class="cd-lbl-en">DAYS TO LAUNCH</div>
+      <div class="cd-num" id="daysLeft">—</div>
     </div>
   </div>
 </div>
 
-</div><!-- /container -->
+</div>
 
 <script>
-const STARS_DATA=[
-  {num:1,name:'jupiter', code:'87',dist_ly:'~43 דקות אור', dist_sort:2,type:'כוכב לכת',heb:'צדק',info:'כוכב הלכת החמישי במרחקו מהשמש, והגדול ביותר במערכת השמש. ענק גזים המורכב ברובו ממימן והליום.'},
-  {num:2,name:'alphard', code:'80',dist_ly:'~177 שנות אור',dist_sort:6,type:'כוכב',     age:'420 מיליון שנה',info:'אחד הכוכבים הבהירים בשמי הלילה. ענק כתום, הרדיוס שלו הוא פי 40 מרדיוס השמש.'},
-  {num:3,name:'venus',   code:'48',dist_ly:'~6 דקות אור',  dist_sort:1,type:'כוכב לכת',heb:'כוכב נוגה',info:'הבהיר ביותר בשמיים אחרי הירח. כוכב הלכת השני במרחקו מהשמש. הרכבו דומה להרכב כדור הארץ.'},
-  {num:4,name:'regulus', code:'77',dist_ly:'~79 שנות אור', dist_sort:5,type:'כוכב',     info:'מסתובב על צירו במהירות גבוהה מאוד של כ-317 ק"מ בשנייה, שגורמת לצורתו להיות פחוסה — קוטרו בקו המשווה גדול בכ-30% מקוטרו בקטבים.'},
-  {num:5,name:'procyon', code:'15',dist_ly:'~11.5 שנות אור',dist_sort:3,type:'כוכב',   age:'1.87 מיליארד שנה',info:'אחד הכוכבים הקרובים ביותר למערכת השמש שלנו, מבין הכוכבים שמחוץ למערכת השמש.'},
-  {num:6,name:'capella', code:'02',dist_ly:'~42 שנות אור', dist_sort:4,type:'כוכב',     info:'מערכת של 4 כוכבים: שני ענקים צהובים ושני ננסים אדומים הקשורים כבידתית זה לזה.'},
+const SD=[
+  {num:1,name:'jupiter', code:'87',dist_ly:'כ-43 דקות אור', dist_sort:2,type:'כוכב לכת',heb:'צדק',   info:'כוכב הלכת החמישי במרחקו מהשמש, והגדול ביותר במערכת השמש. ענק גזים המורכב ברובו ממימן והליום.'},
+  {num:2,name:'alphard', code:'80',dist_ly:'כ-177 שנות אור',dist_sort:6,type:'כוכב',     age:'420 מיליון שנה',info:'אחד הכוכבים הבהירים בשמי הלילה. ענק כתום, הרדיוס שלו הוא פי 40 מרדיוס השמש.'},
+  {num:3,name:'venus',   code:'48',dist_ly:'כ-6 דקות אור',  dist_sort:1,type:'כוכב לכת',heb:'כוכב נוגה',info:'הבהיר ביותר בשמיים אחרי הירח. כוכב הלכת השני במרחקו מהשמש. הרכבו דומה להרכב כדור הארץ.'},
+  {num:4,name:'regulus', code:'77',dist_ly:'כ-79 שנות אור', dist_sort:5,type:'כוכב',     info:'מסתובב על צירו במהירות גבוהה מאוד של כ-317 ק"מ בשנייה, שגורמת לצורתו להיות פחוסה — קוטרו בקו המשווה גדול בכ-30% מקוטרו בקטבים.'},
+  {num:5,name:'procyon', code:'15',dist_ly:'כ-11.5 שנות אור',dist_sort:3,type:'כוכב',  age:'1.87 מיליארד שנה',info:'אחד הכוכבים הקרובים ביותר למערכת השמש שלנו, מבין הכוכבים שמחוץ למערכת השמש.'},
+  {num:6,name:'capella', code:'02',dist_ly:'כ-42 שנות אור', dist_sort:4,type:'כוכב',     info:'מערכת של 4 כוכבים: שני ענקים צהובים ושני ננסים אדומים הקשורים כבידתית זה לזה.'},
 ];
-const DEST_PATTERNS=[/disneyland\s*paris/i,/parc\s*disneyland/i,/park\s*disneyland/i,/disneyland\s*park/i,/^disneyland$/i,/^disney\s*paris$/i,/^disney$/i,/euro\s*disney/i,/דיסנילנד\s*פריז/,/דיסנילנד/];
-let starResults={};
+const DP=[/disneyland\s*paris/i,/parc\s*disneyland/i,/park\s*disneyland/i,/disneyland\s*park/i,/^disneyland$/i,/^disney\s*paris$/i,/^disney$/i,/euro\s*disney/i,/דיסנילנד\s*פריז/,/דיסנילנד/];
+let SR={};
 
-function generateStars(){
+/* STARS BG */
+function genStars(){
   const sf=document.getElementById('starfield');
   for(let i=0;i<110;i++){
     const s=document.createElement('div');s.className='star-dot';
-    const sz=Math.random()*2+0.4;
-    s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${sz}px;height:${sz}px;--d:${(Math.random()*3+2).toFixed(1)}s;animation-delay:${(Math.random()*4).toFixed(1)}s;`;
+    const z=Math.random()*2+0.4;
+    s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${z}px;height:${z}px;--d:${(Math.random()*3+2).toFixed(1)}s;animation-delay:${(Math.random()*4).toFixed(1)}s;`;
     sf.appendChild(s);
   }
 }
 
-function buildStarFields(){
-  const grid=document.getElementById('starsGrid');grid.innerHTML='';
-  STARS_DATA.forEach(star=>{
-    const div=document.createElement('div');div.className='star-field';
-    div.innerHTML=`
-      <div class="star-number"><span class="num">${star.num}</span></div>
-      <div class="star-input-wrap">
-        <input type="text" class="star-input" id="star${star.num}" autocomplete="off" autocorrect="off" spellcheck="false"
-          onkeydown="if(event.key==='Enter'){event.preventDefault();validateStar(${star.num});}">
-        <button class="confirm-btn" onclick="validateStar(${star.num})" type="button">אישור</button>
-      </div>
-      <div class="star-feedback" id="fb${star.num}"></div>`;
-    grid.appendChild(div);
+/* STAR FIELDS */
+function buildGrid(){
+  const g=document.getElementById('starsGrid');g.innerHTML='';
+  SD.forEach(s=>{
+    const d=document.createElement('div');
+    d.innerHTML=`<div class="star-num"><span class="n">${s.num}</span></div>
+    <div class="star-row">
+      <input type="text" class="star-input" id="si${s.num}" autocomplete="off" autocorrect="off" spellcheck="false"
+        onkeydown="if(event.key==='Enter'){event.preventDefault();valStar(${s.num});}">
+      <button class="confirm-btn" onclick="valStar(${s.num})" type="button">אישור</button>
+    </div>
+    <div class="star-fb" id="fb${s.num}"></div>`;
+    g.appendChild(d);
   });
 }
 
-function buildDataTable(showCodes){
-  const tbody=document.getElementById('dataTable');
-  // keep header row, rebuild data rows
-  while(tbody.rows.length>1) tbody.deleteRow(1);
-  STARS_DATA.forEach(star=>{
-    const tr=tbody.insertRow();
-    tr.innerHTML=`<td>${star.num}</td><td style="font-family:'Share Tech Mono',monospace;font-weight:700;">${star.name.toUpperCase()}</td><td>${star.type}</td><td>${star.dist_ly.replace('~','כ-')}</td><td class="code-cell">${showCodes?(starResults[star.num]?.code||'—'):'—'}</td>`;
+/* DATA TABLE */
+function buildTable(showCode){
+  const t=document.getElementById('dtbl');
+  while(t.rows.length>1) t.deleteRow(1);
+  SD.forEach(s=>{
+    const r=t.insertRow();
+    r.innerHTML=`<td>${s.num}</td><td style="font-weight:700">${s.name.toUpperCase()}</td><td>${s.type}</td><td>${s.dist_ly}</td><td class="cc">${showCode?(SR[s.num]?.code||'—'):'—'}</td>`;
   });
 }
+function openData(){buildTable(true);document.getElementById('dataModal').classList.add('open');}
+function closeData(){document.getElementById('dataModal').classList.remove('open');}
 
-function openDataModal(){
-  buildDataTable(true);
-  document.getElementById('dataModalOverlay').classList.add('open');
+/* POPUP */
+function showPop(s){
+  document.getElementById('pName').textContent=s.name.toUpperCase();
+  document.getElementById('pType').textContent=s.type;
+  document.getElementById('pInfo').textContent=s.info;
+  document.getElementById('pDist').textContent=s.dist_ly;
+  document.getElementById('pCode').textContent=s.code;
+  const hr=document.getElementById('pHebRow');
+  if(s.heb){hr.style.display='flex';document.getElementById('pHeb').textContent=s.heb;}
+  else hr.style.display='none';
+  const ar=document.getElementById('pAgeRow');
+  if(s.age){ar.style.display='flex';document.getElementById('pAge').textContent='כ-'+s.age;}
+  else ar.style.display='none';
+  document.getElementById('popup').classList.add('open');
 }
-function closeDataModal(){document.getElementById('dataModalOverlay').classList.remove('open');}
+function closePopup(){document.getElementById('popup').classList.remove('open');}
 
-function showPopup(star){
-  document.getElementById('pName').textContent=star.name.toUpperCase();
-  document.getElementById('pType').textContent=star.type;
-  document.getElementById('pInfo').textContent=star.info;
-  document.getElementById('pDist').textContent=star.dist_ly.replace('~','כ-');
-  document.getElementById('pCode').textContent=star.code;
-  // Hebrew name row
-  const hebRow=document.getElementById('pHebRow');
-  if(star.heb){hebRow.style.display='flex';document.getElementById('pHeb').textContent=star.heb;}
-  else hebRow.style.display='none';
-  // Age row
-  const ageRow=document.getElementById('pAgeRow');
-  if(star.age){ageRow.style.display='flex';document.getElementById('pAge').textContent='כ-'+star.age;}
-  else ageRow.style.display='none';
-  document.getElementById('starPopup').classList.add('open');
-}
-function closePopup(){document.getElementById('starPopup').classList.remove('open');}
-
-function validateStar(num){
-  const input=document.getElementById('star'+num);
+/* VALIDATE STAR */
+function valStar(num){
+  const inp=document.getElementById('si'+num);
   const fb=document.getElementById('fb'+num);
-  const val=input.value.trim().toLowerCase();
-  const star=STARS_DATA.find(s=>s.num===num);
-  if(!val){fb.className='star-feedback';fb.innerHTML='';return;}
-  if(val===star.name){
-    input.className='star-input success';
-    fb.className='star-feedback success';
-    fb.innerHTML='✓ זוהה! קוד: <span class="star-code-inline">'+star.code+'</span>';
-    starResults[num]={name:input.value.trim(),code:star.code,valid:true};
-    setTimeout(()=>showPopup(star),300);
+  const val=inp.value.trim().toLowerCase();
+  const s=SD.find(x=>x.num===num);
+  if(!val){fb.className='star-fb';fb.innerHTML='';return;}
+  if(val===s.name){
+    inp.className='star-input ok';
+    fb.className='star-fb ok';
+    fb.innerHTML='✓ זוהה! קוד: <span class="star-code-il">'+s.code+'</span>';
+    SR[num]={code:s.code,valid:true};
+    setTimeout(()=>showPop(s),300);
   } else {
-    input.className='star-input error';
-    fb.className='star-feedback error';
+    inp.className='star-input er';
+    fb.className='star-fb er';
     fb.innerHTML='✕ שם לא זוהה – בדקו איות באנגלית';
-    delete starResults[num];
+    delete SR[num];
   }
   document.getElementById('err1').style.display='none';
 }
 
 function submitStars(){
-  if(!STARS_DATA.every(s=>starResults[s.num]?.valid)){
-    document.getElementById('err1').style.display='block';return;
-  }
-  goToStage(2);
+  if(!SD.every(s=>SR[s.num]?.valid)){document.getElementById('err1').style.display='block';return;}
+  goTo(2);
 }
 
 function checkVenus(){
-  const val=document.getElementById('venusInput').value.trim().toLowerCase();
-  if(val==='venus'){
-    document.getElementById('venusInput').className='venus-input success';
-    document.getElementById('errVenus').style.display='none';
-    goToStage(3);
+  const v=document.getElementById('venusInp').value.trim().toLowerCase();
+  if(v==='venus'){
+    document.getElementById('venusInp').className='venus-inp ok';
+    document.getElementById('errV').style.display='none';
+    goTo(3);
   } else {
-    document.getElementById('venusInput').className='venus-input error';
-    document.getElementById('errVenus').style.display='block';
+    document.getElementById('venusInp').className='venus-inp er';
+    document.getElementById('errV').style.display='block';
   }
 }
 
-function checkSequence(){
-  const val=document.getElementById('seqInput').value.trim();
-  const input=document.getElementById('seqInput');
-  const norm=val.replace(/,/g,' ').replace(/\s+/g,' ').trim();
-  if(norm==='48.8715 02.7780'){
-    input.className='big-input success';
+function checkSeq(){
+  const v=document.getElementById('seqInp').value.trim();
+  const n=v.replace(/,/g,' ').replace(/\s+/g,' ').trim();
+  if(n==='48.8715 02.7780'){
+    document.getElementById('seqInp').className='big-input ok';
     document.getElementById('err2').style.display='none';
     setTimeout(()=>{
-      const d=document.getElementById('seqDisplay');
-      if(d){d.innerHTML='✓ רצף השיגור אומת!';
-      const coordDiv=document.createElement('div');
-      coordDiv.style.cssText='direction:ltr;unicode-bidi:bidi-override;font-size:22px;letter-spacing:3px;margin-top:8px;font-family:\'Share Tech Mono\',monospace;color:var(--success);text-align:center;';
-      coordDiv.textContent='48.8715 02.7780';
-      d.appendChild(coordDiv);}
-      goToStage(4);
+      const d=document.getElementById('seqDisp');
+      if(d){
+        d.innerHTML='✓ רצף השיגור אומת!<span class="seq-coord">48.8715 02.7780</span>';
+      }
+      goTo(4);
     },700);
   } else {
     document.getElementById('err2').style.display='block';
   }
 }
 
-function checkDestination(){
-  const val=document.getElementById('destInput').value.trim();
-  if(DEST_PATTERNS.some(p=>p.test(val))){
-    document.getElementById('destInput').className='dest-input success';
+function checkDest(){
+  const v=document.getElementById('destInp').value.trim();
+  if(DP.some(p=>p.test(v))){
+    document.getElementById('destInp').className='dest-inp ok';
     document.getElementById('err3').style.display='none';
-    setTimeout(()=>{launchFinale();goToStage(5);},800);
+    setTimeout(()=>{launchFinale();goTo(5);},800);
   } else {
     document.getElementById('err3').style.display='block';
   }
 }
 
-function goToStage(n){
-  document.querySelectorAll('.stage').forEach(s=>s.classList.remove('active'));
-  const stageEl=document.getElementById('stage'+n);
-  stageEl.classList.add('active');
-  const pct={1:20,2:40,3:60,4:80,5:100}[n]||20;
-  document.getElementById('progress').style.width=pct+'%';
-  window.scrollTo({top:0,behavior:'smooth'});
-  const inputMap={1:'inputs1',2:'inputs2',3:'inputs3',4:'inputs4'};
-  setTimeout(()=>typeBriefing(stageEl, inputMap[n]||null),200);
-}
-
-function launchFinale(){
-  document.getElementById('starfield').style.display='none';
-  document.body.style.background='#03020a';
-  // Create canvas directly on body for true full-screen
-  const cv=document.createElement('canvas');
-  cv.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:0;transition:opacity 1s;';
-  document.body.appendChild(cv);
-  const ctx=cv.getContext('2d');
-  function resize(){
-    cv.width=window.innerWidth;
-    cv.height=window.innerHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-  const SPEED=8;
-  const NUM=3600;
-  let W=cv.width, H=cv.height;
-  const stars=Array.from({length:NUM},()=>({
-    x:(Math.random()-0.5)*W*4,
-    y:(Math.random()-0.5)*H*4,
-    z:Math.random()*W
-  }));
-  let lastT=null;
-  function draw(ts){
-    W=cv.width; H=cv.height;
-    if(!lastT) lastT=ts;
-    const raw=(ts-lastT)/16.67;
-    lastT=ts;
-    const dt=(raw<0.1||raw>5)?1:raw;
-    const cx=W/2, cy=H/2;
-    ctx.fillStyle='rgba(3,2,10,0.22)';
-    ctx.fillRect(0,0,W,H);
-    for(let i=0;i<stars.length;i++){
-      const s=stars[i];
-      const pz=s.z;
-      s.z-=SPEED*dt;
-      if(s.z<=0){
-        s.x=(Math.random()-0.5)*W*4;
-        s.y=(Math.random()-0.5)*H*4;
-        s.z=W; continue;
-      }
-      const sx=(s.x/s.z)*W+cx, sy=(s.y/s.z)*H+cy;
-      const px=(s.x/pz)*W+cx,  py=(s.y/pz)*H+cy;
-      if(sx<-30||sx>W+30||sy<-30||sy>H+30) continue;
-      const t=1-s.z/W;
-      ctx.strokeStyle=`rgba(${160+Math.floor(t*90)},${200+Math.floor(t*55)},255,${0.35+t*0.6})`;
-      ctx.lineWidth=Math.max(0.5,t*3);
-      ctx.beginPath(); ctx.moveTo(px,py); ctx.lineTo(sx,sy); ctx.stroke();
-    }
-    requestAnimationFrame(draw);
-  }
-  setTimeout(()=>{ cv.style.opacity='1'; requestAnimationFrame(draw); }, 200);
-  // countdown
-  const diff=Math.ceil((new Date('2026-07-03')-new Date())/86400000);
-  document.getElementById('daysLeft').textContent=diff>0?diff:'0';
-  // confetti
-  const emojis=['✦','★','✧','⭐','🌟','✨','💫'];
-  for(let i=0;i<55;i++){
-    setTimeout(()=>{
-      const el=document.createElement('div');el.className='confetti-star';
-      el.textContent=emojis[Math.floor(Math.random()*emojis.length)];
-      el.style.cssText=`left:${Math.random()*100}%;top:-30px;animation-duration:${(Math.random()*3+2).toFixed(1)}s;font-size:${Math.random()*16+10}px;color:hsl(${Math.random()*60+180},80%,70%);`;
-      document.body.appendChild(el);
-      setTimeout(()=>el.remove(),6000);
-    },i*75);
-  }
-}
-
-
-// ── TYPEWRITER EFFECT ──
-function typewrite(el, html, speed, cb){
-  el.classList.add('typewriter-text','typing');
-  el.style.visibility='visible';
+/* TYPEWRITER */
+function typeEl(el,speed,cb){
+  const html=el.innerHTML;
   el.innerHTML='';
+  el.style.visibility='visible';
+  el.classList.add('tw');
   let i=0;
-  const SPEED=speed||45;
   function tick(){
-    if(i>=html.length){
-      el.classList.remove('typing');
-      if(cb) cb();
-      return;
-    }
+    if(i>=html.length){el.classList.remove('tw');if(cb)cb();return;}
     if(html[i]==='<'){
-      // Skip entire tag instantly
-      const end=html.indexOf('>',i);
-      if(end!==-1){
-        el.innerHTML+=html.slice(i,end+1);
-        i=end+1;
-        setTimeout(tick,1);
-        return;
-      }
+      const e=html.indexOf('>',i);
+      if(e!==-1){el.innerHTML+=html.slice(i,e+1);i=e+1;setTimeout(tick,1);return;}
     }
     el.innerHTML+=html[i++];
-    setTimeout(tick,SPEED);
+    setTimeout(tick,speed);
   }
   tick();
 }
 
-function typeBriefing(stageEl, doneId){
-  // Collect all text elements IN ORDER (briefing blocks, then t-body/t-sys/t-note inside)
-  const elems=[];
-  stageEl.querySelectorAll('.briefing').forEach(b=>{
-    b.querySelectorAll('.t-stage-header,.t-sys,.t-body,.t-note').forEach(el=>{
-      // Skip elements that have an id (dynamically filled) or are empty
-      if(el.id) return;
-      if(!el.innerHTML.trim()) return;
-      elems.push(el);
-    });
-  });
-  // Store original HTML, hide elements
-  const originals=elems.map(el=>{
-    const html=el.innerHTML;
-    el.innerHTML='';
-    return html;
-  });
-  let idx=0;
+function typeStage(stageId, inputId, extraAfterCb){
+  const stage=document.getElementById(stageId);
+  const els=[...stage.querySelectorAll('.brf .hidden-init')];
+  // hide all first
+  els.forEach(e=>e.style.visibility='hidden');
+  let i=0;
+  const SPEED=55;
   function next(){
-    if(idx<elems.length){
-      const el=elems[idx];
-      const html=originals[idx];
-      idx++;
-      typewrite(el, html, 45, next);
+    if(i<els.length){
+      typeEl(els[i++],SPEED,next);
     } else {
-      // Show code template if on stage 3
-      const tmpl=document.getElementById('codeTemplate');
-      if(tmpl) tmpl.classList.add('visible');
-      // Show inputs after typing done
-      if(doneId){
-        const inp=document.getElementById(doneId);
-        if(inp) inp.classList.add('visible');
+      if(extraAfterCb) extraAfterCb();
+      if(inputId){
+        const inp=document.getElementById(inputId);
+        if(inp) inp.classList.add('show');
       }
     }
   }
-  next();
+  setTimeout(next,200);
 }
 
-document.addEventListener('DOMContentLoaded',()=>{generateStars();buildStarFields();setTimeout(()=>typeBriefing(document.getElementById('stage1'),'inputs1'),500);});
+/* GOTO */
+function goTo(n){
+  document.querySelectorAll('.stage').forEach(s=>s.classList.remove('active'));
+  document.getElementById('stage'+n).classList.add('active');
+  document.getElementById('prog').style.width={1:20,2:40,3:60,4:80,5:100}[n]+'%';
+  window.scrollTo({top:0,behavior:'smooth'});
+
+  if(n===1) typeStage('stage1','in1');
+  else if(n===2) typeStage('stage2','in2');
+  else if(n===3){
+    typeStage('stage3',null,()=>{
+      // show code template then instruction then input
+      const ct=document.getElementById('codeTemplate');
+      ct.classList.add('show');
+      setTimeout(()=>{
+        const ib=document.getElementById('seqInstrBrf');
+        ib.style.display='block';
+        setTimeout(()=>{
+          document.getElementById('in3').classList.add('show');
+        },400);
+      },600);
+    });
+  }
+  else if(n===4) typeStage('stage4','in4');
+  else if(n===5) typeStage('stage5',null);
+}
+
+/* FINALE */
+function launchFinale(){
+  document.getElementById('starfield').style.display='none';
+  document.body.style.background='#03020a';
+  const cv=document.createElement('canvas');
+  cv.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:0;transition:opacity 1s;';
+  document.body.appendChild(cv);
+  const ctx=cv.getContext('2d');
+  function resize(){cv.width=window.innerWidth;cv.height=window.innerHeight;}
+  resize();
+  window.addEventListener('resize',resize);
+  const NUM=3600;
+  let W=cv.width,H=cv.height;
+  const stars=Array.from({length:NUM},()=>({x:(Math.random()-.5)*W*4,y:(Math.random()-.5)*H*4,z:Math.random()*W}));
+  const SPD=8;
+  let lt=null;
+  function draw(ts){
+    W=cv.width;H=cv.height;
+    if(!lt)lt=ts;
+    const raw=(ts-lt)/16.67;lt=ts;
+    const dt=(raw<.1||raw>5)?1:raw;
+    const cx=W/2,cy=H/2;
+    ctx.fillStyle='rgba(3,2,10,.22)';ctx.fillRect(0,0,W,H);
+    for(let i=0;i<stars.length;i++){
+      const s=stars[i];const pz=s.z;s.z-=SPD*dt;
+      if(s.z<=0){s.x=(Math.random()-.5)*W*4;s.y=(Math.random()-.5)*H*4;s.z=W;continue;}
+      const sx=(s.x/s.z)*W+cx,sy=(s.y/s.z)*H+cy;
+      const px=(s.x/pz)*W+cx,py=(s.y/pz)*H+cy;
+      if(sx<-30||sx>W+30||sy<-30||sy>H+30)continue;
+      const t=1-s.z/W;
+      ctx.strokeStyle=`rgba(${160+Math.floor(t*90)},${200+Math.floor(t*55)},255,${.35+t*.6})`;
+      ctx.lineWidth=Math.max(.5,t*3);
+      ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(sx,sy);ctx.stroke();
+    }
+    requestAnimationFrame(draw);
+  }
+  setTimeout(()=>{cv.style.opacity='1';requestAnimationFrame(draw);},200);
+  const diff=Math.ceil((new Date('2026-07-03')-new Date())/86400000);
+  document.getElementById('daysLeft').textContent=diff>0?diff:'0';
+  const em=['✦','★','✧','⭐','🌟','✨','💫'];
+  for(let i=0;i<55;i++) setTimeout(()=>{
+    const el=document.createElement('div');el.className='confetti-star';
+    el.textContent=em[Math.floor(Math.random()*em.length)];
+    el.style.cssText=`left:${Math.random()*100}%;top:-30px;animation-duration:${(Math.random()*3+2).toFixed(1)}s;font-size:${Math.random()*16+10}px;color:hsl(${Math.random()*60+180},80%,70%);`;
+    document.body.appendChild(el);setTimeout(()=>el.remove(),6000);
+  },i*75);
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  genStars();buildGrid();
+  typeStage('stage1','in1');
+});
 </script>
 </body>
 </html>
