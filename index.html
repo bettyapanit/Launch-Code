@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>קוד שיגור - סודות החלל</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rubik:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
 :root{
   --purple-dark:#580670;--teal-deep:#036880;--light-blue:#eafbff;
@@ -12,7 +12,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{overflow-x:hidden;}
-body{background:var(--bg);color:var(--light-blue);font-family:'Rubik',sans-serif;min-height:100vh;overflow-x:hidden;direction:rtl;font-size:17px;}
+body{background:var(--bg);color:var(--light-blue);font-family:'Share Tech Mono',monospace;min-height:100vh;overflow-x:hidden;direction:rtl;font-size:17px;}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(88,6,112,0.15) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(3,104,128,0.12) 0%,transparent 50%);pointer-events:none;z-index:0;}
 .stars-bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
 .star-dot{position:absolute;background:white;border-radius:50%;animation:twinkle var(--d) ease-in-out infinite;}
@@ -22,7 +22,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .header-title{background:linear-gradient(135deg,#1a0025 0%,#03404d 60%,#580670 100%);padding:28px 20px 22px;text-align:center;border-bottom:2px solid rgba(77,217,240,0.3);position:relative;overflow:hidden;z-index:10;}
 .header-title::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(0,229,255,0.08) 0%,transparent 70%);}
 .mission-label{font-family:'Orbitron',monospace;font-size:13px;letter-spacing:5px;color:#4dd9f0;text-transform:uppercase;margin-bottom:8px;text-shadow:0 0 10px rgba(77,217,240,0.4);}
-.mission-name{font-family:'Rubik',sans-serif;font-size:30px;font-weight:700;color:#eafbff;text-shadow:0 0 24px rgba(0,229,255,0.6);}
+.mission-name{font-family:'Share Tech Mono',monospace;font-size:30px;font-weight:700;color:#eafbff;text-shadow:0 0 24px rgba(0,229,255,0.6);}
 
 /* CONTAINER */
 .container{position:relative;z-index:10;max-width:680px;margin:0 auto;padding:0 16px 60px;}
@@ -53,7 +53,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .data-table td{padding:10px 10px;border-bottom:1px solid rgba(255,255,255,0.05);color:#eafbff;font-family:'Share Tech Mono',monospace;font-size:16px;}
 .data-table td.code-cell{color:var(--code-color);font-family:'Orbitron',monospace;font-size:18px;letter-spacing:2px;text-shadow:0 0 6px rgba(0,229,255,0.4);}
 .data-table tr:last-child td{border-bottom:none;}
-.data-close-btn{margin-top:20px;width:100%;padding:11px;background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;border-radius:10px;color:white;font-family:'Rubik',sans-serif;font-size:15px;font-weight:700;cursor:pointer;}
+.data-close-btn{margin-top:20px;width:100%;padding:11px;background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;border-radius:10px;color:white;font-family:'Share Tech Mono',monospace;font-size:15px;font-weight:700;cursor:pointer;}
 
 /* STAGES */
 .stage{display:none;animation:fadeIn 0.6s ease forwards;}
@@ -68,12 +68,12 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 /* L1: Stage header - Orbitron, teal, 13px, spaced */
 .t-stage-header{font-family:'Orbitron',monospace;font-size:16px;letter-spacing:3px;color:#4dd9f0;margin-bottom:14px;text-shadow:0 0 8px rgba(77,217,240,0.4);}
 /* L2: Body text */
-.t-body{font-size:17px;line-height:1.85;color:#eafbff;}
+.t-body{font-size:17px;line-height:1.5;color:#eafbff;margin-bottom:0;}
 .t-body strong{color:#00e5ff;font-weight:700;}
 /* L3: System confirm (green monospace) */
-.t-sys{font-family:'Share Tech Mono',monospace;font-size:18px;color:var(--success);margin-bottom:12px;text-shadow:0 0 8px rgba(0,255,136,0.35);line-height:1.5;}
+.t-sys{font-family:'Share Tech Mono',monospace;font-size:18px;color:var(--success);margin-bottom:8px;text-shadow:0 0 8px rgba(0,255,136,0.35);line-height:1.5;}
 /* L4: Note/hint (italic, smaller) */
-.t-note{font-style:italic;color:rgba(234,251,255,0.8);margin-top:14px;font-size:15px;line-height:1.65;border-top:1px solid rgba(77,217,240,0.15);padding-top:12px;}
+.t-note{font-style:italic;color:rgba(234,251,255,0.8);margin-top:10px;font-size:15px;line-height:1.4;border-top:1px solid rgba(77,217,240,0.15);padding-top:10px;}
 .t-note strong,.t-note-label{color:#4dd9f0;font-style:normal;font-family:'Share Tech Mono',monospace;font-size:15px;letter-spacing:1px;}
 /* L5: Section title (Orbitron, uppercase) */
 .section-title{font-family:'Orbitron',monospace;font-size:17px;font-weight:700;letter-spacing:2px;color:#4dd9f0;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;text-shadow:0 0 8px rgba(77,217,240,0.3);}
@@ -92,7 +92,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .star-input:focus{border-color:#4dd9f0;box-shadow:0 0 14px rgba(77,217,240,0.25);}
 .star-input.success{border-color:var(--success);color:var(--success);font-weight:700;}
 .star-input.error{border-color:var(--error);}
-.confirm-btn{background:rgba(3,104,128,0.35);border:1px solid rgba(77,217,240,0.45);border-radius:8px;color:#4dd9f0;font-family:'Rubik',sans-serif;font-size:14px;font-weight:700;padding:0 14px;height:46px;cursor:pointer;white-space:nowrap;}
+.confirm-btn{background:rgba(3,104,128,0.35);border:1px solid rgba(77,217,240,0.45);border-radius:8px;color:#4dd9f0;font-family:'Share Tech Mono',monospace;font-size:14px;font-weight:700;padding:0 14px;height:46px;cursor:pointer;white-space:nowrap;}
 .star-feedback{font-size:13px;margin-top:4px;min-height:16px;font-weight:600;direction:rtl;line-height:1.4;}
 .star-feedback.success{color:var(--success);}
 .star-feedback.error{color:var(--error);}
@@ -112,10 +112,10 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .popup-code-sep{border:none;border-top:1px solid rgba(77,217,240,0.2);margin:14px 0;}
 .popup-code-label{font-family:'Share Tech Mono',monospace;font-size:15px;color:rgba(77,217,240,0.7);letter-spacing:2px;margin-bottom:6px;}
 .popup-code{font-family:'Orbitron',monospace;font-size:30px;color:#00e5ff;letter-spacing:6px;text-shadow:0 0 20px rgba(0,229,255,0.8);margin-bottom:18px;}
-.popup-close-btn{background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;color:white;border-radius:10px;padding:12px 28px;font-family:'Rubik',sans-serif;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:1px;}
+.popup-close-btn{background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;color:white;border-radius:10px;padding:12px 28px;font-family:'Share Tech Mono',monospace;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:1px;}
 
 /* MAIN BTN */
-.btn{width:100%;padding:17px;background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;border-radius:12px;color:white;font-family:'Rubik',sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 20px rgba(88,6,112,0.4);margin-top:10px;}
+.btn{width:100%;padding:17px;background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;border-radius:12px;color:white;font-family:'Share Tech Mono',monospace;font-size:18px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 20px rgba(88,6,112,0.4);margin-top:10px;}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(3,104,128,0.5);}
 
 /* CODE TEMPLATE */
@@ -130,7 +130,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .big-input{width:100%;background:rgba(3,10,30,0.80);border:2px solid rgba(3,104,128,0.5);border-radius:12px;padding:16px;color:#00e5ff;font-family:'Share Tech Mono',monospace;font-size:22px;font-weight:700;outline:none;text-align:center;direction:ltr;transition:all 0.3s;letter-spacing:3px;display:block;margin-bottom:8px;}
 .big-input:focus{border-color:#4dd9f0;box-shadow:0 0 20px rgba(77,217,240,0.25);}
 .big-input.success{border-color:var(--success);color:var(--success);box-shadow:0 0 20px rgba(0,255,136,0.3);}
-.seq-confirm-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;border-radius:12px;color:white;font-family:'Rubik',sans-serif;font-size:17px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all 0.3s;margin-top:4px;}
+.seq-confirm-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;border-radius:12px;color:white;font-family:'Share Tech Mono',monospace;font-size:17px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all 0.3s;margin-top:4px;}
 
 /* VENUS INPUT */
 .venus-input{width:100%;background:rgba(255,255,255,0.05);border:1.5px solid rgba(77,217,240,0.4);border-radius:10px;padding:14px 16px;color:#eafbff;font-family:'Share Tech Mono',monospace;font-size:16px;outline:none;margin-bottom:10px;direction:ltr;text-align:left;}
@@ -138,10 +138,10 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .venus-input.error{border-color:var(--error);}
 
 /* DEST INPUT */
-.dest-input{width:100%;background:rgba(3,10,30,0.80);border:2px solid rgba(3,104,128,0.5);border-radius:12px;padding:16px;color:#eafbff;font-family:'Rubik',sans-serif;font-size:17px;font-weight:600;outline:none;text-align:right;direction:rtl;transition:all 0.3s;display:block;}
+.dest-input{width:100%;background:rgba(3,10,30,0.80);border:2px solid rgba(3,104,128,0.5);border-radius:12px;padding:16px;color:#eafbff;font-family:'Share Tech Mono',monospace;font-size:17px;font-weight:600;outline:none;text-align:right;direction:rtl;transition:all 0.3s;display:block;}
 .dest-input:focus{border-color:#4dd9f0;box-shadow:0 0 20px rgba(77,217,240,0.25);}
 .dest-input.success{border-color:var(--success);box-shadow:0 0 20px rgba(0,255,136,0.3);}
-.dest-confirm-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;border-radius:12px;color:white;font-family:'Rubik',sans-serif;font-size:17px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all 0.3s;margin-top:10px;}
+.dest-confirm-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;border-radius:12px;color:white;font-family:'Share Tech Mono',monospace;font-size:17px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all 0.3s;margin-top:10px;}
 
 /* FINALE */
 .finale{text-align:center;padding:20px 0;}
@@ -156,6 +156,19 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .confetti-star{position:fixed;pointer-events:none;z-index:100;animation:fall linear forwards;}
 @keyframes fall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
 #stage5{position:relative;}
+
+.stage-inputs{opacity:0;transition:opacity 0.5s ease;pointer-events:none;}
+.stage-inputs.visible{opacity:1;pointer-events:all;}
+
+/* Typewriter effect */
+.typewriter-text{overflow:hidden;white-space:pre-wrap;word-break:break-word;}
+.typewriter-text.typing::after{
+  content:'▋';
+  animation:blink 0.7s step-end infinite;
+  color:#4dd9f0;
+  font-weight:300;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 </style>
 </head>
 <body>
@@ -205,9 +218,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   <div class="briefing" style="margin-top:20px;">
     <div class="t-stage-header">▸ הודעת מערכת // שלב 01</div>
     <div class="t-body">
-      מפקדת הכוח יובל וסגנה, ברוכים הבאים למערכת השליטה.<br><br>
-      המשימה שלכם היא לאסוף נתונים מהחלל ולשחזר את <strong>קוד השיגור האבוד</strong> ואת נתוני הניווט של המשימה.<br>
-      קוד השיגור מורכב מקודי הזיהוי של יעדי המשימה.<br><br>
+      מפקדת הכוח יובל וסגנה, ברוכים הבאים למערכת השליטה.<br>
+      המשימה שלכם היא לאסוף נתונים מהחלל ולשחזר את <strong>קוד השיגור האבוד</strong> ואת נתוני הניווט של המשימה. קוד השיגור מורכב מקודי הזיהוי של יעדי המשימה.<br>
       כדי למצוא את יעדי משימת השיגור ואת קודי הזיהוי שלהם, עליכם לסנכרן בין מפת הכוכבים האילמת שקיבלתם לבין גרמי השמיים במציאות. בעזרת אפליקציית התצפית, זהו את ששת גרמי השמיים המסומנים במפה ואיספו את הנתונים.
     </div>
     <div class="t-note">
@@ -216,10 +228,12 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       יש להזין את שמות הכוכבים באנגלית כפי שהם מופיעים באפליקציה.
     </div>
   </div>
+  <div class="stage-inputs" id="inputs1">
   <div class="section-title">זיהוי גרמי שמיים</div>
   <div class="stars-grid" id="starsGrid"></div>
   <div class="t-error" id="err1">יש לאשר את כל שדות הכוכבים לפני המשך</div>
   <button class="btn" onclick="submitStars()">▸ שדר נתונים למערכת</button>
+  </div>
 </div>
 
 <!-- ══ STAGE 2 ══ -->
@@ -235,6 +249,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <span class="t-note-label">שימו לב:</span> לוח הבקרה עם נתוני המשימה שנאספו זמין לכם בכפתור למעלה.
     </div>
   </div>
+  <div class="stage-inputs" id="inputs2">
   <div class="t-field-label" style="margin-bottom:10px;">מיקום תחנת החלל</div>
   <input type="text" class="venus-input" id="venusInput"
     placeholder="הזינו שם גרם השמיים באנגלית..."
@@ -242,6 +257,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     autocomplete="off" autocorrect="off" spellcheck="false">
   <div class="t-error" id="errVenus">שגיאה! בדקו את תשובתכם שוב.</div>
   <button class="btn" onclick="checkVenus()">▸ שדר תשובה</button>
+  </div>
 </div>
 
 <!-- ══ STAGE 3 ══ -->
@@ -251,7 +267,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     <div class="t-stage-header">▸ הודעת מערכת // שלב 03</div>
     <div class="t-sys">✓ תחנת VENUS מאשרת קליטה!</div>
     <div class="t-body">
-      מצאתם את מיקום תחנת החלל המקומית בכוכב Venus. כעת העצירה שם מתואמת ומאושרת והחללית תעצור לתחזוקה לפני המשך מסעה.<br><br>
+      מצאתם את מיקום תחנת החלל המקומית בכוכב Venus. כעת העצירה שם מתואמת ומאושרת והחללית תעצור לתחזוקה לפני המשך מסעה.<br>
       <span class="t-stage-header" style="display:inline;font-size:12px;">הודעה מתחנת החלל המקומית בכוכב Venus:</span><br>
       התבנית ל<strong>קוד השיגור</strong> האבוד נמצאת אצלנו. יש להשתמש בה בדיוק לצורך בניית רצף השיגור.
     </div>
@@ -272,6 +288,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       יש להתייחס לנקודות ולרווחים.
     </div>
   </div>
+  <div class="stage-inputs" id="inputs3">
   <div class="t-field-label">הזן רצף שיגור</div>
   <input type="text" class="big-input" id="seqInput"
     placeholder="XX.XXXX XX.XXXX"
@@ -279,6 +296,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     autocomplete="off" autocorrect="off" spellcheck="false" dir="ltr">
   <div class="t-error" id="err2">רצף לא תקין. בדקו את סדר גרמי השמיים לפי מרחק מכדור הארץ — מהקרוב אל הרחוק.</div>
   <button class="seq-confirm-btn" onclick="checkSequence()">▸ שדר רצף שיגור</button>
+  </div>
 </div>
 
 <!-- ══ STAGE 4 ══ -->
@@ -287,13 +305,14 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     <div class="t-stage-header">▸ הודעת מערכת // שלב 04</div>
     <div class="t-sys" id="seqDisplay" style="direction:rtl;text-align:center;font-size:18px;letter-spacing:2px;display:block;"></div>
     <div class="t-body">
-      יש לכם כמעט את כל נתוני המשימה. כעת נותר לכם רק לפענח את הקוד ולהבין את <strong>יעד המשימה הסופי</strong>.<br><br>
+      יש לכם כמעט את כל נתוני המשימה. כעת נותר לכם רק לפענח את הקוד ולהבין את <strong>יעד המשימה הסופי</strong>.<br>
       רצף השיגור שגיליתם הוא לא סתם קוד אקראי. יש לו משמעות שמובילה ליעד השיגור. עליכם להבין אותה, למצוא את היעד ולהזין אותו.
     </div>
     <div class="t-note">
       <span class="t-note-label">שימו לב:</span> ניתן להיעזר בגוגל.
     </div>
   </div>
+  <div class="stage-inputs" id="inputs4">
   <div class="t-field-label" style="margin-bottom:10px;">פענוח יעד</div>
   <input type="text" class="dest-input" id="destInput"
     placeholder="הזינו את שם היעד..."
@@ -301,6 +320,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     autocomplete="off" dir="rtl">
   <div class="t-error" id="err3">שם היעד לא זוהה. נסו שוב...</div>
   <button class="dest-confirm-btn" onclick="checkDestination()">▸ אמת יעד</button>
+  </div>
 </div>
 
 <!-- ══ STAGE 5 ══ -->
@@ -464,10 +484,13 @@ function checkDestination(){
 
 function goToStage(n){
   document.querySelectorAll('.stage').forEach(s=>s.classList.remove('active'));
-  document.getElementById('stage'+n).classList.add('active');
+  const stageEl=document.getElementById('stage'+n);
+  stageEl.classList.add('active');
   const pct={1:20,2:40,3:60,4:80,5:100}[n]||20;
   document.getElementById('progress').style.width=pct+'%';
   window.scrollTo({top:0,behavior:'smooth'});
+  const inputMap={1:'inputs1',2:'inputs2',3:'inputs3',4:'inputs4'};
+  setTimeout(()=>typeBriefing(stageEl, inputMap[n]||null),200);
 }
 
 function launchFinale(){
@@ -538,7 +561,70 @@ function launchFinale(){
   }
 }
 
-document.addEventListener('DOMContentLoaded',()=>{generateStars();buildStarFields();});
+
+// ── TYPEWRITER EFFECT ──
+function typewrite(el, html, speed, cb){
+  el.classList.add('typewriter-text','typing');
+  // Store original innerHTML, hide element, then reveal char by char
+  el.innerHTML='';
+  el.style.display='block';
+  let i=0;
+  const SPEED=speed||28;
+  function tick(){
+    if(i>=html.length){
+      el.classList.remove('typing');
+      if(cb) cb();
+      return;
+    }
+    if(html[i]==='<'){
+      // Skip entire tag instantly
+      const end=html.indexOf('>',i);
+      if(end!==-1){
+        el.innerHTML+=html.slice(i,end+1);
+        i=end+1;
+        setTimeout(tick,1);
+        return;
+      }
+    }
+    el.innerHTML+=html[i++];
+    setTimeout(tick,SPEED);
+  }
+  tick();
+}
+
+function typeBriefing(stageEl, doneId){
+  // Collect all text elements IN ORDER (briefing blocks, then t-body/t-sys/t-note inside)
+  const elems=[];
+  stageEl.querySelectorAll('.briefing').forEach(b=>{
+    b.querySelectorAll('.t-stage-header,.t-sys,.t-body,.t-note').forEach(el=>{
+      elems.push(el);
+    });
+  });
+  // Store original HTML, hide elements
+  const originals=elems.map(el=>{
+    const html=el.innerHTML;
+    el.innerHTML='';
+    return html;
+  });
+  let idx=0;
+  function next(){
+    if(idx<elems.length){
+      const el=elems[idx];
+      const html=originals[idx];
+      idx++;
+      typewrite(el, html, 28, next);
+    } else {
+      // Show inputs after typing done
+      if(doneId){
+        const inp=document.getElementById(doneId);
+        if(inp) inp.classList.add('visible');
+      }
+    }
+  }
+  next();
+}
+
+document.addEventListener('DOMContentLoaded',()=>{generateStars();buildStarFields();setTimeout(()=>typeBriefing(document.getElementById('stage1'),'inputs1'),500);});
 </script>
 </body>
 </html>
