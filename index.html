@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>קוד שיגור - סודות החלל</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rubik:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --purple-dark:#580670;--teal-deep:#036880;--light-blue:#eafbff;
@@ -12,7 +12,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{overflow-x:hidden;}
-body{background:var(--bg);color:var(--light-blue);font-family:'Share Tech Mono',monospace;min-height:100vh;overflow-x:hidden;direction:rtl;font-size:17px;}
+body{background:var(--bg);color:var(--light-blue);font-family:'Rubik',sans-serif;min-height:100vh;overflow-x:hidden;direction:rtl;font-size:17px;}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(88,6,112,0.15) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(3,104,128,0.12) 0%,transparent 50%);pointer-events:none;z-index:0;}
 .stars-bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
 .star-dot{position:absolute;background:white;border-radius:50%;animation:twinkle var(--d) ease-in-out infinite;}
@@ -53,7 +53,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .data-table td{padding:10px 10px;border-bottom:1px solid rgba(255,255,255,0.05);color:#eafbff;font-family:'Share Tech Mono',monospace;font-size:16px;}
 .data-table td.code-cell{color:var(--code-color);font-family:'Orbitron',monospace;font-size:18px;letter-spacing:2px;text-shadow:0 0 6px rgba(0,229,255,0.4);}
 .data-table tr:last-child td{border-bottom:none;}
-.data-close-btn{margin-top:20px;width:100%;padding:11px;background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;border-radius:10px;color:white;font-family:'Share Tech Mono',monospace;font-size:15px;font-weight:700;cursor:pointer;}
+.data-close-btn{margin-top:20px;width:100%;padding:11px;background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;border-radius:10px;color:white;font-family:'Rubik',sans-serif;font-size:15px;font-weight:700;cursor:pointer;}
 
 /* STAGES */
 .stage{display:none;animation:fadeIn 0.6s ease forwards;}
@@ -61,19 +61,19 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 @keyframes fadeIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 
 /* BRIEFING */
-.briefing{background:rgba(3,10,30,0.82);backdrop-filter:blur(6px);border:1px solid rgba(3,104,128,0.45);border-radius:14px;padding:22px;margin-bottom:18px;position:relative;overflow:hidden;}
+.briefing{background:rgba(3,10,30,0.82);backdrop-filter:blur(6px);border:1px solid rgba(3,104,128,0.45);border-radius:14px;padding:20px;margin-bottom:16px;position:relative;overflow:hidden;}
 .briefing::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple-dark),var(--teal-deep),var(--lilac));}
 
 /* Typography hierarchy */
 /* L1: Stage header - Orbitron, teal, 13px, spaced */
 .t-stage-header{font-family:'Orbitron',monospace;font-size:16px;letter-spacing:3px;color:#4dd9f0;margin-bottom:14px;text-shadow:0 0 8px rgba(77,217,240,0.4);}
 /* L2: Body text */
-.t-body{font-size:17px;line-height:1.5;color:#eafbff;margin-bottom:0;}
+.t-body{font-family:'Rubik',sans-serif;font-size:17px;line-height:1.4;color:#eafbff;margin-bottom:0;text-indent:0;padding-right:0;}
 .t-body strong{color:#00e5ff;font-weight:700;}
 /* L3: System confirm (green monospace) */
 .t-sys{font-family:'Share Tech Mono',monospace;font-size:18px;color:var(--success);margin-bottom:8px;text-shadow:0 0 8px rgba(0,255,136,0.35);line-height:1.5;}
 /* L4: Note/hint (italic, smaller) */
-.t-note{font-style:italic;color:rgba(234,251,255,0.8);margin-top:10px;font-size:15px;line-height:1.4;border-top:1px solid rgba(77,217,240,0.15);padding-top:10px;}
+.t-note{font-family:'Rubik',sans-serif;font-style:italic;color:rgba(234,251,255,0.8);margin-top:8px;font-size:15px;line-height:1.3;border-top:1px solid rgba(77,217,240,0.15);padding-top:10px;}
 .t-note strong,.t-note-label{color:#4dd9f0;font-style:normal;font-family:'Share Tech Mono',monospace;font-size:15px;letter-spacing:1px;}
 /* L5: Section title (Orbitron, uppercase) */
 .section-title{font-family:'Orbitron',monospace;font-size:17px;font-weight:700;letter-spacing:2px;color:#4dd9f0;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;text-shadow:0 0 8px rgba(77,217,240,0.3);}
@@ -92,7 +92,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .star-input:focus{border-color:#4dd9f0;box-shadow:0 0 14px rgba(77,217,240,0.25);}
 .star-input.success{border-color:var(--success);color:var(--success);font-weight:700;}
 .star-input.error{border-color:var(--error);}
-.confirm-btn{background:rgba(3,104,128,0.35);border:1px solid rgba(77,217,240,0.45);border-radius:8px;color:#4dd9f0;font-family:'Share Tech Mono',monospace;font-size:14px;font-weight:700;padding:0 14px;height:46px;cursor:pointer;white-space:nowrap;}
+.confirm-btn{background:rgba(3,104,128,0.35);border:1px solid rgba(77,217,240,0.45);border-radius:8px;color:#4dd9f0;font-family:'Rubik',sans-serif;font-size:14px;font-weight:700;padding:0 14px;height:46px;cursor:pointer;white-space:nowrap;}
 .star-feedback{font-size:13px;margin-top:4px;min-height:16px;font-weight:600;direction:rtl;line-height:1.4;}
 .star-feedback.success{color:var(--success);}
 .star-feedback.error{color:var(--error);}
@@ -104,18 +104,18 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .popup-box{background:linear-gradient(160deg,#050d20 0%,#030a18 100%);border:1px solid rgba(77,217,240,0.45);border-radius:18px;padding:26px;max-width:360px;width:100%;text-align:center;position:relative;overflow:hidden;}
 .popup-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--success),var(--code-color));}
 .popup-confirmed{font-family:'Share Tech Mono',monospace;font-size:16px;color:var(--success);margin-bottom:14px;letter-spacing:1px;}
-.popup-name{font-family:'Orbitron',monospace;font-size:24px;font-weight:900;color:#eafbff;letter-spacing:3px;margin-bottom:14px;}
+.popup-name{font-family:'Orbitron',monospace;font-size:26px;font-weight:900;color:#eafbff;letter-spacing:3px;margin-bottom:14px;}
 .popup-data-title{font-family:'Orbitron',monospace;font-size:13px;color:#4dd9f0;letter-spacing:2px;margin-bottom:10px;text-align:right;text-shadow:0 0 6px rgba(77,217,240,0.4);}
 .popup-data-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:7px;text-align:right;}
-.popup-data-label{font-family:'Share Tech Mono',monospace;font-size:14px;color:rgba(77,217,240,0.65);letter-spacing:1px;white-space:nowrap;padding-top:1px;}
-.popup-data-val{font-size:14px;color:#eafbff;line-height:1.55;flex:1;}
+.popup-data-label{font-family:'Share Tech Mono',monospace;font-size:15px;color:rgba(77,217,240,0.65);letter-spacing:1px;white-space:nowrap;padding-top:1px;}
+.popup-data-val{font-family:'Rubik',sans-serif;font-size:15px;color:#eafbff;line-height:1.4;flex:1;}
 .popup-code-sep{border:none;border-top:1px solid rgba(77,217,240,0.2);margin:14px 0;}
 .popup-code-label{font-family:'Share Tech Mono',monospace;font-size:15px;color:rgba(77,217,240,0.7);letter-spacing:2px;margin-bottom:6px;}
-.popup-code{font-family:'Orbitron',monospace;font-size:30px;color:#00e5ff;letter-spacing:6px;text-shadow:0 0 20px rgba(0,229,255,0.8);margin-bottom:18px;}
-.popup-close-btn{background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;color:white;border-radius:10px;padding:12px 28px;font-family:'Share Tech Mono',monospace;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:1px;}
+.popup-code{font-family:'Orbitron',monospace;font-size:34px;color:#00e5ff;letter-spacing:6px;text-shadow:0 0 20px rgba(0,229,255,0.8);margin-bottom:18px;}
+.popup-close-btn{background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;color:white;border-radius:10px;padding:12px 28px;font-family:'Rubik',sans-serif;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:1px;}
 
 /* MAIN BTN */
-.btn{width:100%;padding:17px;background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;border-radius:12px;color:white;font-family:'Share Tech Mono',monospace;font-size:18px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 20px rgba(88,6,112,0.4);margin-top:10px;}
+.btn{width:100%;padding:17px;background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;border-radius:12px;color:white;font-family:'Rubik',sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 20px rgba(88,6,112,0.4);margin-top:10px;}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(3,104,128,0.5);}
 
 /* CODE TEMPLATE */
@@ -130,7 +130,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .big-input{width:100%;background:rgba(3,10,30,0.80);border:2px solid rgba(3,104,128,0.5);border-radius:12px;padding:16px;color:#00e5ff;font-family:'Share Tech Mono',monospace;font-size:22px;font-weight:700;outline:none;text-align:center;direction:ltr;transition:all 0.3s;letter-spacing:3px;display:block;margin-bottom:8px;}
 .big-input:focus{border-color:#4dd9f0;box-shadow:0 0 20px rgba(77,217,240,0.25);}
 .big-input.success{border-color:var(--success);color:var(--success);box-shadow:0 0 20px rgba(0,255,136,0.3);}
-.seq-confirm-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;border-radius:12px;color:white;font-family:'Share Tech Mono',monospace;font-size:17px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all 0.3s;margin-top:4px;}
+.seq-confirm-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;border-radius:12px;color:white;font-family:'Rubik',sans-serif;font-size:17px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all 0.3s;margin-top:4px;}
 
 /* VENUS INPUT */
 .venus-input{width:100%;background:rgba(255,255,255,0.05);border:1.5px solid rgba(77,217,240,0.4);border-radius:10px;padding:14px 16px;color:#eafbff;font-family:'Share Tech Mono',monospace;font-size:16px;outline:none;margin-bottom:10px;direction:ltr;text-align:left;}
@@ -141,11 +141,11 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .dest-input{width:100%;background:rgba(3,10,30,0.80);border:2px solid rgba(3,104,128,0.5);border-radius:12px;padding:16px;color:#eafbff;font-family:'Share Tech Mono',monospace;font-size:17px;font-weight:600;outline:none;text-align:right;direction:rtl;transition:all 0.3s;display:block;}
 .dest-input:focus{border-color:#4dd9f0;box-shadow:0 0 20px rgba(77,217,240,0.25);}
 .dest-input.success{border-color:var(--success);box-shadow:0 0 20px rgba(0,255,136,0.3);}
-.dest-confirm-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;border-radius:12px;color:white;font-family:'Share Tech Mono',monospace;font-size:17px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all 0.3s;margin-top:10px;}
+.dest-confirm-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--purple-dark),var(--teal-deep));border:none;border-radius:12px;color:white;font-family:'Rubik',sans-serif;font-size:17px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all 0.3s;margin-top:10px;}
 
 /* FINALE */
 .finale{text-align:center;padding:20px 0;}
-.finale-congrats{font-size:18px;line-height:2;color:#eafbff;margin-bottom:28px;}
+.finale-congrats{font-family:'Rubik',sans-serif;font-size:22px;line-height:1.8;color:#eafbff;margin-bottom:28px;}
 .finale-congrats strong{color:#4dd9f0;}
 .launch-text{font-family:'Orbitron',monospace;font-size:20px;letter-spacing:4px;color:#4dd9f0;margin-bottom:28px;text-shadow:0 0 12px rgba(77,217,240,0.5);animation:pulseGlow 2s ease-in-out infinite;}
 .countdown-box{background:linear-gradient(135deg,rgba(88,6,112,0.3),rgba(3,104,128,0.3));border:1px solid var(--lilac);border-radius:18px;padding:28px 20px;margin:0 auto;max-width:320px;box-shadow:0 0 40px rgba(134,79,155,0.3);}
@@ -157,7 +157,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 @keyframes fall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
 #stage5{position:relative;}
 
-.stage-inputs{opacity:0;transition:opacity 0.5s ease;pointer-events:none;}
+.stage-inputs{opacity:0;transition:opacity 0.6s ease;pointer-events:none;}
+.briefing .t-stage-header,.briefing .t-sys,.briefing .t-body,.briefing .t-note{visibility:hidden;}
 .stage-inputs.visible{opacity:1;pointer-events:all;}
 
 /* Typewriter effect */
@@ -268,9 +269,10 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     <div class="t-sys">✓ תחנת VENUS מאשרת קליטה!</div>
     <div class="t-body">
       מצאתם את מיקום תחנת החלל המקומית בכוכב Venus. כעת העצירה שם מתואמת ומאושרת והחללית תעצור לתחזוקה לפני המשך מסעה.<br>
-      <span class="t-stage-header" style="display:inline;font-size:12px;">הודעה מתחנת החלל המקומית בכוכב Venus:</span><br>
+      <span style="font-family:'Orbitron',monospace;font-size:13px;letter-spacing:2px;color:#4dd9f0;text-shadow:0 0 8px rgba(77,217,240,0.4);">הודעה מתחנת החלל המקומית בכוכב Venus:</span><br>
       התבנית ל<strong>קוד השיגור</strong> האבוד נמצאת אצלנו. יש להשתמש בה בדיוק לצורך בניית רצף השיגור.
     </div>
+    <div class="stage-inputs" id="codeTemplate" style="margin-top:0;">
     <div class="code-template-wrap">
       <div class="code-box"></div><div class="code-box"></div>
       <div class="code-dot">.</div>
@@ -463,7 +465,11 @@ function checkSequence(){
     document.getElementById('err2').style.display='none';
     setTimeout(()=>{
       const d=document.getElementById('seqDisplay');
-      if(d){d.innerHTML='✓ רצף השיגור אומת!<br><span style="direction:ltr;unicode-bidi:bidi-override;display:inline-block;font-size:22px;letter-spacing:3px;margin-top:6px;">48.8715 02.7780</span>';}
+      if(d){d.innerHTML='✓ רצף השיגור אומת!';
+      const coordDiv=document.createElement('div');
+      coordDiv.style.cssText='direction:ltr;unicode-bidi:bidi-override;font-size:22px;letter-spacing:3px;margin-top:8px;font-family:\'Share Tech Mono\',monospace;color:var(--success);text-align:center;';
+      coordDiv.textContent='48.8715 02.7780';
+      d.appendChild(coordDiv);}
       goToStage(4);
     },700);
   } else {
@@ -565,11 +571,10 @@ function launchFinale(){
 // ── TYPEWRITER EFFECT ──
 function typewrite(el, html, speed, cb){
   el.classList.add('typewriter-text','typing');
-  // Store original innerHTML, hide element, then reveal char by char
+  el.style.visibility='visible';
   el.innerHTML='';
-  el.style.display='block';
   let i=0;
-  const SPEED=speed||28;
+  const SPEED=speed||32;
   function tick(){
     if(i>=html.length){
       el.classList.remove('typing');
@@ -612,8 +617,11 @@ function typeBriefing(stageEl, doneId){
       const el=elems[idx];
       const html=originals[idx];
       idx++;
-      typewrite(el, html, 28, next);
+      typewrite(el, html, 32, next);
     } else {
+      // Show code template if on stage 3
+      const tmpl=document.getElementById('codeTemplate');
+      if(tmpl) tmpl.classList.add('visible');
       // Show inputs after typing done
       if(doneId){
         const inp=document.getElementById(doneId);
