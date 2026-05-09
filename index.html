@@ -22,7 +22,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .header-title{background:linear-gradient(135deg,#1a0025 0%,#03404d 60%,#580670 100%);padding:28px 20px 22px;text-align:center;border-bottom:2px solid rgba(77,217,240,0.3);position:relative;overflow:hidden;z-index:10;}
 .header-title::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(0,229,255,0.08) 0%,transparent 70%);}
 .mission-label{font-family:'Orbitron',monospace;font-size:13px;letter-spacing:5px;color:#4dd9f0;text-transform:uppercase;margin-bottom:8px;text-shadow:0 0 10px rgba(77,217,240,0.4);}
-.mission-name{font-family:'Share Tech Mono',monospace;font-size:30px;font-weight:700;color:#eafbff;text-shadow:0 0 24px rgba(0,229,255,0.6);}
+.mission-name{font-family:'Rubik',sans-serif;font-size:30px;font-weight:700;color:#eafbff;text-shadow:0 0 24px rgba(0,229,255,0.6);}
 
 /* CONTAINER */
 .container{position:relative;z-index:10;max-width:680px;margin:0 auto;padding:0 16px 60px;}
@@ -61,19 +61,19 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 @keyframes fadeIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 
 /* BRIEFING */
-.briefing{background:rgba(3,10,30,0.82);backdrop-filter:blur(6px);border:1px solid rgba(3,104,128,0.45);border-radius:14px;padding:20px;margin-bottom:16px;position:relative;overflow:hidden;}
+.briefing{background:rgba(3,10,30,0.82);backdrop-filter:blur(6px);border:1px solid rgba(3,104,128,0.45);border-radius:14px;padding:18px;margin-bottom:14px;position:relative;overflow:hidden;}
 .briefing::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple-dark),var(--teal-deep),var(--lilac));}
 
 /* Typography hierarchy */
 /* L1: Stage header - Orbitron, teal, 13px, spaced */
 .t-stage-header{font-family:'Orbitron',monospace;font-size:16px;letter-spacing:3px;color:#4dd9f0;margin-bottom:14px;text-shadow:0 0 8px rgba(77,217,240,0.4);}
 /* L2: Body text */
-.t-body{font-family:'Rubik',sans-serif;font-size:17px;line-height:1.4;color:#eafbff;margin-bottom:0;text-indent:0;padding-right:0;}
+.t-body{font-family:'Rubik',sans-serif;font-size:17px;line-height:1.35;color:#eafbff;margin:0;padding:0;text-indent:0;text-align:right;}
 .t-body strong{color:#00e5ff;font-weight:700;}
 /* L3: System confirm (green monospace) */
 .t-sys{font-family:'Share Tech Mono',monospace;font-size:18px;color:var(--success);margin-bottom:8px;text-shadow:0 0 8px rgba(0,255,136,0.35);line-height:1.5;}
 /* L4: Note/hint (italic, smaller) */
-.t-note{font-family:'Rubik',sans-serif;font-style:italic;color:rgba(234,251,255,0.8);margin-top:8px;font-size:15px;line-height:1.3;border-top:1px solid rgba(77,217,240,0.15);padding-top:10px;}
+.t-note{font-family:'Rubik',sans-serif;font-style:italic;color:rgba(234,251,255,0.8);margin:8px 0 0 0;padding:8px 0 0 0;font-size:15px;line-height:1.3;border-top:1px solid rgba(77,217,240,0.15);text-align:right;text-indent:0;}
 .t-note strong,.t-note-label{color:#4dd9f0;font-style:normal;font-family:'Share Tech Mono',monospace;font-size:15px;letter-spacing:1px;}
 /* L5: Section title (Orbitron, uppercase) */
 .section-title{font-family:'Orbitron',monospace;font-size:17px;font-weight:700;letter-spacing:2px;color:#4dd9f0;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;text-shadow:0 0 8px rgba(77,217,240,0.3);}
@@ -88,7 +88,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .star-number{font-size:15px;font-weight:700;color:#4dd9f0;margin-bottom:5px;display:flex;align-items:center;gap:8px;}
 .star-number .num{background:var(--teal-deep);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
 .star-input-wrap{display:flex;gap:8px;align-items:center;}
-.star-input{flex:1;background:rgba(3,10,30,0.80);border:1px solid rgba(3,104,128,0.5);border-radius:8px;padding:13px 12px;color:#eafbff;font-family:'Share Tech Mono',monospace;font-size:16px;outline:none;transition:all 0.3s;direction:ltr;text-align:left;}
+.star-input{flex:1;background:rgba(3,10,30,0.80);border:1px solid rgba(3,104,128,0.5);border-radius:8px;padding:13px 12px;color:#eafbff;font-family:'Share Tech Mono',monospace;direction:ltr;font-size:16px;outline:none;transition:all 0.3s;direction:ltr;text-align:left;}
 .star-input:focus{border-color:#4dd9f0;box-shadow:0 0 14px rgba(77,217,240,0.25);}
 .star-input.success{border-color:var(--success);color:var(--success);font-weight:700;}
 .star-input.error{border-color:var(--error);}
@@ -145,7 +145,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
 /* FINALE */
 .finale{text-align:center;padding:20px 0;}
-.finale-congrats{font-family:'Rubik',sans-serif;font-size:22px;line-height:1.8;color:#eafbff;margin-bottom:28px;}
+.finale-congrats{font-family:'Rubik',sans-serif;font-size:24px;line-height:1.7;color:#eafbff;margin-bottom:28px;}
 .finale-congrats strong{color:#4dd9f0;}
 .launch-text{font-family:'Orbitron',monospace;font-size:20px;letter-spacing:4px;color:#4dd9f0;margin-bottom:28px;text-shadow:0 0 12px rgba(77,217,240,0.5);animation:pulseGlow 2s ease-in-out infinite;}
 .countdown-box{background:linear-gradient(135deg,rgba(88,6,112,0.3),rgba(3,104,128,0.3));border:1px solid var(--lilac);border-radius:18px;padding:28px 20px;margin:0 auto;max-width:320px;box-shadow:0 0 40px rgba(134,79,155,0.3);}
@@ -158,6 +158,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 #stage5{position:relative;}
 
 .stage-inputs{opacity:0;transition:opacity 0.6s ease;pointer-events:none;}
+#codeTemplate{opacity:0;transition:opacity 0.6s ease;}
+#codeTemplate.visible{opacity:1;}
 .briefing .t-stage-header,.briefing .t-sys,.briefing .t-body,.briefing .t-note{visibility:hidden;}
 .stage-inputs.visible{opacity:1;pointer-events:all;}
 
@@ -269,7 +271,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     <div class="t-sys">✓ תחנת VENUS מאשרת קליטה!</div>
     <div class="t-body">
       מצאתם את מיקום תחנת החלל המקומית בכוכב Venus. כעת העצירה שם מתואמת ומאושרת והחללית תעצור לתחזוקה לפני המשך מסעה.<br>
-      <span style="font-family:'Orbitron',monospace;font-size:13px;letter-spacing:2px;color:#4dd9f0;text-shadow:0 0 8px rgba(77,217,240,0.4);">הודעה מתחנת החלל המקומית בכוכב Venus:</span><br>
+      <span class="t-stage-header" style="font-size:13px;display:block;margin:10px 0 6px;">הודעה מתחנת החלל המקומית בכוכב Venus:</span><br>
       התבנית ל<strong>קוד השיגור</strong> האבוד נמצאת אצלנו. יש להשתמש בה בדיוק לצורך בניית רצף השיגור.
     </div>
     <div class="stage-inputs" id="codeTemplate" style="margin-top:0;">
@@ -574,7 +576,7 @@ function typewrite(el, html, speed, cb){
   el.style.visibility='visible';
   el.innerHTML='';
   let i=0;
-  const SPEED=speed||32;
+  const SPEED=speed||45;
   function tick(){
     if(i>=html.length){
       el.classList.remove('typing');
@@ -602,6 +604,9 @@ function typeBriefing(stageEl, doneId){
   const elems=[];
   stageEl.querySelectorAll('.briefing').forEach(b=>{
     b.querySelectorAll('.t-stage-header,.t-sys,.t-body,.t-note').forEach(el=>{
+      // Skip elements that have an id (dynamically filled) or are empty
+      if(el.id) return;
+      if(!el.innerHTML.trim()) return;
       elems.push(el);
     });
   });
@@ -617,7 +622,7 @@ function typeBriefing(stageEl, doneId){
       const el=elems[idx];
       const html=originals[idx];
       idx++;
-      typewrite(el, html, 32, next);
+      typewrite(el, html, 45, next);
     } else {
       // Show code template if on stage 3
       const tmpl=document.getElementById('codeTemplate');
