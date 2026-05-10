@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>קוד שיגור</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rubik:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -41,6 +43,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 @keyframes fi{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
 /* BRIEFING — fixed min-height so it doesn't jump */
+.hi{visibility:hidden !important;}
 .brf{background:rgba(3,10,30,.85);border:1px solid rgba(3,104,128,.45);border-radius:14px;padding:20px;margin:18px 0 14px;position:relative;overflow:hidden;}
 .brf::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pd),var(--td),var(--li));}
 
@@ -268,7 +271,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <div class="cb"></div><div class="cb"></div><div class="cb"></div><div class="cb"></div>
     </div>
   </div>
-  <div class="brf hi" id="seqInstrBrf" style="visibility:hidden;">
+  <div class="brf" id="seqInstrBrf" style="visibility:hidden;">
     <div class="t-body">כדי לבנות את <strong>רצף השיגור</strong> בסדר הנכון, סדרו את יעדי המשימה שזיהיתם לפי מרחקם מכדור הארץ — מהקרוב אל הרחוק, והזינו את קוד הזיהוי של כל אחד לפי אותו הסדר.</div>
     <div class="t-note"><span class="lbl">הערה:</span>יש להתייחס לנקודות ולרווחים.</div>
   </div>
@@ -287,7 +290,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 <div class="stage" id="stage4">
   <div class="brf">
     <div class="t-hdr hi">▸ הודעת מערכת // שלב 04</div>
-    <div class="t-ok hi" id="seqDisp" style="text-align:center;"></div>
+    <div class="t-ok" id="seqDisp" style="text-align:center;visibility:hidden;"></div>
     <div class="t-body hi">יש לכם כמעט את כל נתוני המשימה. כעת נותר לכם רק לפענח את הקוד ולהבין את <strong>יעד המשימה הסופי</strong>.<br>רצף השיגור שגיליתם הוא לא סתם קוד אקראי. יש לו משמעות שמובילה ליעד השיגור. עליכם להבין אותה, למצוא את היעד ולהזין אותו.</div>
     <div class="t-note hi"><span class="lbl">שימו לב:</span>ניתן להיעזר בגוגל.</div>
   </div>
@@ -427,7 +430,7 @@ function checkSeq(){
     setTimeout(()=>{
       // Set seqDisp content before moving to stage 4
       const d=document.getElementById('seqDisp');
-      if(d) d.innerHTML='✓ רצף השיגור אומת!<span class="seq-coord" dir="ltr">48.8715 02.7780</span>';
+      if(d){d.innerHTML='✓ רצף השיגור אומת!<span class="seq-coord" dir="ltr">48.8715 02.7780</span>';d.style.visibility='visible';}
       goTo(4);
     },700);
   } else {
@@ -466,7 +469,7 @@ function typeEl(el, speed, cb){
 
 function typeStage(stageId, inputId, doneCb){
   const stage=document.getElementById(stageId);
-  const els=[...stage.querySelectorAll('.hi')].filter(e=>!e.id||e.id==='seqDisp');
+  const els=[...stage.querySelectorAll('.hi')].filter(e=>e.id!=='seqDisp');
   // Pre-hide all
   els.forEach(e=>{e.style.visibility='hidden';});
   const SPEED=55;
