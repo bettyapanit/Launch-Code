@@ -236,7 +236,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     <div class="t-hdr hi">▸ הודעת מערכת // שלב 02</div>
     <div class="t-ok hi">✓ כל שישה גרמי השמיים זוהו בהצלחה! קודי המשימה נקלטו.</div>
     <div class="t-body hi">אחרי השיגור, החללית תזדקק לעצירת ביניים לתחזוקה, לפני הכניסה למסלול והמשך משימתה.<br>במסלול הקרוב לכדור הארץ פועלת תחנת חלל מקומית שתפקידה טיפול ותחזוקה של חלליות.<br>כדי להמשיך לשחזר את נתוני המשימה עליכם <strong>לאתר את תחנת העצירה</strong> לתחזוקת החללית, הנמצאת במיקום הקרוב ביותר לכדור הארץ מבין גרמי השמיים שביעדי המשימה.</div>
-    <div class="t-note hi"><span class="lbl">שימו לב:</span>לוח הבקרה עם נתוני המשימה שנאספו זמין לכם בכפתור למעלה.</div>
+    <div class="t-note hi"><span class="lbl">שימו לב: </span>לוח הבקרה עם נתוני המשימה שנאספו זמין לכם בכפתור למעלה.</div>
   </div>
   <div class="iw" id="in2">
     <span class="f-lbl">מיקום תחנת החלל</span>
@@ -271,8 +271,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     </div>
   </div>
   <div class="brf" id="seqInstrBrf" style="opacity:0;transition:opacity 0.4s;">
-    <div class="t-body">כדי לבנות את <strong>רצף השיגור</strong> בסדר הנכון, סדרו את יעדי המשימה שזיהיתם לפי מרחקם מכדור הארץ — מהקרוב אל הרחוק, והזינו את קוד הזיהוי של כל אחד לפי אותו הסדר.</div>
-    <div class="t-note"><span class="lbl">הערה:</span>יש להתייחס לנקודות ולרווחים.</div>
+    <div class="t-body hi">כדי לבנות את <strong>רצף השיגור</strong> בסדר הנכון, סדרו את יעדי המשימה שזיהיתם לפי מרחקם מכדור הארץ — מהקרוב אל הרחוק, והזינו את קוד הזיהוי של כל אחד לפי אותו הסדר.</div>
+    <div class="t-note hi"><span class="lbl">הערה: </span>יש להתייחס לנקודות ולרווחים.</div>
   </div>
   <div class="iw" id="in3" style="margin-top:12px;">
     <span class="f-lbl">הזן רצף שיגור</span>
@@ -292,7 +292,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     <div class="t-ok hi" id="seqOk" style="text-align:center;"></div>
     <div id="seqCoord" style="opacity:0;transition:opacity 0.5s;text-align:center;"><span class="seq-coord" dir="ltr">48.8715 02.7780</span></div>
     <div class="t-body hi">יש לכם כמעט את כל נתוני המשימה. כעת נותר לכם רק לפענח את הקוד ולהבין את <strong>יעד המשימה הסופי</strong>.<br>רצף השיגור שגיליתם הוא לא סתם קוד אקראי. יש לו משמעות שמובילה ליעד השיגור. עליכם להבין אותה, למצוא את היעד ולהזין אותו.</div>
-    <div class="t-note hi"><span class="lbl">שימו לב:</span>ניתן להיעזר בגוגל.</div>
+    <div class="t-note hi"><span class="lbl">שימו לב: </span>ניתן להיעזר בגוגל.</div>
   </div>
   <div class="iw" id="in4">
     <span class="f-lbl" style="margin-bottom:10px;">פענוח יעד</span>
@@ -468,9 +468,10 @@ function typeEl(el, speed, cb){
   tick();
 }
 
-function typeStage(stageId, inputId, doneCb){
+function typeStage(stageId, inputId, doneCb, skipEls){
   const stage=document.getElementById(stageId);
-  const els=[...stage.querySelectorAll('.hi')].filter(e=>e.id!=='seqDisp');
+  const skipIds=(skipEls||[]).map(e=>e);
+  const els=[...stage.querySelectorAll('.hi')].filter(e=>e.id!=='seqDisp' && !skipIds.includes(e));
   // Pre-hide all
   els.forEach(e=>{e.style.opacity='0';});
   const SPEED=55;
@@ -518,7 +519,36 @@ function goTo(n){
       },700);
     });
   }
-  else if(n===4){ typeStage('stage4','in4'); setTimeout(()=>{const coord=document.getElementById('seqCoord');if(coord)coord.style.opacity='1';},800); }
+  else if(n===4){
+    // Show coord after seqOk types (seqOk is first .hi element in stage4)
+    const seqOkEl=document.getElementById('seqOk');
+    if(seqOkEl){
+      const origHtml=seqOkEl.innerHTML;
+      seqOkEl.style.opacity='0';
+      seqOkEl.innerHTML='';
+      seqOkEl.style.opacity='1';
+      seqOkEl.classList.add('tw');
+      let i=0;
+      function typeOk(){
+        if(i>=origHtml.length){
+          seqOkEl.classList.remove('tw');
+          // NOW show coord
+          const coord=document.getElementById('seqCoord');
+          if(coord) coord.style.opacity='1';
+          // then type rest of stage
+          typeStage('stage4','in4',null,[seqOkEl]);
+          return;
+        }
+        if(origHtml[i]==='<'){const e=origHtml.indexOf('>',i);if(e!==-1){seqOkEl.innerHTML+=origHtml.slice(i,e+1);i=e+1;setTimeout(typeOk,1);return;}}
+        seqOkEl.innerHTML+=origHtml[i++];
+        setTimeout(typeOk,55);
+      }
+      typeOk();
+    } else {
+      typeStage('stage4','in4');
+      setTimeout(()=>{const coord=document.getElementById('seqCoord');if(coord)coord.style.opacity='1';},400);
+    }
+  }
   else if(n===5) typeStage('stage5',null);
 }
 
