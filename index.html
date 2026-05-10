@@ -501,22 +501,17 @@ function goTo(n){
   else if(n===2) typeStage('stage2','in2');
   else if(n===3){
     typeStage('stage3',null,()=>{
-      // show code template
       document.getElementById('codeTemplate').classList.add('show');
-      setTimeout(()=>{
-        // type instruction brf
-        const ib=document.getElementById('seqInstrBrf');
-        ib.style.opacity='1';
-        // type elements inside it
-        const subEls=[...ib.querySelectorAll('.hi')];
-        subEls.forEach(e=>{e.style.opacity='0';});
-        let si=0;
-        function nextSub(){
-          if(si<subEls.length) typeEl(subEls[si++],55,nextSub);
-          else document.getElementById('in3').classList.add('show');
-        }
-        nextSub();
-      },200);
+      const ib=document.getElementById('seqInstrBrf');
+      ib.style.opacity='1';
+      const subEls=[...ib.querySelectorAll('.hi')];
+      subEls.forEach(e=>{e.style.opacity='0';});
+      let si=0;
+      function nextSub(){
+        if(si<subEls.length) typeEl(subEls[si++],55,nextSub);
+        else document.getElementById('in3').classList.add('show');
+      }
+      nextSub();
     });
   }
   else if(n===4){
