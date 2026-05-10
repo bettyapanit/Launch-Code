@@ -206,7 +206,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   </div>
 </div>
 
-<div id="splash" style="position:fixed;inset:0;z-index:1000;background:#03020a;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;" onclick="enterMission()">
+<div id="splash" style="position:fixed;inset:0;z-index:1000;background:radial-gradient(ellipse at 30% 40%,rgba(88,6,112,0.45) 0%,transparent 55%),radial-gradient(ellipse at 75% 65%,rgba(3,104,128,0.35) 0%,transparent 50%),radial-gradient(ellipse at 50% 20%,rgba(134,79,155,0.2) 0%,transparent 40%),#03020a;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;" onclick="enterMission()">
+  <div id="splashStars" style="position:absolute;inset:0;pointer-events:none;"></div>
   <div style="font-family:'Orbitron',monospace !important;font-size:13px;letter-spacing:5px;color:#4dd9f0;text-transform:uppercase;margin-bottom:14px;text-shadow:0 0 10px rgba(77,217,240,0.4);">שבוע 4 // סודות החלל</div>
   <div style="font-family:'Rubik',sans-serif !important;font-size:32px;font-weight:700;color:#eafbff;text-shadow:0 0 24px rgba(0,229,255,.6);margin-bottom:50px;">המשימה: קוד שיגור 🚀</div>
   <div id="enterBtn" style="font-family:'Orbitron',monospace !important;font-size:18px;letter-spacing:4px;color:#4dd9f0;animation:splashBlink 1.2s ease-in-out infinite;text-shadow:0 0 12px rgba(77,217,240,0.6);">כניסה למשימה</div>
@@ -342,6 +343,16 @@ const SD=[
 const DP=[/disneyland\s*paris/i,/parc\s*disneyland/i,/park\s*disneyland/i,/disneyland\s*park/i,/^disneyland$/i,/^disney\s*paris$/i,/^disney$/i,/euro\s*disney/i,/דיסנילנד\s*פריז/,/דיסנילנד/];
 let SR={};
 
+function genSplashStars(){
+  const sf=document.getElementById('splashStars');
+  if(!sf) return;
+  for(let i=0;i<120;i++){
+    const s=document.createElement('div');s.className='star-dot';
+    const z=Math.random()*2.5+0.4;
+    s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${z}px;height:${z}px;--d:${(Math.random()*3+2).toFixed(1)}s;animation-delay:${(Math.random()*4).toFixed(1)}s;`;
+    sf.appendChild(s);
+  }
+}
 function genStars(){
   const sf=document.getElementById('starfield');
   for(let i=0;i<110;i++){
@@ -624,7 +635,7 @@ function enterMission(){
   },800);
 }
 document.addEventListener('DOMContentLoaded',()=>{
-  genStars();buildGrid();
+  genStars();genSplashStars();buildGrid();
 });
 </script>
 </body>
