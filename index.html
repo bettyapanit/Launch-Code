@@ -206,6 +206,14 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   </div>
 </div>
 
+<div id="splash" style="position:fixed;inset:0;z-index:1000;background:#03020a;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;" onclick="enterMission()">
+  <div style="font-family:'Orbitron',monospace !important;font-size:13px;letter-spacing:5px;color:#4dd9f0;text-transform:uppercase;margin-bottom:14px;text-shadow:0 0 10px rgba(77,217,240,0.4);">שבוע 4 // סודות החלל</div>
+  <div style="font-family:'Rubik',sans-serif !important;font-size:32px;font-weight:700;color:#eafbff;text-shadow:0 0 24px rgba(0,229,255,.6);margin-bottom:50px;">המשימה: קוד שיגור 🚀</div>
+  <div id="enterBtn" style="font-family:'Orbitron',monospace !important;font-size:18px;letter-spacing:4px;color:#4dd9f0;animation:splashBlink 1.2s ease-in-out infinite;text-shadow:0 0 12px rgba(77,217,240,0.6);">כניסה למשימה</div>
+</div>
+<style>
+@keyframes splashBlink{0%,100%{opacity:1}50%{opacity:0.15}}
+</style>
 <div class="hdr">
   <div class="hdr-label">שבוע 4 // סודות החלל</div>
   <div class="hdr-name">המשימה: קוד שיגור 🚀</div>
@@ -500,19 +508,32 @@ function goTo(n){
   if(n===1) typeStage('stage1','in1');
   else if(n===2) typeStage('stage2','in2');
   else if(n===3){
-    typeStage('stage3',null,()=>{
-      document.getElementById('codeTemplate').classList.add('show');
-      const ib=document.getElementById('seqInstrBrf');
-      ib.style.opacity='1';
-      const subEls=[...ib.querySelectorAll('.hi')];
-      subEls.forEach(e=>{e.style.opacity='0';});
-      let si=0;
-      function nextSub(){
-        if(si<subEls.length) typeEl(subEls[si++],55,nextSub);
-        else document.getElementById('in3').classList.add('show');
+    // Only type elements inside the first .brf (not seqInstrBrf)
+    const stage3=document.getElementById('stage3');
+    const mainBrf=stage3.querySelector('.brf');
+    const mainEls=[...mainBrf.querySelectorAll('.hi')];
+    mainEls.forEach(e=>e.style.opacity='0');
+    let mi=0;
+    function typeMain(){
+      if(mi<mainEls.length){
+        typeEl(mainEls[mi++],55,typeMain);
+      } else {
+        // Main brf done - immediately show template
+        document.getElementById('codeTemplate').classList.add('show');
+        // Then type instruction brf
+        const ib=document.getElementById('seqInstrBrf');
+        ib.style.opacity='1';
+        const subEls=[...ib.querySelectorAll('.hi')];
+        subEls.forEach(e=>e.style.opacity='0');
+        let si=0;
+        function nextSub(){
+          if(si<subEls.length) typeEl(subEls[si++],55,nextSub);
+          else document.getElementById('in3').classList.add('show');
+        }
+        nextSub();
       }
-      nextSub();
-    });
+    }
+    setTimeout(typeMain,200);
   }
   else if(n===4){
     // Ordered: 1) t-hdr types, 2) seqOk types, 3) coord appears, 4) rest types
@@ -593,9 +614,17 @@ function launchFinale(){
   },i*75);
 }
 
+function enterMission(){
+  const splash=document.getElementById('splash');
+  splash.style.transition='opacity 0.8s';
+  splash.style.opacity='0';
+  setTimeout(()=>{
+    splash.style.display='none';
+    typeStage('stage1','in1');
+  },800);
+}
 document.addEventListener('DOMContentLoaded',()=>{
   genStars();buildGrid();
-  typeStage('stage1','in1');
 });
 </script>
 </body>
