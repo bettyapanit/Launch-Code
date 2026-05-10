@@ -16,6 +16,7 @@
 html{overflow-x:hidden;}
 body{background:var(--bg);color:var(--lb);font-family:'Rubik',sans-serif !important;min-height:100vh;overflow-x:hidden;direction:rtl;}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(88,6,112,.15),transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(3,104,128,.12),transparent 50%);pointer-events:none;z-index:0;}
+.hi{opacity:0;}
 
 /* STARS */
 .stars-bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
@@ -66,7 +67,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .t-err{display:none;color:var(--er);font-size:13px;font-style:italic;margin-top:6px;text-align:center;font-family:'Rubik',sans-serif !important;}
 
 /* DATA BUTTON */
-.data-btn{display:block;width:100%;padding:12px 16px;background:rgba(3,104,128,.35);border:1.5px solid rgba(77,217,240,.55);border-radius:11px;color:#4dd9f0;font-family:'Orbitron',monospace !important;font-size:13px;font-weight:700;letter-spacing:1.5px;cursor:pointer;text-align:center;margin:16px 0 14px;transition:all .2s;}
+.data-btn{display:block;width:100%;padding:13px 16px;background:rgba(3,104,128,.35);border:1.5px solid rgba(77,217,240,.55);border-radius:11px;color:#4dd9f0;font-family:'Orbitron',monospace !important;font-size:15px;font-weight:700;letter-spacing:1px;cursor:pointer;text-align:center;margin:16px 0 14px;transition:all .2s;}
 .data-btn:hover{background:rgba(3,104,128,.6);}
 
 /* MODAL */
@@ -76,9 +77,9 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .modal-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pd),var(--td),var(--li));}
 .modal-ttl{font-family:'Orbitron',monospace !important;color:#4dd9f0;font-size:14px;letter-spacing:2px;margin-bottom:16px;text-align:center;}
 .dtbl{width:100%;border-collapse:collapse;}
-.dtbl th{font-family:'Orbitron',monospace !important;font-size:11px;letter-spacing:1px;color:#4dd9f0;padding:6px 6px;border-bottom:1px solid rgba(77,217,240,.3);text-align:right;}
-.dtbl td{font-family:'Share Tech Mono',monospace !important;font-size:13px;padding:9px 6px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--lb);}
-.dtbl td.cc{font-family:'Orbitron',monospace !important;font-size:15px;color:var(--cc);letter-spacing:2px;}
+.dtbl th{font-family:'Orbitron',monospace !important;font-size:13px;letter-spacing:1px;color:#4dd9f0;padding:6px 6px;border-bottom:1px solid rgba(77,217,240,.3);text-align:right;}
+.dtbl td{font-family:'Share Tech Mono',monospace !important;font-size:15px;padding:9px 6px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--lb);}
+.dtbl td.cc{font-family:'Orbitron',monospace !important;font-size:17px;color:var(--cc);letter-spacing:2px;}
 .dtbl tr:last-child td{border-bottom:none;}
 .modal-close{margin-top:14px;width:100%;padding:11px;background:linear-gradient(135deg,var(--pd),var(--td));border:none;border-radius:10px;color:#fff;font-family:'Orbitron',monospace !important;font-size:13px;font-weight:700;cursor:pointer;}
 
@@ -100,7 +101,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
 /* BUTTONS */
 .btn-main{width:100%;padding:16px;background:linear-gradient(135deg,var(--pd),var(--td));border:none;border-radius:12px;color:#fff;font-family:'Orbitron',monospace !important;font-size:15px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all .3s;margin-top:10px;}
-.btn-confirm{background:rgba(3,104,128,.35);border:1px solid rgba(77,217,240,.45);border-radius:8px;color:#4dd9f0;font-family:'Orbitron',monospace !important;font-size:12px;font-weight:700;padding:0 12px;height:46px;cursor:pointer;white-space:nowrap;}
+.btn-confirm{background:rgba(3,104,128,.35);border:1px solid rgba(77,217,240,.45);border-radius:8px;color:#4dd9f0;font-family:'Orbitron',monospace !important;font-size:14px;font-weight:700;padding:0 14px;height:46px;cursor:pointer;white-space:nowrap;}
 
 /* INPUTS */
 .star-input{flex:1;background:rgba(3,10,30,.85);border:1px solid rgba(3,104,128,.5);border-radius:8px;padding:12px;color:var(--lb);font-family:'Share Tech Mono',monospace !important;font-size:15px;outline:none;direction:ltr;text-align:left;transition:all .3s;}
@@ -112,7 +113,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .star-fb.er{color:var(--er);}
 .star-code-il{font-family:'Orbitron',monospace !important;font-size:16px;color:var(--cc);letter-spacing:3px;}
 .star-row{display:flex;gap:8px;align-items:center;}
-.star-num{font-family:'Orbitron',monospace !important;color:#4dd9f0;margin-bottom:5px;display:flex;align-items:center;gap:8px;font-size:13px;}
+.star-num{color:#4dd9f0;margin-bottom:5px;display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600;}
 .star-num .n{background:var(--td);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
 .stars-grid{display:grid;gap:12px;margin-bottom:14px;}
 
@@ -219,7 +220,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   <div class="brf">
     <div class="t-hdr hi">▸ הודעת מערכת // שלב 01</div>
     <div class="t-body hi">מפקדת הכוח יובל וסגנה, ברוכים הבאים למערכת השליטה.<br>המשימה שלכם היא לאסוף נתונים מהחלל ולשחזר את <strong>קוד השיגור האבוד</strong> ואת נתוני הניווט של המשימה. קוד השיגור מורכב מקודי הזיהוי של יעדי המשימה.<br>כדי למצוא את יעדי משימת השיגור ואת קודי הזיהוי שלהם, עליכם לסנכרן בין מפת הכוכבים האילמת שקיבלתם לבין גרמי השמיים במציאות. בעזרת אפליקציית התצפית, זהו את ששת גרמי השמיים המסומנים במפה ואיספו את הנתונים.</div>
-    <div class="t-note hi"><span class="lbl">שימו לב:</span>מספר הכוכב כאן במערכת תואם למספרו על המפה.<br>יש להזין את שמות הכוכבים באנגלית כפי שהם מופיעים באפליקציה.</div>
+    <div class="t-note hi"><span class="lbl">שימו לב:</span><br>מספר הכוכב כאן במערכת תואם למספרו על המפה.<br>יש להזין את שמות הכוכבים באנגלית כפי שהם מופיעים באפליקציה.</div>
   </div>
   <div class="iw" id="in1">
     <div class="sec-ttl">זיהוי גרמי שמיים</div>
@@ -270,7 +271,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <div class="cb"></div><div class="cb"></div><div class="cb"></div><div class="cb"></div>
     </div>
   </div>
-  <div class="brf" id="seqInstrBrf" style="visibility:hidden;">
+  <div class="brf" id="seqInstrBrf" style="opacity:0;transition:opacity 0.4s;">
     <div class="t-body">כדי לבנות את <strong>רצף השיגור</strong> בסדר הנכון, סדרו את יעדי המשימה שזיהיתם לפי מרחקם מכדור הארץ — מהקרוב אל הרחוק, והזינו את קוד הזיהוי של כל אחד לפי אותו הסדר.</div>
     <div class="t-note"><span class="lbl">הערה:</span>יש להתייחס לנקודות ולרווחים.</div>
   </div>
@@ -451,7 +452,8 @@ function checkDest(){
 function typeEl(el, speed, cb){
   const html=el.innerHTML;
   el.innerHTML='';
-  el.style.visibility='visible';
+  el.style.opacity='1';
+  el.style.opacity='1';
   el.classList.add('tw');
   let i=0;
   function tick(){
@@ -470,7 +472,7 @@ function typeStage(stageId, inputId, doneCb){
   const stage=document.getElementById(stageId);
   const els=[...stage.querySelectorAll('.hi')].filter(e=>e.id!=='seqDisp');
   // Pre-hide all
-  els.forEach(e=>{e.style.visibility='hidden';});
+  els.forEach(e=>{e.style.opacity='0';});
   const SPEED=55;
   let i=0;
   function next(){
@@ -503,7 +505,7 @@ function goTo(n){
       setTimeout(()=>{
         // type instruction brf
         const ib=document.getElementById('seqInstrBrf');
-        ib.style.visibility='visible';
+        ib.style.opacity='1';
         // type elements inside it
         const subEls=[...ib.querySelectorAll('.t-body,.t-note')];
         subEls.forEach(e=>{e.style.visibility='hidden';});
