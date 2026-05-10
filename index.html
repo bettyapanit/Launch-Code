@@ -508,46 +508,46 @@ function goTo(n){
         const ib=document.getElementById('seqInstrBrf');
         ib.style.opacity='1';
         // type elements inside it
-        const subEls=[...ib.querySelectorAll('.t-body,.t-note')];
-        subEls.forEach(e=>{e.style.visibility='hidden';});
+        const subEls=[...ib.querySelectorAll('.hi')];
+        subEls.forEach(e=>{e.style.opacity='0';});
         let si=0;
         function nextSub(){
           if(si<subEls.length) typeEl(subEls[si++],55,nextSub);
           else document.getElementById('in3').classList.add('show');
         }
         nextSub();
-      },700);
+      },200);
     });
   }
   else if(n===4){
-    // Show coord after seqOk types (seqOk is first .hi element in stage4)
-    const seqOkEl=document.getElementById('seqOk');
-    if(seqOkEl){
-      const origHtml=seqOkEl.innerHTML;
-      seqOkEl.style.opacity='0';
-      seqOkEl.innerHTML='';
-      seqOkEl.style.opacity='1';
-      seqOkEl.classList.add('tw');
-      let i=0;
-      function typeOk(){
-        if(i>=origHtml.length){
-          seqOkEl.classList.remove('tw');
-          // NOW show coord
+    // Ordered: 1) t-hdr types, 2) seqOk types, 3) coord appears, 4) rest types
+    const stage4=document.getElementById('stage4');
+    const allHi=[...stage4.querySelectorAll('.brf .hi')].filter(e=>e.id!=='seqDisp');
+    allHi.forEach(e=>e.style.opacity='0');
+    const hdrEl=allHi[0]; // t-hdr
+    const okEl=document.getElementById('seqOk');
+    const restEls=allHi.filter(e=>e!==hdrEl && e!==okEl);
+    function typeEls(els, idx, cb){
+      if(idx>=els.length){if(cb)cb();return;}
+      typeEl(els[idx],55,()=>typeEls(els,idx+1,cb));
+    }
+    // Step 1: type hdr
+    typeEl(hdrEl,55,()=>{
+      // Step 2: type seqOk
+      if(okEl){
+        typeEl(okEl,55,()=>{
+          // Step 3: show coord
           const coord=document.getElementById('seqCoord');
           if(coord) coord.style.opacity='1';
-          // then type rest of stage
-          typeStage('stage4','in4',null,[seqOkEl]);
-          return;
-        }
-        if(origHtml[i]==='<'){const e=origHtml.indexOf('>',i);if(e!==-1){seqOkEl.innerHTML+=origHtml.slice(i,e+1);i=e+1;setTimeout(typeOk,1);return;}}
-        seqOkEl.innerHTML+=origHtml[i++];
-        setTimeout(typeOk,55);
+          // Step 4: type rest
+          setTimeout(()=>{
+            typeEls(restEls,0,()=>{
+              document.getElementById('in4').classList.add('show');
+            });
+          },400);
+        });
       }
-      typeOk();
-    } else {
-      typeStage('stage4','in4');
-      setTimeout(()=>{const coord=document.getElementById('seqCoord');if(coord)coord.style.opacity='1';},400);
-    }
+    });
   }
   else if(n===5) typeStage('stage5',null);
 }
