@@ -9,13 +9,10 @@
 :root{
   --pd:#580670;--td:#036880;--lb:#eafbff;--li:#864f9b;
   --bg:#03020a;--ok:#00ff88;--er:#ff4466;--cc:#00e5ff;
-  --f-body:'Rubik',sans-serif;
-  --f-mono:'Share Tech Mono',monospace;
-  --f-orb:'Orbitron',monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{overflow-x:hidden;}
-body{background:var(--bg);color:var(--lb);font-family:var(--f-body);min-height:100vh;overflow-x:hidden;direction:rtl;}
+body{background:var(--bg);color:var(--lb);font-family:'Rubik',sans-serif !important;min-height:100vh;overflow-x:hidden;direction:rtl;}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(88,6,112,.15),transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(3,104,128,.12),transparent 50%);pointer-events:none;z-index:0;}
 
 /* STARS */
@@ -23,160 +20,165 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .star-dot{position:absolute;background:#fff;border-radius:50%;animation:twinkle var(--d) ease-in-out infinite;}
 @keyframes twinkle{0%,100%{opacity:.15}50%{opacity:.9}}
 
+/* ═══ FONTS — forced with !important ═══ */
+.orb{font-family:'Orbitron',monospace !important;}
+.mono{font-family:'Share Tech Mono',monospace !important;}
+.rub{font-family:'Rubik',sans-serif !important;}
+
 /* HEADER */
 .hdr{background:linear-gradient(135deg,#1a0025,#03404d 60%,#580670);padding:26px 20px 20px;text-align:center;border-bottom:2px solid rgba(77,217,240,.3);position:relative;overflow:hidden;z-index:10;}
 .hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(0,229,255,.08),transparent 70%);}
-.hdr-label{font-family:var(--f-orb);font-size:13px;letter-spacing:5px;color:#4dd9f0;text-transform:uppercase;margin-bottom:8px;}
-.hdr-name{font-family:var(--f-orb);font-size:28px;font-weight:700;color:var(--lb);text-shadow:0 0 24px rgba(0,229,255,.5);}
+.hdr-label{font-family:'Orbitron',monospace !important;font-size:13px;letter-spacing:5px;color:#4dd9f0;text-transform:uppercase;margin-bottom:8px;}
+.hdr-name{font-family:'Rubik',sans-serif !important;font-size:28px;font-weight:700;color:var(--lb);text-shadow:0 0 24px rgba(0,229,255,.5);}
 
 .progress-bar{background:rgba(234,251,255,.05);height:3px;overflow:hidden;}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--pd),var(--td));transition:width .5s;}
-
 .container{position:relative;z-index:10;max-width:680px;margin:0 auto;padding:0 16px 60px;}
 
 /* STAGES */
-.stage{display:none;animation:fadeIn .5s ease forwards;}
+.stage{display:none;animation:fi .5s ease forwards;}
 .stage.active{display:block;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fi{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-/* BRIEFING */
-.brf{background:rgba(3,10,30,.85);border:1px solid rgba(3,104,128,.45);border-radius:14px;padding:20px;margin:18px 0 16px;position:relative;overflow:hidden;}
+/* BRIEFING — fixed min-height so it doesn't jump */
+.brf{background:rgba(3,10,30,.85);border:1px solid rgba(3,104,128,.45);border-radius:14px;padding:20px;margin:18px 0 14px;position:relative;overflow:hidden;}
 .brf::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pd),var(--td),var(--li));}
 
-/* TYPOGRAPHY — all unified */
-.t-hdr{font-family:var(--f-orb);font-size:14px;letter-spacing:3px;color:#4dd9f0;margin-bottom:12px;text-shadow:0 0 8px rgba(77,217,240,.4);}
-.t-ok {font-family:var(--f-mono);font-size:16px;color:var(--ok);margin-bottom:10px;text-shadow:0 0 8px rgba(0,255,136,.35);line-height:1.35;}
-.t-body{font-family:var(--f-body);font-size:16px;line-height:1.4;color:var(--lb);text-align:right;}
+/* TYPOGRAPHY */
+.t-hdr{font-family:'Orbitron',monospace !important;font-size:14px;letter-spacing:3px;color:#4dd9f0;margin-bottom:12px;text-shadow:0 0 8px rgba(77,217,240,.4);display:block;}
+.t-ok{font-family:'Orbitron',monospace !important;font-size:15px;color:var(--ok);margin-bottom:10px;text-shadow:0 0 8px rgba(0,255,136,.35);line-height:1.4;display:block;}
+.t-body{font-family:'Rubik',sans-serif !important;font-size:16px;line-height:1.5;color:var(--lb);text-align:right;display:block;margin-bottom:8px;}
 .t-body strong{color:var(--cc);font-weight:700;}
-.t-note{font-family:var(--f-body);font-style:italic;color:rgba(234,251,255,.82);font-size:14px;line-height:1.35;margin-top:10px;padding-top:10px;border-top:1px solid rgba(77,217,240,.18);text-align:right;}
-.t-note .lbl{font-family:var(--f-mono);font-size:13px;color:#4dd9f0;font-style:normal;}
-.t-venue{font-family:var(--f-orb);font-size:13px;letter-spacing:2px;color:#4dd9f0;margin:10px 0 6px;display:block;}
+.t-note{font-family:'Rubik',sans-serif !important;font-style:italic;color:rgba(234,251,255,.82);font-size:14px;line-height:1.4;margin-top:10px;padding-top:10px;border-top:1px solid rgba(77,217,240,.18);text-align:right;display:block;}
+.t-note .lbl{font-family:'Orbitron',monospace !important;font-size:12px;color:#4dd9f0;font-style:normal;display:block;margin-bottom:4px;}
+.t-venue{font-family:'Orbitron',monospace !important;font-size:13px;letter-spacing:2px;color:#4dd9f0;margin:10px 0 6px;display:block;}
 
 /* SECTION TITLE */
-.sec-title{font-family:var(--f-orb);font-size:16px;font-weight:700;letter-spacing:2px;color:#4dd9f0;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
-.sec-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(77,217,240,.4),transparent);}
+.sec-ttl{font-family:'Orbitron',monospace !important;font-size:16px;font-weight:700;letter-spacing:2px;color:#4dd9f0;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-ttl::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(77,217,240,.4),transparent);}
 
 /* FIELD LABEL */
-.f-lbl{font-family:var(--f-orb);font-size:14px;color:var(--cc);letter-spacing:3px;margin-bottom:8px;text-align:center;display:block;}
+.f-lbl{font-family:'Orbitron',monospace !important;font-size:14px;color:var(--cc);letter-spacing:2px;margin-bottom:8px;text-align:center;display:block;}
 
 /* ERROR */
-.t-err{display:none;color:var(--er);font-size:13px;font-style:italic;margin-top:6px;text-align:center;}
+.t-err{display:none;color:var(--er);font-size:13px;font-style:italic;margin-top:6px;text-align:center;font-family:'Rubik',sans-serif !important;}
 
 /* DATA BUTTON */
-.data-btn{display:block;width:100%;padding:12px 16px;background:rgba(3,104,128,.35);border:1.5px solid rgba(77,217,240,.55);border-radius:11px;color:#4dd9f0;font-family:var(--f-orb);font-size:13px;font-weight:700;letter-spacing:1.5px;cursor:pointer;text-align:center;margin:16px 0 14px;transition:all .2s;}
+.data-btn{display:block;width:100%;padding:12px 16px;background:rgba(3,104,128,.35);border:1.5px solid rgba(77,217,240,.55);border-radius:11px;color:#4dd9f0;font-family:'Orbitron',monospace !important;font-size:13px;font-weight:700;letter-spacing:1.5px;cursor:pointer;text-align:center;margin:16px 0 14px;transition:all .2s;}
 .data-btn:hover{background:rgba(3,104,128,.6);}
 
-/* DATA MODAL */
+/* MODAL */
 .modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:500;display:none;align-items:center;justify-content:center;padding:16px;}
 .modal-ov.open{display:flex;}
 .modal-box{background:#050d20;border:1px solid rgba(77,217,240,.5);border-radius:16px;padding:20px;max-width:520px;width:100%;position:relative;overflow:hidden;}
 .modal-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pd),var(--td),var(--li));}
-.modal-title{font-family:var(--f-orb);color:#4dd9f0;font-size:14px;letter-spacing:2px;margin-bottom:16px;text-align:center;}
-.dtbl{width:100%;border-collapse:collapse;font-size:14px;}
-.dtbl th{font-family:var(--f-orb);font-size:11px;letter-spacing:1px;color:#4dd9f0;padding:6px 8px;border-bottom:1px solid rgba(77,217,240,.3);text-align:right;}
-.dtbl td{font-family:var(--f-mono);font-size:13px;padding:9px 8px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--lb);}
-.dtbl td.cc{font-family:var(--f-orb);font-size:15px;color:var(--cc);letter-spacing:2px;text-shadow:0 0 6px rgba(0,229,255,.4);}
+.modal-ttl{font-family:'Orbitron',monospace !important;color:#4dd9f0;font-size:14px;letter-spacing:2px;margin-bottom:16px;text-align:center;}
+.dtbl{width:100%;border-collapse:collapse;}
+.dtbl th{font-family:'Orbitron',monospace !important;font-size:11px;letter-spacing:1px;color:#4dd9f0;padding:6px 6px;border-bottom:1px solid rgba(77,217,240,.3);text-align:right;}
+.dtbl td{font-family:'Share Tech Mono',monospace !important;font-size:13px;padding:9px 6px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--lb);}
+.dtbl td.cc{font-family:'Orbitron',monospace !important;font-size:15px;color:var(--cc);letter-spacing:2px;}
 .dtbl tr:last-child td{border-bottom:none;}
-.modal-close{margin-top:16px;width:100%;padding:11px;background:linear-gradient(135deg,var(--pd),var(--td));border:none;border-radius:10px;color:#fff;font-family:var(--f-orb);font-size:13px;font-weight:700;cursor:pointer;}
+.modal-close{margin-top:14px;width:100%;padding:11px;background:linear-gradient(135deg,var(--pd),var(--td));border:none;border-radius:10px;color:#fff;font-family:'Orbitron',monospace !important;font-size:13px;font-weight:700;cursor:pointer;}
 
 /* POPUP */
 .pop-ov{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:400;display:none;align-items:center;justify-content:center;padding:16px;}
 .pop-ov.open{display:flex;}
 .pop-box{background:linear-gradient(160deg,#050d20,#030a18);border:1px solid rgba(77,217,240,.45);border-radius:18px;padding:24px;max-width:370px;width:100%;text-align:center;position:relative;overflow:hidden;}
 .pop-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ok),var(--cc));}
-.pop-ok{font-family:var(--f-mono);font-size:15px;color:var(--ok);margin-bottom:12px;letter-spacing:1px;}
-.pop-name{font-family:var(--f-orb);font-size:24px;font-weight:900;color:var(--lb);letter-spacing:3px;margin-bottom:14px;}
-.pop-data-ttl{font-family:var(--f-orb);font-size:13px;color:#4dd9f0;letter-spacing:2px;margin-bottom:10px;text-align:right;}
+.pop-ok{font-family:'Orbitron',monospace !important;font-size:14px;color:var(--ok);margin-bottom:12px;letter-spacing:1px;}
+.pop-name{font-family:'Orbitron',monospace !important;font-size:24px;font-weight:900;color:var(--lb);letter-spacing:3px;margin-bottom:14px;}
+.pop-data-ttl{font-family:'Orbitron',monospace !important;font-size:13px;color:#4dd9f0;letter-spacing:2px;margin-bottom:10px;text-align:right;}
 .pop-row{display:flex;gap:8px;margin-bottom:7px;text-align:right;}
-.pop-lbl{font-family:var(--f-mono);font-size:13px;color:rgba(77,217,240,.7);white-space:nowrap;padding-top:1px;}
-.pop-val{font-family:var(--f-body);font-size:15px;color:var(--lb);line-height:1.4;flex:1;}
+.pop-lbl{font-family:'Share Tech Mono',monospace !important;font-size:13px;color:rgba(77,217,240,.7);white-space:nowrap;padding-top:1px;}
+.pop-val{font-family:'Rubik',sans-serif !important;font-size:15px;color:var(--lb);line-height:1.4;flex:1;}
 .pop-sep{border:none;border-top:1px solid rgba(77,217,240,.2);margin:12px 0;}
-.pop-code-lbl{font-family:var(--f-mono);font-size:13px;color:rgba(77,217,240,.7);letter-spacing:2px;margin-bottom:6px;}
-.pop-code{font-family:var(--f-orb);font-size:32px;color:var(--cc);letter-spacing:6px;text-shadow:0 0 20px rgba(0,229,255,.8);margin-bottom:18px;}
-.pop-btn{background:linear-gradient(135deg,var(--pd),var(--td));border:none;color:#fff;border-radius:10px;padding:12px 28px;font-family:var(--f-orb);font-size:14px;font-weight:700;cursor:pointer;}
+.pop-code-lbl{font-family:'Orbitron',monospace !important;font-size:13px;color:rgba(77,217,240,.7);letter-spacing:2px;margin-bottom:6px;}
+.pop-code{font-family:'Orbitron',monospace !important;font-size:32px;color:var(--cc);letter-spacing:6px;text-shadow:0 0 20px rgba(0,229,255,.8);margin-bottom:18px;}
+.pop-btn{background:linear-gradient(135deg,var(--pd),var(--td));border:none;color:#fff;border-radius:10px;padding:12px 28px;font-family:'Orbitron',monospace !important;font-size:14px;font-weight:700;cursor:pointer;}
+
+/* BUTTONS */
+.btn-main{width:100%;padding:16px;background:linear-gradient(135deg,var(--pd),var(--td));border:none;border-radius:12px;color:#fff;font-family:'Orbitron',monospace !important;font-size:15px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all .3s;margin-top:10px;}
+.btn-confirm{background:rgba(3,104,128,.35);border:1px solid rgba(77,217,240,.45);border-radius:8px;color:#4dd9f0;font-family:'Orbitron',monospace !important;font-size:12px;font-weight:700;padding:0 12px;height:46px;cursor:pointer;white-space:nowrap;}
 
 /* INPUTS */
-.btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--pd),var(--td));border:none;border-radius:12px;color:#fff;font-family:var(--f-orb);font-size:16px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all .3s;margin-top:10px;}
-.confirm-btn{background:rgba(3,104,128,.35);border:1px solid rgba(77,217,240,.45);border-radius:8px;color:#4dd9f0;font-family:var(--f-orb);font-size:13px;font-weight:700;padding:0 14px;height:46px;cursor:pointer;white-space:nowrap;}
-.star-input{flex:1;background:rgba(3,10,30,.85);border:1px solid rgba(3,104,128,.5);border-radius:8px;padding:12px;color:var(--lb);font-family:var(--f-mono);font-size:15px;outline:none;direction:ltr;text-align:left;transition:all .3s;}
+.star-input{flex:1;background:rgba(3,10,30,.85);border:1px solid rgba(3,104,128,.5);border-radius:8px;padding:12px;color:var(--lb);font-family:'Share Tech Mono',monospace !important;font-size:15px;outline:none;direction:ltr;text-align:left;transition:all .3s;}
 .star-input:focus{border-color:#4dd9f0;box-shadow:0 0 14px rgba(77,217,240,.25);}
 .star-input.ok{border-color:var(--ok);color:var(--ok);}
 .star-input.er{border-color:var(--er);}
-.star-fb{font-size:13px;margin-top:4px;min-height:15px;font-family:var(--f-mono);}
+.star-fb{font-size:13px;margin-top:4px;min-height:15px;font-family:'Share Tech Mono',monospace !important;}
 .star-fb.ok{color:var(--ok);}
 .star-fb.er{color:var(--er);}
-.star-code-il{font-family:var(--f-orb);font-size:16px;color:var(--cc);letter-spacing:3px;}
+.star-code-il{font-family:'Orbitron',monospace !important;font-size:16px;color:var(--cc);letter-spacing:3px;}
 .star-row{display:flex;gap:8px;align-items:center;}
-.star-num{font-family:var(--f-orb);color:#4dd9f0;margin-bottom:4px;display:flex;align-items:center;gap:8px;}
+.star-num{font-family:'Orbitron',monospace !important;color:#4dd9f0;margin-bottom:5px;display:flex;align-items:center;gap:8px;font-size:13px;}
 .star-num .n{background:var(--td);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
-.big-input{width:100%;background:rgba(3,10,30,.85);border:2px solid rgba(3,104,128,.5);border-radius:12px;padding:15px;color:var(--cc);font-family:var(--f-mono);font-size:22px;font-weight:700;outline:none;text-align:center;direction:ltr;letter-spacing:3px;display:block;margin-bottom:8px;transition:all .3s;}
-.big-input:focus{border-color:#4dd9f0;box-shadow:0 0 20px rgba(77,217,240,.25);}
+.stars-grid{display:grid;gap:12px;margin-bottom:14px;}
+
+.big-input{width:100%;background:rgba(3,10,30,.85);border:2px solid rgba(3,104,128,.5);border-radius:12px;padding:15px;color:var(--cc);font-family:'Share Tech Mono',monospace !important;font-size:22px;font-weight:700;outline:none;text-align:center;direction:ltr;letter-spacing:3px;display:block;margin-bottom:8px;transition:all .3s;}
+.big-input:focus{border-color:#4dd9f0;}
 .big-input.ok{border-color:var(--ok);color:var(--ok);}
-.venus-inp{width:100%;background:rgba(255,255,255,.05);border:1.5px solid rgba(77,217,240,.4);border-radius:10px;padding:14px 16px;color:var(--lb);font-family:var(--f-mono);font-size:15px;outline:none;margin-bottom:10px;direction:ltr;text-align:left;}
+.venus-inp{width:100%;background:rgba(255,255,255,.05);border:1.5px solid rgba(77,217,240,.4);border-radius:10px;padding:14px;color:var(--lb);font-family:'Share Tech Mono',monospace !important;font-size:15px;outline:none;margin-bottom:10px;direction:ltr;text-align:left;}
 .venus-inp.ok{border-color:var(--ok);}
 .venus-inp.er{border-color:var(--er);}
-.dest-inp{width:100%;background:rgba(3,10,30,.85);border:2px solid rgba(3,104,128,.5);border-radius:12px;padding:15px;color:var(--lb);font-family:var(--f-body);font-size:16px;outline:none;text-align:right;direction:rtl;display:block;transition:all .3s;}
+.dest-inp{width:100%;background:rgba(3,10,30,.85);border:2px solid rgba(3,104,128,.5);border-radius:12px;padding:15px;color:var(--lb);font-family:'Rubik',sans-serif !important;font-size:16px;outline:none;text-align:right;direction:rtl;display:block;transition:all .3s;}
 .dest-inp:focus{border-color:#4dd9f0;}
 .dest-inp.ok{border-color:var(--ok);}
-.dest-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--pd),var(--td));border:none;border-radius:12px;color:#fff;font-family:var(--f-orb);font-size:16px;font-weight:700;letter-spacing:2px;cursor:pointer;margin-top:10px;}
-.seq-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--pd),var(--td));border:none;border-radius:12px;color:#fff;font-family:var(--f-orb);font-size:16px;font-weight:700;letter-spacing:2px;cursor:pointer;margin-top:4px;}
-
-/* STARS GRID */
-.stars-grid{display:grid;gap:10px;margin-bottom:14px;}
 
 /* CODE TEMPLATE */
 .code-tmpl{display:flex;align-items:center;justify-content:center;gap:3px;margin:16px 0 6px;direction:ltr;}
-.cb{display:inline-flex;align-items:center;justify-content:center;width:34px;height:44px;border:2px solid rgba(0,229,255,.6);border-radius:6px;background:rgba(0,229,255,.07);font-family:var(--f-orb);font-size:16px;color:var(--cc);text-shadow:0 0 10px rgba(0,229,255,.5);}
-.cdot{font-family:var(--f-orb);font-size:26px;font-weight:900;color:#fff;margin:0 1px;align-self:flex-end;padding-bottom:4px;}
+.cb{display:inline-flex;align-items:center;justify-content:center;width:34px;height:44px;border:2px solid rgba(0,229,255,.6);border-radius:6px;background:rgba(0,229,255,.07);font-family:'Orbitron',monospace !important;font-size:16px;color:var(--cc);}
+.cdot{font-family:'Orbitron',monospace !important;font-size:26px;font-weight:900;color:#fff;margin:0 1px;align-self:flex-end;padding-bottom:4px;}
 .csp{width:18px;}
 
 /* CONTROL PANEL TABLE */
-.cp-tbl{width:100%;border-collapse:collapse;font-size:14px;}
-.cp-tbl th{font-family:var(--f-orb);font-size:12px;letter-spacing:1px;color:#4dd9f0;padding:7px 6px;border-bottom:1px solid rgba(77,217,240,.3);text-align:right;}
-.cp-tbl td{font-family:var(--f-mono);font-size:13px;padding:9px 6px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--lb);vertical-align:middle;}
-.cp-tbl td.code-c{font-family:var(--f-orb);font-size:16px;color:var(--cc);letter-spacing:2px;text-shadow:0 0 6px rgba(0,229,255,.4);}
+.cp-wrap{background:rgba(3,10,30,.85);border:1px solid rgba(3,104,128,.4);border-radius:14px;padding:16px;margin-bottom:16px;overflow:hidden;}
+.cp-tbl{width:100%;border-collapse:collapse;}
+.cp-tbl th{font-family:'Orbitron',monospace !important;font-size:12px;letter-spacing:1px;color:#4dd9f0;padding:6px 6px;border-bottom:1px solid rgba(77,217,240,.3);text-align:right;}
+.cp-tbl td{font-family:'Share Tech Mono',monospace !important;font-size:13px;padding:9px 6px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--lb);vertical-align:middle;}
+.cp-tbl td.cc{font-family:'Orbitron',monospace !important;font-size:16px;color:var(--cc);letter-spacing:2px;}
 .cp-tbl tr:last-child td{border-bottom:none;}
 
-/* HIDDEN UNTIL TYPED */
-.hidden-init{visibility:hidden;}
-.inputs-wrap{opacity:0;transition:opacity .6s;pointer-events:none;}
-.inputs-wrap.show{opacity:1;pointer-events:all;}
+/* HIDDEN / SHOWN */
+.hi{visibility:hidden;}
+.iw{opacity:0;transition:opacity .6s;pointer-events:none;}
+.iw.show{opacity:1;pointer-events:all;}
 
-/* STAGE 4 SEQ DISPLAY */
-.seq-display{font-family:var(--f-mono);font-size:17px;color:var(--ok);margin-bottom:10px;line-height:1.4;}
-.seq-coord{font-family:var(--f-mono);font-size:22px;color:var(--ok);letter-spacing:3px;direction:ltr;unicode-bidi:bidi-override;display:block;text-align:center;margin-top:4px;}
+/* SEQ DISPLAY */
+.seq-ok{font-family:'Orbitron',monospace !important;font-size:16px;color:var(--ok);text-align:center;display:block;margin-bottom:4px;}
+.seq-coord{font-family:'Share Tech Mono',monospace !important;font-size:22px;color:var(--ok);letter-spacing:3px;direction:ltr !important;unicode-bidi:bidi-override !important;display:block;text-align:center;}
 
 /* FINALE */
 .finale{text-align:center;padding:20px 0;}
-.finale-congrats{font-family:var(--f-body);font-size:22px;line-height:1.75;color:var(--lb);margin-bottom:26px;}
-.finale-congrats strong{color:#4dd9f0;}
-.launch-txt{font-family:var(--f-orb);font-size:19px;letter-spacing:3px;color:#4dd9f0;margin-bottom:26px;animation:glow 2s ease-in-out infinite;}
+.finale-line1{font-family:'Rubik',sans-serif !important;font-size:24px;font-weight:700;color:var(--lb);margin-bottom:14px;}
+.finale-body{font-family:'Rubik',sans-serif !important;font-size:18px;line-height:1.75;color:var(--lb);margin-bottom:26px;}
+.finale-body strong{color:#4dd9f0;}
+.launch-txt{font-family:'Orbitron',monospace !important;font-size:18px;letter-spacing:3px;color:#4dd9f0;margin-bottom:26px;animation:glow 2s ease-in-out infinite;display:block;}
 .cd-box{background:linear-gradient(135deg,rgba(88,6,112,.3),rgba(3,104,128,.3));border:1px solid var(--li);border-radius:18px;padding:28px 20px;max-width:320px;margin:0 auto;box-shadow:0 0 40px rgba(134,79,155,.3);}
-.cd-lbl{font-family:var(--f-orb);font-size:17px;letter-spacing:3px;color:#4dd9f0;margin-bottom:4px;}
-.cd-lbl-en{font-family:var(--f-orb);font-size:11px;letter-spacing:4px;color:rgba(77,217,240,.5);margin-bottom:14px;}
-.cd-num{font-family:var(--f-orb);font-size:70px;color:var(--cc);text-shadow:0 0 30px rgba(0,229,255,.7);letter-spacing:4px;line-height:1;animation:glow 2s ease-in-out infinite;}
-@keyframes glow{0%,100%{text-shadow:0 0 20px rgba(0,229,255,.5)}50%{text-shadow:0 0 50px rgba(0,229,255,1),0 0 100px rgba(0,229,255,.3)}}
+.cd-lbl{font-family:'Orbitron',monospace !important;font-size:17px;letter-spacing:3px;color:#4dd9f0;margin-bottom:4px;}
+.cd-en{font-family:'Orbitron',monospace !important;font-size:11px;letter-spacing:4px;color:rgba(77,217,240,.5);margin-bottom:14px;}
+.cd-num{font-family:'Orbitron',monospace !important;font-size:68px;color:var(--cc);text-shadow:0 0 30px rgba(0,229,255,.7);letter-spacing:4px;line-height:1;animation:glow 2s ease-in-out infinite;}
+@keyframes glow{0%,100%{text-shadow:0 0 20px rgba(0,229,255,.5)}50%{text-shadow:0 0 50px rgba(0,229,255,1)}}
 .confetti-star{position:fixed;pointer-events:none;z-index:100;animation:fall linear forwards;}
 @keyframes fall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
 
-/* TYPEWRITER */
-.tw::after{content:'▋';animation:blink .7s step-end infinite;color:#4dd9f0;}
+/* TYPEWRITER cursor */
+.tw::after{content:'▋';animation:blink .7s step-end infinite;color:#4dd9f0;font-family:'Share Tech Mono',monospace !important;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 </style>
 </head>
 <body>
 <div class="stars-bg" id="starfield"></div>
 
-<!-- DATA MODAL -->
+<!-- MODAL -->
 <div class="modal-ov" id="dataModal" onclick="if(event.target===this)closeData()">
   <div class="modal-box">
-    <div class="modal-title">📡 לוח בקרה: איסוף נתוני משימה</div>
+    <div class="modal-ttl">📡 לוח בקרה: איסוף נתוני משימה</div>
     <table class="dtbl" id="dtbl">
       <tr>
         <th style="width:7%">מס'</th>
         <th style="width:20%">שם</th>
-        <th style="width:16%">סוג</th>
-        <th style="width:40%">מרחק מכדוה"א</th>
+        <th style="width:14%">סוג</th>
+        <th style="width:42%">מרחק מכדוה"א</th>
         <th style="width:17%">קוד</th>
       </tr>
     </table>
@@ -190,10 +192,10 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     <div class="pop-ok">✔ &nbsp;הזיהוי אושר!</div>
     <div class="pop-name" id="pName"></div>
     <div class="pop-data-ttl">נתונים:</div>
-    <div class="pop-row" id="pHebRow"><span class="pop-lbl">שם בעברית:</span><span class="pop-val" id="pHeb"></span></div>
+    <div class="pop-row" id="pHebRow" style="display:none"><span class="pop-lbl">שם בעברית:</span><span class="pop-val" id="pHeb"></span></div>
     <div class="pop-row"><span class="pop-lbl">סוג:</span><span class="pop-val" id="pType"></span></div>
     <div class="pop-row"><span class="pop-lbl">מידע:</span><span class="pop-val" id="pInfo"></span></div>
-    <div class="pop-row" id="pAgeRow"><span class="pop-lbl">גיל משוער:</span><span class="pop-val" id="pAge"></span></div>
+    <div class="pop-row" id="pAgeRow" style="display:none"><span class="pop-lbl">גיל משוער:</span><span class="pop-val" id="pAge"></span></div>
     <div class="pop-row"><span class="pop-lbl">מרחק מכדוה"א:</span><span class="pop-val" id="pDist"></span></div>
     <hr class="pop-sep">
     <div class="pop-code-lbl">התקבל קוד:</div>
@@ -210,70 +212,52 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
 <div class="container">
 
-<!-- STAGE 1 -->
+<!-- S1 -->
 <div class="stage active" id="stage1">
   <div class="brf">
-    <div class="t-hdr hidden-init">▸ הודעת מערכת // שלב 01</div>
-    <div class="t-body hidden-init">
-      מפקדת הכוח יובל וסגנה, ברוכים הבאים למערכת השליטה.
-      המשימה שלכם היא לאסוף נתונים מהחלל ולשחזר את <strong>קוד השיגור האבוד</strong> ואת נתוני הניווט של המשימה. קוד השיגור מורכב מקודי הזיהוי של יעדי המשימה.
-      כדי למצוא את יעדי משימת השיגור ואת קודי הזיהוי שלהם, עליכם לסנכרן בין מפת הכוכבים האילמת שקיבלתם לבין גרמי השמיים במציאות. בעזרת אפליקציית התצפית, זהו את ששת גרמי השמיים המסומנים במפה ואיספו את הנתונים.
-    </div>
-    <div class="t-note hidden-init">
-      <span class="lbl">שימו לב:</span>
-      מספר הכוכב כאן במערכת תואם למספרו על המפה.
-      יש להזין את שמות הכוכבים באנגלית כפי שהם מופיעים באפליקציה.
-    </div>
+    <div class="t-hdr hi">▸ הודעת מערכת // שלב 01</div>
+    <div class="t-body hi">מפקדת הכוח יובל וסגנה, ברוכים הבאים למערכת השליטה.<br>המשימה שלכם היא לאסוף נתונים מהחלל ולשחזר את <strong>קוד השיגור האבוד</strong> ואת נתוני הניווט של המשימה. קוד השיגור מורכב מקודי הזיהוי של יעדי המשימה.<br>כדי למצוא את יעדי משימת השיגור ואת קודי הזיהוי שלהם, עליכם לסנכרן בין מפת הכוכבים האילמת שקיבלתם לבין גרמי השמיים במציאות. בעזרת אפליקציית התצפית, זהו את ששת גרמי השמיים המסומנים במפה ואיספו את הנתונים.</div>
+    <div class="t-note hi"><span class="lbl">שימו לב:</span>מספר הכוכב כאן במערכת תואם למספרו על המפה.<br>יש להזין את שמות הכוכבים באנגלית כפי שהם מופיעים באפליקציה.</div>
   </div>
-  <div class="inputs-wrap" id="in1">
-    <div class="sec-title">זיהוי גרמי שמיים</div>
+  <div class="iw" id="in1">
+    <div class="sec-ttl">זיהוי גרמי שמיים</div>
     <div class="stars-grid" id="starsGrid"></div>
     <div class="t-err" id="err1">יש לאשר את כל שדות הכוכבים לפני המשך</div>
-    <button class="btn" onclick="submitStars()">▸ שדר נתונים למערכת</button>
+    <button class="btn-main" onclick="submitStars()">▸ שדר נתונים למערכת</button>
   </div>
 </div>
 
-<!-- STAGE 2 -->
+<!-- S2 -->
 <div class="stage" id="stage2">
   <button class="data-btn" onclick="openData()">📡 לוח בקרה: איסוף נתוני משימה</button>
   <div class="brf">
-    <div class="t-hdr hidden-init">▸ הודעת מערכת // שלב 02</div>
-    <div class="t-ok hidden-init">✓ כל שישה גרמי השמיים זוהו בהצלחה! קודי המשימה נקלטו.</div>
-    <div class="t-body hidden-init">
-      אחרי השיגור, החללית תזדקק לעצירת ביניים לתחזוקה, לפני הכניסה למסלול והמשך משימתה.
-      במסלול הקרוב לכדור הארץ פועלת תחנת חלל מקומית שתפקידה טיפול ותחזוקה של חלליות.
-      כדי להמשיך לשחזר את נתוני המשימה עליכם <strong>לאתר את תחנת העצירה</strong> לתחזוקת החללית, הנמצאת במיקום הקרוב ביותר לכדור הארץ מבין גרמי השמיים שביעדי המשימה.
-    </div>
-    <div class="t-note hidden-init">
-      <span class="lbl">שימו לב:</span> לוח הבקרה עם נתוני המשימה שנאספו זמין לכם בכפתור למעלה.
-    </div>
+    <div class="t-hdr hi">▸ הודעת מערכת // שלב 02</div>
+    <div class="t-ok hi">✓ כל שישה גרמי השמיים זוהו בהצלחה! קודי המשימה נקלטו.</div>
+    <div class="t-body hi">אחרי השיגור, החללית תזדקק לעצירת ביניים לתחזוקה, לפני הכניסה למסלול והמשך משימתה.<br>במסלול הקרוב לכדור הארץ פועלת תחנת חלל מקומית שתפקידה טיפול ותחזוקה של חלליות.<br>כדי להמשיך לשחזר את נתוני המשימה עליכם <strong>לאתר את תחנת העצירה</strong> לתחזוקת החללית, הנמצאת במיקום הקרוב ביותר לכדור הארץ מבין גרמי השמיים שביעדי המשימה.</div>
+    <div class="t-note hi"><span class="lbl">שימו לב:</span>לוח הבקרה עם נתוני המשימה שנאספו זמין לכם בכפתור למעלה.</div>
   </div>
-  <div class="inputs-wrap" id="in2">
+  <div class="iw" id="in2">
     <span class="f-lbl">מיקום תחנת החלל</span>
     <input type="text" class="venus-inp" id="venusInp"
       placeholder="הזינו שם גרם השמיים באנגלית..."
       onkeydown="if(event.key==='Enter'){event.preventDefault();checkVenus();}"
       autocomplete="off" autocorrect="off" spellcheck="false">
     <div class="t-err" id="errV">שגיאה! בדקו את תשובתכם שוב.</div>
-    <button class="btn" onclick="checkVenus()">▸ שדר תשובה</button>
+    <button class="btn-main" onclick="checkVenus()">▸ שדר תשובה</button>
   </div>
 </div>
 
-<!-- STAGE 3 -->
+<!-- S3 -->
 <div class="stage" id="stage3">
   <button class="data-btn" onclick="openData()">📡 לוח בקרה: איסוף נתוני משימה</button>
   <div class="brf">
-    <div class="t-hdr hidden-init">▸ הודעת מערכת // שלב 03</div>
-    <div class="t-ok hidden-init">✓ תחנת VENUS מאשרת קליטה!</div>
-    <div class="t-body hidden-init">
-      מצאתם את מיקום תחנת החלל המקומית בכוכב Venus. כעת העצירה שם מתואמת ומאושרת והחללית תעצור לתחזוקה לפני המשך מסעה.
-    </div>
-    <div class="t-hdr hidden-init" style="margin-top:12px;">הודעה מתחנת החלל המקומית בכוכב Venus:</div>
-    <div class="t-body hidden-init">
-      התבנית ל<strong>קוד השיגור</strong> האבוד נמצאת אצלנו. יש להשתמש בה בדיוק לצורך בניית רצף השיגור.
-    </div>
+    <div class="t-hdr hi">▸ הודעת מערכת // שלב 03</div>
+    <div class="t-ok hi">✓ תחנת VENUS מאשרת קליטה!</div>
+    <div class="t-body hi">מצאתם את מיקום תחנת החלל המקומית בכוכב Venus. כעת העצירה שם מתואמת ומאושרת והחללית תעצור לתחזוקה לפני המשך מסעה.</div>
+    <div class="t-hdr hi" style="margin-top:10px;">הודעה מתחנת החלל המקומית בכוכב Venus:</div>
+    <div class="t-body hi">התבנית ל<strong>קוד השיגור</strong> האבוד נמצאת אצלנו. יש להשתמש בה בדיוק לצורך בניית רצף השיגור.</div>
   </div>
-  <div class="inputs-wrap" id="codeTemplate">
+  <div class="iw" id="codeTemplate">
     <div class="code-tmpl">
       <div class="cb"></div><div class="cb"></div>
       <div class="cdot">.</div>
@@ -284,77 +268,69 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <div class="cb"></div><div class="cb"></div><div class="cb"></div><div class="cb"></div>
     </div>
   </div>
-  <div class="brf" id="seqInstrBrf" style="display:none;">
-    <div class="t-body">
-      כדי לבנות את <strong>רצף השיגור</strong> בסדר הנכון, סדרו את יעדי המשימה שזיהיתם לפי מרחקם מכדור הארץ — מהקרוב אל הרחוק, והזינו את קוד הזיהוי של כל אחד לפי אותו הסדר.
-    </div>
-    <div class="t-note"><span class="lbl">הערה:</span> יש להתייחס לנקודות ולרווחים.</div>
+  <div class="brf hi" id="seqInstrBrf" style="visibility:hidden;">
+    <div class="t-body">כדי לבנות את <strong>רצף השיגור</strong> בסדר הנכון, סדרו את יעדי המשימה שזיהיתם לפי מרחקם מכדור הארץ — מהקרוב אל הרחוק, והזינו את קוד הזיהוי של כל אחד לפי אותו הסדר.</div>
+    <div class="t-note"><span class="lbl">הערה:</span>יש להתייחס לנקודות ולרווחים.</div>
   </div>
-  <div class="inputs-wrap" id="in3" style="margin-top:12px;">
+  <div class="iw" id="in3" style="margin-top:12px;">
     <span class="f-lbl">הזן רצף שיגור</span>
     <input type="text" class="big-input" id="seqInp"
       placeholder="XX.XXXX XX.XXXX"
       onkeydown="if(event.key==='Enter'){event.preventDefault();checkSeq();}"
       autocomplete="off" autocorrect="off" spellcheck="false" dir="ltr">
     <div class="t-err" id="err2">רצף לא תקין. בדקו את סדר גרמי השמיים לפי מרחק מכדור הארץ — מהקרוב אל הרחוק.</div>
-    <button class="seq-btn" onclick="checkSeq()">▸ שדר רצף שיגור</button>
+    <button class="btn-main" onclick="checkSeq()">▸ שדר רצף שיגור</button>
   </div>
 </div>
 
-<!-- STAGE 4 -->
+<!-- S4 -->
 <div class="stage" id="stage4">
   <div class="brf">
-    <div class="t-hdr hidden-init">▸ הודעת מערכת // שלב 04</div>
-    <div class="seq-display hidden-init" id="seqDisp"></div>
-    <div class="t-body hidden-init">
-      יש לכם כמעט את כל נתוני המשימה. כעת נותר לכם רק לפענח את הקוד ולהבין את <strong>יעד המשימה הסופי</strong>.
-      רצף השיגור שגיליתם הוא לא סתם קוד אקראי. יש לו משמעות שמובילה ליעד השיגור. עליכם להבין אותה, למצוא את היעד ולהזין אותו.
-    </div>
-    <div class="t-note hidden-init"><span class="lbl">שימו לב:</span> ניתן להיעזר בגוגל.</div>
+    <div class="t-hdr hi">▸ הודעת מערכת // שלב 04</div>
+    <div class="t-ok hi" id="seqDisp" style="text-align:center;"></div>
+    <div class="t-body hi">יש לכם כמעט את כל נתוני המשימה. כעת נותר לכם רק לפענח את הקוד ולהבין את <strong>יעד המשימה הסופי</strong>.<br>רצף השיגור שגיליתם הוא לא סתם קוד אקראי. יש לו משמעות שמובילה ליעד השיגור. עליכם להבין אותה, למצוא את היעד ולהזין אותו.</div>
+    <div class="t-note hi"><span class="lbl">שימו לב:</span>ניתן להיעזר בגוגל.</div>
   </div>
-  <div class="inputs-wrap" id="in4">
+  <div class="iw" id="in4">
     <span class="f-lbl" style="margin-bottom:10px;">פענוח יעד</span>
     <input type="text" class="dest-inp" id="destInp"
       placeholder="הזינו את שם היעד..."
       onkeydown="if(event.key==='Enter'){event.preventDefault();checkDest();}"
       autocomplete="off" dir="rtl">
     <div class="t-err" id="err3">שם היעד לא זוהה. נסו שוב...</div>
-    <button class="dest-btn" onclick="checkDest()">▸ אמת יעד</button>
+    <button class="btn-main" onclick="checkDest()">▸ אמת יעד</button>
   </div>
 </div>
 
-<!-- STAGE 5 -->
+<!-- S5 -->
 <div class="stage" id="stage5" style="position:relative;z-index:10;">
   <div class="finale" style="position:relative;z-index:10;">
-    <div class="finale-congrats">
-      כל הכבוד, המפקדת יובל וסגנה!<br>
-      בשיתוף פעולה מושלם שחזרתם את כל נתוני המשימה ואת <strong>קוד השיגור</strong> האבוד,<br>
-      ופיצחתם את <strong>היעד המדויק של המשימה</strong> אליה את תשוגרי!
+    <div class="finale-line1">כל הכבוד המפקדת יובל וסגנה!</div>
+    <div class="finale-body">
+      בשיתוף פעולה מושלם שחזרתם את כל נתוני המשימה ואת <strong>קוד השיגור</strong> האבוד ופיצחתם את <strong>היעד המדויק של המשימה</strong> אליה את תשוגרי!
     </div>
     <div class="launch-txt">✦ &nbsp;הספירה לאחור החלה... &nbsp;✦</div>
     <div class="cd-box">
       <div class="cd-lbl">ימים לשיגור</div>
-      <div class="cd-lbl-en">DAYS TO LAUNCH</div>
+      <div class="cd-en">DAYS TO LAUNCH</div>
       <div class="cd-num" id="daysLeft">—</div>
     </div>
   </div>
 </div>
 
-</div>
-
+</div><!-- /container -->
 <script>
 const SD=[
-  {num:1,name:'jupiter', code:'87',dist_ly:'כ-43 דקות אור', dist_sort:2,type:'כוכב לכת',heb:'צדק',   info:'כוכב הלכת החמישי במרחקו מהשמש, והגדול ביותר במערכת השמש. ענק גזים המורכב ברובו ממימן והליום.'},
-  {num:2,name:'alphard', code:'80',dist_ly:'כ-177 שנות אור',dist_sort:6,type:'כוכב',     age:'420 מיליון שנה',info:'אחד הכוכבים הבהירים בשמי הלילה. ענק כתום, הרדיוס שלו הוא פי 40 מרדיוס השמש.'},
+  {num:1,name:'jupiter', code:'87',dist_ly:'כ-43 דקות אור', dist_sort:2,type:'כוכב לכת',heb:'צדק',info:'כוכב הלכת החמישי במרחקו מהשמש, והגדול ביותר במערכת השמש. ענק גזים המורכב ברובו ממימן והליום.'},
+  {num:2,name:'alphard', code:'80',dist_ly:'כ-177 שנות אור',dist_sort:6,type:'כוכב',age:'420 מיליון שנה',info:'אחד הכוכבים הבהירים בשמי הלילה. ענק כתום, הרדיוס שלו הוא פי 40 מרדיוס השמש.'},
   {num:3,name:'venus',   code:'48',dist_ly:'כ-6 דקות אור',  dist_sort:1,type:'כוכב לכת',heb:'כוכב נוגה',info:'הבהיר ביותר בשמיים אחרי הירח. כוכב הלכת השני במרחקו מהשמש. הרכבו דומה להרכב כדור הארץ.'},
-  {num:4,name:'regulus', code:'77',dist_ly:'כ-79 שנות אור', dist_sort:5,type:'כוכב',     info:'מסתובב על צירו במהירות גבוהה מאוד של כ-317 ק"מ בשנייה, שגורמת לצורתו להיות פחוסה — קוטרו בקו המשווה גדול בכ-30% מקוטרו בקטבים.'},
-  {num:5,name:'procyon', code:'15',dist_ly:'כ-11.5 שנות אור',dist_sort:3,type:'כוכב',  age:'1.87 מיליארד שנה',info:'אחד הכוכבים הקרובים ביותר למערכת השמש שלנו, מבין הכוכבים שמחוץ למערכת השמש.'},
-  {num:6,name:'capella', code:'02',dist_ly:'כ-42 שנות אור', dist_sort:4,type:'כוכב',     info:'מערכת של 4 כוכבים: שני ענקים צהובים ושני ננסים אדומים הקשורים כבידתית זה לזה.'},
+  {num:4,name:'regulus', code:'77',dist_ly:'כ-79 שנות אור', dist_sort:5,type:'כוכב',info:'מסתובב על צירו במהירות גבוהה מאוד של כ-317 ק"מ בשנייה, שגורמת לצורתו להיות פחוסה.'},
+  {num:5,name:'procyon', code:'15',dist_ly:'כ-11.5 שנות אור',dist_sort:3,type:'כוכב',age:'1.87 מיליארד שנה',info:'אחד הכוכבים הקרובים ביותר למערכת השמש שלנו, מבין הכוכבים שמחוץ למערכת השמש.'},
+  {num:6,name:'capella', code:'02',dist_ly:'כ-42 שנות אור', dist_sort:4,type:'כוכב',info:'מערכת של 4 כוכבים: שני ענקים צהובים ושני ננסים אדומים הקשורים כבידתית זה לזה.'},
 ];
 const DP=[/disneyland\s*paris/i,/parc\s*disneyland/i,/park\s*disneyland/i,/disneyland\s*park/i,/^disneyland$/i,/^disney\s*paris$/i,/^disney$/i,/euro\s*disney/i,/דיסנילנד\s*פריז/,/דיסנילנד/];
 let SR={};
 
-/* STARS BG */
 function genStars(){
   const sf=document.getElementById('starfield');
   for(let i=0;i<110;i++){
@@ -365,7 +341,6 @@ function genStars(){
   }
 }
 
-/* STAR FIELDS */
 function buildGrid(){
   const g=document.getElementById('starsGrid');g.innerHTML='';
   SD.forEach(s=>{
@@ -374,26 +349,24 @@ function buildGrid(){
     <div class="star-row">
       <input type="text" class="star-input" id="si${s.num}" autocomplete="off" autocorrect="off" spellcheck="false"
         onkeydown="if(event.key==='Enter'){event.preventDefault();valStar(${s.num});}">
-      <button class="confirm-btn" onclick="valStar(${s.num})" type="button">אישור</button>
+      <button class="btn-confirm" onclick="valStar(${s.num})" type="button">אישור</button>
     </div>
     <div class="star-fb" id="fb${s.num}"></div>`;
     g.appendChild(d);
   });
 }
 
-/* DATA TABLE */
 function buildTable(showCode){
   const t=document.getElementById('dtbl');
   while(t.rows.length>1) t.deleteRow(1);
   SD.forEach(s=>{
     const r=t.insertRow();
-    r.innerHTML=`<td>${s.num}</td><td style="font-weight:700">${s.name.toUpperCase()}</td><td>${s.type}</td><td>${s.dist_ly}</td><td class="cc">${showCode?(SR[s.num]?.code||'—'):'—'}</td>`;
+    r.innerHTML=`<td>${s.num}</td><td style="font-family:'Share Tech Mono',monospace;font-weight:700;">${s.name.toUpperCase()}</td><td>${s.type}</td><td>${s.dist_ly}</td><td class="cc">${showCode?(SR[s.num]?.code||'—'):'—'}</td>`;
   });
 }
 function openData(){buildTable(true);document.getElementById('dataModal').classList.add('open');}
 function closeData(){document.getElementById('dataModal').classList.remove('open');}
 
-/* POPUP */
 function showPop(s){
   document.getElementById('pName').textContent=s.name.toUpperCase();
   document.getElementById('pType').textContent=s.type;
@@ -410,7 +383,6 @@ function showPop(s){
 }
 function closePopup(){document.getElementById('popup').classList.remove('open');}
 
-/* VALIDATE STAR */
 function valStar(num){
   const inp=document.getElementById('si'+num);
   const fb=document.getElementById('fb'+num);
@@ -436,7 +408,6 @@ function submitStars(){
   if(!SD.every(s=>SR[s.num]?.valid)){document.getElementById('err1').style.display='block';return;}
   goTo(2);
 }
-
 function checkVenus(){
   const v=document.getElementById('venusInp').value.trim().toLowerCase();
   if(v==='venus'){
@@ -448,25 +419,21 @@ function checkVenus(){
     document.getElementById('errV').style.display='block';
   }
 }
-
 function checkSeq(){
-  const v=document.getElementById('seqInp').value.trim();
-  const n=v.replace(/,/g,' ').replace(/\s+/g,' ').trim();
-  if(n==='48.8715 02.7780'){
+  const v=document.getElementById('seqInp').value.trim().replace(/,/g,' ').replace(/\s+/g,' ').trim();
+  if(v==='48.8715 02.7780'){
     document.getElementById('seqInp').className='big-input ok';
     document.getElementById('err2').style.display='none';
     setTimeout(()=>{
+      // Set seqDisp content before moving to stage 4
       const d=document.getElementById('seqDisp');
-      if(d){
-        d.innerHTML='✓ רצף השיגור אומת!<span class="seq-coord">48.8715 02.7780</span>';
-      }
+      if(d) d.innerHTML='✓ רצף השיגור אומת!<span class="seq-coord" dir="ltr">48.8715 02.7780</span>';
       goTo(4);
     },700);
   } else {
     document.getElementById('err2').style.display='block';
   }
 }
-
 function checkDest(){
   const v=document.getElementById('destInp').value.trim();
   if(DP.some(p=>p.test(v))){
@@ -479,7 +446,7 @@ function checkDest(){
 }
 
 /* TYPEWRITER */
-function typeEl(el,speed,cb){
+function typeEl(el, speed, cb){
   const html=el.innerHTML;
   el.innerHTML='';
   el.style.visibility='visible';
@@ -497,18 +464,20 @@ function typeEl(el,speed,cb){
   tick();
 }
 
-function typeStage(stageId, inputId, extraAfterCb){
+function typeStage(stageId, inputId, doneCb){
   const stage=document.getElementById(stageId);
-  const els=[...stage.querySelectorAll('.brf .hidden-init')];
-  // hide all first
-  els.forEach(e=>e.style.visibility='hidden');
-  let i=0;
+  const els=[...stage.querySelectorAll('.hi')].filter(e=>!e.id||e.id==='seqDisp');
+  // Pre-hide all
+  els.forEach(e=>{e.style.visibility='hidden';});
   const SPEED=55;
+  let i=0;
   function next(){
     if(i<els.length){
+      // skip empty elements (like seqDisp when empty)
+      if(!els[i].innerHTML.trim()){els[i].style.visibility='visible';i++;next();return;}
       typeEl(els[i++],SPEED,next);
     } else {
-      if(extraAfterCb) extraAfterCb();
+      if(doneCb) doneCb();
       if(inputId){
         const inp=document.getElementById(inputId);
         if(inp) inp.classList.add('show');
@@ -518,34 +487,37 @@ function typeStage(stageId, inputId, extraAfterCb){
   setTimeout(next,200);
 }
 
-/* GOTO */
 function goTo(n){
   document.querySelectorAll('.stage').forEach(s=>s.classList.remove('active'));
   document.getElementById('stage'+n).classList.add('active');
   document.getElementById('prog').style.width={1:20,2:40,3:60,4:80,5:100}[n]+'%';
   window.scrollTo({top:0,behavior:'smooth'});
-
   if(n===1) typeStage('stage1','in1');
   else if(n===2) typeStage('stage2','in2');
   else if(n===3){
     typeStage('stage3',null,()=>{
-      // show code template then instruction then input
-      const ct=document.getElementById('codeTemplate');
-      ct.classList.add('show');
+      // show code template
+      document.getElementById('codeTemplate').classList.add('show');
       setTimeout(()=>{
+        // type instruction brf
         const ib=document.getElementById('seqInstrBrf');
-        ib.style.display='block';
-        setTimeout(()=>{
-          document.getElementById('in3').classList.add('show');
-        },400);
-      },600);
+        ib.style.visibility='visible';
+        // type elements inside it
+        const subEls=[...ib.querySelectorAll('.t-body,.t-note')];
+        subEls.forEach(e=>{e.style.visibility='hidden';});
+        let si=0;
+        function nextSub(){
+          if(si<subEls.length) typeEl(subEls[si++],55,nextSub);
+          else document.getElementById('in3').classList.add('show');
+        }
+        nextSub();
+      },700);
     });
   }
   else if(n===4) typeStage('stage4','in4');
   else if(n===5) typeStage('stage5',null);
 }
 
-/* FINALE */
 function launchFinale(){
   document.getElementById('starfield').style.display='none';
   document.body.style.background='#03020a';
@@ -559,7 +531,6 @@ function launchFinale(){
   const NUM=3600;
   let W=cv.width,H=cv.height;
   const stars=Array.from({length:NUM},()=>({x:(Math.random()-.5)*W*4,y:(Math.random()-.5)*H*4,z:Math.random()*W}));
-  const SPD=8;
   let lt=null;
   function draw(ts){
     W=cv.width;H=cv.height;
@@ -569,7 +540,7 @@ function launchFinale(){
     const cx=W/2,cy=H/2;
     ctx.fillStyle='rgba(3,2,10,.22)';ctx.fillRect(0,0,W,H);
     for(let i=0;i<stars.length;i++){
-      const s=stars[i];const pz=s.z;s.z-=SPD*dt;
+      const s=stars[i];const pz=s.z;s.z-=8*dt;
       if(s.z<=0){s.x=(Math.random()-.5)*W*4;s.y=(Math.random()-.5)*H*4;s.z=W;continue;}
       const sx=(s.x/s.z)*W+cx,sy=(s.y/s.z)*H+cy;
       const px=(s.x/pz)*W+cx,py=(s.y/pz)*H+cy;
